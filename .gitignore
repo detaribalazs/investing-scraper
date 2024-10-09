@@ -1,2 +1,6 @@
 **/investing*.html
 .idea/
+error/*
+output/*
+backup/**
+
