@@ -3,7 +3,7 @@ import yaml
 
 from utils.utils import load_tickers
 
-all_tickers = load_tickers("./input/tickers.yaml")[-35:]
+all_tickers = load_tickers("./input/tickers.yaml")
 
 def merge_files(data: list) -> dict:
     merged_data = data[0]
@@ -15,11 +15,11 @@ def merge_files(data: list) -> dict:
 
 def main():
     input_files = [
-        # "./output/equity_common-2023-12.yaml",
-        # "./output/equity_common-2022-12.yaml",
-        # "./output/marketcap-2023-12.yaml",
-        # "./output/payout_ratio-2023-12.yaml",
-        "./output/ni_cf-2023-12.yaml",
+        "./cache/equity_common-2023-12.yaml",
+        "./cache/equity_common-2022-12.yaml",
+        "./cache/marketcap-2023-12.yaml",
+        "./cache/payout_ratio-2023-12.yaml",
+        #"./output/ni_cf-2023-12.yaml",
     ]
     output_file = "./output/merged.yaml"
     csv_file = "./output/merged.csv"
