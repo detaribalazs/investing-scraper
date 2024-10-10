@@ -1,378 +1,378 @@
 ATSE:ALPHA:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.1%
+  Payout Ratio: 0.001
 ATSE:ETE:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.1%
+  Payout Ratio: 0.001
 ATSE:EUROB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.1%
+  Payout Ratio: 0.001
 ATSE:OPTIMA:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.1%
+  Payout Ratio: 0.001
 ATSE:TATT:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.1%
+  Payout Ratio: 0.001
 ATSE:TPEIR:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.1%
+  Payout Ratio: 0.001
 BIT:BAMI:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 27.6%
+  Payout Ratio: 0.276
 BIT:BDB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 11.0%
+  Payout Ratio: 0.11
 BIT:BMPS:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 12.15%
+  Payout Ratio: 0.1215
 BIT:BPE:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 11.2%
+  Payout Ratio: 0.11199999999999999
 BIT:BPSO:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 27.5%
+  Payout Ratio: 0.275
 BIT:BST:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 36.43%
+  Payout Ratio: 0.3643
 BIT:CE:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 20.0%
+  Payout Ratio: 0.2
 BIT:FBK:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 52.9%
+  Payout Ratio: 0.529
 BIT:ISP:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 55.6%
+  Payout Ratio: 0.556
 BIT:MB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 89.98%
+  Payout Ratio: 0.8998
 BIT:UCG:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 25.7%
+  Payout Ratio: 0.257
 BME:BBVA:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 35.0%
+  Payout Ratio: 0.35
 BME:BKT:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 50.50%
+  Payout Ratio: 0.505
 BME:CABK:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 35.9%
+  Payout Ratio: 0.359
 BME:CAM:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 25.95%
+  Payout Ratio: 0.2595
 BME:SAB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 20.5%
+  Payout Ratio: 0.205
 BME:SAN:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 20.4%
+  Payout Ratio: 0.204
 BME:UNI:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 48.2%
+  Payout Ratio: 0.48200000000000004
 BSSE:1TAT01DE:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 44.8%
+  Payout Ratio: 0.44799999999999995
 BUL:BACB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 4.4%
-BUL:CCB: # might skip
+  Payout Ratio: 0.044000000000000004
+BUL:CCB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0% # not sure
-BUL:FIB: # might skip
+  Payout Ratio: 0.0
+BUL:FIB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0% # not sure
-BUL:TXIM: # skip
+  Payout Ratio: 0.0
+BUL:TXIM:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0% # not sure
+  Payout Ratio: 0.0
 BUSE:MBHBANK:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 13.38%
+  Payout Ratio: 0.1338
 BUSE:OTP:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 8.1%
+  Payout Ratio: 0.081
 BVB:BRD:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 92.64%
+  Payout Ratio: 0.9264
 BVB:PBK:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0%
+  Payout Ratio: 0.0
 BVB:TLV:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 31.1%
+  Payout Ratio: 0.311
 CPSE:DAB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 19.4%
+  Payout Ratio: 0.19399999999999998
 CPSE:DANSKE:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 28.3%
+  Payout Ratio: 0.28300000000000003
 CPSE:DJUR:
   Fiscal Year: '2024-03-20'
-  Payout Ratio: 33.7%
+  Payout Ratio: 0.337
 CPSE:FOBANK:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 83.5% # good
+  Payout Ratio: 0.835
 CPSE:FYNBK:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 6.4% # good
+  Payout Ratio: 0.064
 CPSE:HVID:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0% # good
+  Payout Ratio: 0.0
 CPSE:JYSK:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 2.8% # good
+  Payout Ratio: 0.027999999999999997
 CPSE:KRE:
   Fiscal Year: '2024-03-21'
-  Payout Ratio: 11.45% # WSJ
+  Payout Ratio: 0.11449999999999999
 CPSE:LASP:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 7.3%  # good
+  Payout Ratio: 0.073
 CPSE:LOLB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 4.9% # good
+  Payout Ratio: 0.049
 CPSE:MNBA:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0%
+  Payout Ratio: 0.0
 CPSE:NRDF:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0%
+  Payout Ratio: 0.0
 CPSE:RILBA:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0%
+  Payout Ratio: 0.0
 CPSE:SKJE:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0%
+  Payout Ratio: 0.0
 CPSE:SPKSJF:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 27.4%
+  Payout Ratio: 0.27399999999999997
 CPSE:SPNO:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 22.3%
+  Payout Ratio: 0.223
 CPSE:SYDB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 28.7%
+  Payout Ratio: 0.287
 CPSE:VJBA:
   Fiscal Year: '2024-03-21'
-  Payout Ratio: 52.46%
-CSE:HB: {} # private
+  Payout Ratio: 0.5246
+CSE:HB: {}
 ENXTAM:ABN:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 44.8%
+  Payout Ratio: 0.44799999999999995
 ENXTAM:INGA:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 71.7%
+  Payout Ratio: 0.7170000000000001
 ENXTBR:KBC:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 50.4%
+  Payout Ratio: 0.504
 ENXTBR:KBCA:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 85.3%
+  Payout Ratio: 0.853
 ENXTLS:BCP:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 4.3%
+  Payout Ratio: 0.043
 ENXTPA:ACA:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 59.4%
+  Payout Ratio: 0.594
 ENXTPA:BNP:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 49.2%
+  Payout Ratio: 0.49200000000000005
 ENXTPA:CAF:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 12.7%
+  Payout Ratio: 0.127
 ENXTPA:CAT31:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 19.4%
+  Payout Ratio: 0.19399999999999998
 ENXTPA:CCN:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 17.9%
+  Payout Ratio: 0.179
 ENXTPA:CIV:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 23.9%
+  Payout Ratio: 0.239
 ENXTPA:CMO:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 28.5%
+  Payout Ratio: 0.285
 ENXTPA:CNDF:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 22.3%
+  Payout Ratio: 0.223
 ENXTPA:CRAP:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 19.1%
+  Payout Ratio: 0.191
 ENXTPA:CRAV:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 23.4%
+  Payout Ratio: 0.23399999999999999
 ENXTPA:CRBP2:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 17.6%
+  Payout Ratio: 0.17600000000000002
 ENXTPA:CRLA:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 14.5%
+  Payout Ratio: 0.145
 ENXTPA:CRLO:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 22.7%
+  Payout Ratio: 0.22699999999999998
 ENXTPA:CRSU:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 19.6%
+  Payout Ratio: 0.196
 ENXTPA:CRTO:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 16.4%
+  Payout Ratio: 0.16399999999999998
 ENXTPA:GLE:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 54.6%
+  Payout Ratio: 0.546
 HLSE:AKTIA:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 39.7%
+  Payout Ratio: 0.397
 HLSE:ALBAV:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 61.6%
+  Payout Ratio: 0.616
 HLSE:ALISA:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0%
+  Payout Ratio: 0.0
 HLSE:OMASP:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 8.1%
+  Payout Ratio: 0.081
 ISE:A5G:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 11.2%
+  Payout Ratio: 0.11199999999999999
 ISE:BIRG:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 18.4%
+  Payout Ratio: 0.184
 ISE:PTSB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 63.2%
+  Payout Ratio: 0.632
 LJSE:DEHG:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 8.6%
+  Payout Ratio: 0.086
 LJSE:LONR:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0%
+  Payout Ratio: 0.0
 LJSE:NLBR:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 20.8%
+  Payout Ratio: 0.20800000000000002
 LSE:BOCH:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 9.8%
+  Payout Ratio: 0.098
 MTSE:APS:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 13.7%
+  Payout Ratio: 0.13699999999999998
 MTSE:BOV:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 10.4%
-MTSE:FIM: {} # not found
+  Payout Ratio: 0.10400000000000001
+MTSE:FIM: {}
 MTSE:HSB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 31.3%
+  Payout Ratio: 0.313
 MTSE:LOM:
   Fiscal Year: '2024-05-31'
-  Payout Ratio: 13.06%
+  Payout Ratio: 0.1306
 OM:NDASE:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 58.8%
+  Payout Ratio: 0.588
 OM:NORION:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0%
+  Payout Ratio: 0.0
 OM:SHB-A:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 54.4%
+  Payout Ratio: 0.544
 OM:SWED-A:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 32.1%
+  Payout Ratio: 0.321
 OM:TFBANK:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 5.0%
+  Payout Ratio: 0.05
 SE:SEB-A:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 37.2%
+  Payout Ratio: 0.37200000000000005
 SEP:KOMB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 72.3%
+  Payout Ratio: 0.723
 SEP:MONET:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 78.6%
+  Payout Ratio: 0.7859999999999999
 TLSE:CPA1T:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 11.6%
+  Payout Ratio: 0.11599999999999999
 TLSE:LHV1T:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 9.0%
+  Payout Ratio: 0.09
 WBAG:ADKO:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 57.4%
+  Payout Ratio: 0.574
 WBAG:BG:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 48.2%
+  Payout Ratio: 0.48200000000000004
 WBAG:BKS:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 8.1%
+  Payout Ratio: 0.081
 WBAG:BTS:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 6.4%
+  Payout Ratio: 0.064
 WBAG:EBS:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 29.0%
+  Payout Ratio: 0.29
 WBAG:OBS:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 14.2%
+  Payout Ratio: 0.142
 WBAG:RBI:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 15.6%
+  Payout Ratio: 0.156
 WSE:ALR:
   Fiscal Year: '2024-05-20'
-  Payout Ratio: 24.85%
+  Payout Ratio: 0.24850000000000003
 WSE:BHW:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 52.1%
+  Payout Ratio: 0.521
 WSE:BNP:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 39.42%
+  Payout Ratio: 0.3942
 WSE:BOS:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0%
+  Payout Ratio: 0.0
 WSE:GTN:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 403.1%
+  Payout Ratio: 4.031000000000001
 WSE:ING:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 99,7%
+  Payout Ratio: 0.997
 WSE:MBK:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0%
+  Payout Ratio: 0.0
 WSE:MIL:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 0.0%
+  Payout Ratio: 0.0
 WSE:PEO:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 21.6%
+  Payout Ratio: 0.21600000000000003
 WSE:PKO:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 20.35%
+  Payout Ratio: 0.20350000000000001
 WSE:SPL:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 49.2%
+  Payout Ratio: 0.49200000000000005
 XTRA:CBK:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 11.2%
+  Payout Ratio: 0.11199999999999999
 XTRA:MBK:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 33.48%
+  Payout Ratio: 0.3348
 XTRA:PCZ:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 35.36%
+  Payout Ratio: 0.35359999999999997
 XTRA:UBK:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 60.20%
+  Payout Ratio: 0.602
 ZGSE:HPB:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 60.20%
+  Payout Ratio: 0.602
 ZGSE:IKBA:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 15.7%
+  Payout Ratio: 0.157
 ZGSE:KBZ:
   Fiscal Year: '2023-12-31'
-  Payout Ratio: 36.7%
+  Payout Ratio: 0.36700000000000005
 ZGSE:PDBA:
   Fiscal Year: '2024-03-27'
-  Payout Ratio: 46.05%
+  Payout Ratio: 0.46049999999999996
 ZGSE:SNBA:
   Fiscal Year: '2024-03-27'
-  Payout Ratio: 0.0% # check again
+  Payout Ratio: 0.0
 ZGSE:ZBB: {}
