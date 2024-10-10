@@ -1,382 +1,382 @@
 ATSE:ALPHA:
-  Common Equity: '7305000000.0'
+  Common Equity: 7305000000
   Fiscal Year: '2023-12-31'
 ATSE:ETE:
-  Common Equity: '7626000000.0'
+  Common Equity: 7626000000
   Fiscal Year: '2023-12-31'
 ATSE:EUROB:
-  Common Equity: '7899000000.0'
+  Common Equity: 7899000000
   Fiscal Year: '2023-12-31'
 ATSE:OPTIMA:
-  Common Equity: '510100000.0'
+  Common Equity: 510100000
   Fiscal Year: '2023-12-31'
 ATSE:TATT:
-  Common Equity: '446400000.0'
+  Common Equity: 446400000
   Fiscal Year: '2023-12-31'
 ATSE:TPEIR:
-  Common Equity: '7298000000.0'
+  Common Equity: 7298000000
   Fiscal Year: '2023-12-31'
 BIT:BAMI:
-  Common Equity: '14038000000.0'
+  Common Equity: 14038000000
   Fiscal Year: '2023-12-31'
 BIT:BDB:
-  Common Equity: '1354000000.0'
+  Common Equity: 1354000000
   Fiscal Year: '2023-12-31'
 BIT:BMPS:
-  Common Equity: '9978000000.0'
+  Common Equity: 9978000000
   Fiscal Year: '2023-12-31'
 BIT:BPE:
-  Common Equity: '9366000000.0'
+  Common Equity: 9366000000
   Fiscal Year: '2023-12-31'
 BIT:BPSO:
-  Common Equity: '3809000000.0'
+  Common Equity: 3809000000
   Fiscal Year: '2023-12-31'
 BIT:BST:
-  Common Equity: '277000000.0'
+  Common Equity: 277000000
   Fiscal Year: '2023-12-31'
 BIT:CE:
-  Common Equity: '3871000000.0'
+  Common Equity: 3871000000
   Fiscal Year: '2023-12-31'
 BIT:FBK:
-  Common Equity: '2195000000.0'
+  Common Equity: 2195000000
   Fiscal Year: '2023-12-31'
 BIT:ISP:
-  Common Equity: '63963000000.0'
+  Common Equity: 63963000000
   Fiscal Year: '2023-12-31'
 BIT:MB:
-  Common Equity: '10958000000'
+  Common Equity: 10958000000
   Fiscal Year: '2023-12-31'
 BIT:UCG:
-  Common Equity: '64078999999.99999'
+  Common Equity: 64078999999
   Fiscal Year: '2023-12-31'
 BME:BBVA:
-  Common Equity: '51701000000.0'
+  Common Equity: 51701000000
   Fiscal Year: '2023-12-31'
 BME:BKT:
-  Common Equity: '5323000000.0'
+  Common Equity: 5323000000
   Fiscal Year: '2023-12-31'
 BME:CABK:
-  Common Equity: '36307000000.0'
+  Common Equity: 36307000000
   Fiscal Year: '2023-12-31'
 BME:CAM:
-  Common Equity: '' # NOT found
+  Common Equity: ''
   Fiscal Year: '2023-12-31'
 BME:SAB:
-  Common Equity: '13845000000.0'
+  Common Equity: 13845000000
   Fiscal Year: '2023-12-31'
 BME:SAN:
-  Common Equity: '95423000000.0'
+  Common Equity: 95423000000
   Fiscal Year: '2023-12-31'
 BME:UNI:
-  Common Equity: '6644000000.0'
+  Common Equity: 6644000000
   Fiscal Year: '2023-12-31'
 BSSE:1TAT01DE:
-  Common Equity: '1622000000.0'
+  Common Equity: 1622000000
   Fiscal Year: '2023-12-31'
 BUL:BACB:
-  Common Equity: '326500000.0'
+  Common Equity: 326500000
   Fiscal Year: '2023-12-31'
 BUL:CCB:
-  Common Equity: '641600000.0'
+  Common Equity: 641600000
   Fiscal Year: '2023-12-31'
 BUL:FIB:
-  Common Equity: '1568000000.0'
+  Common Equity: 1568000000
   Fiscal Year: '2023-12-31'
 BUL:TXIM:
-  Common Equity: '' # Not found
+  Common Equity: ''
   Fiscal Year: '2023-12-31'
 BUSE:MBHBANK:
-  Common Equity: '980388000000.0'
+  Common Equity: 980388000000
   Fiscal Year: '2023-12-31'
 BUSE:OTP:
-  Common Equity: '4086833000000.0'
+  Common Equity: 4086833000000
   Fiscal Year: '2023-12-31'
 BVB:BRD:
-  Common Equity: '8794000000.0'
+  Common Equity: 8794000000
   Fiscal Year: '2023-12-31'
 BVB:PBK:
-  Common Equity: '386600000.0'
+  Common Equity: 386600000
   Fiscal Year: '2023-12-31'
 BVB:TLV:
-  Common Equity: '13224000000.0'
+  Common Equity: 13224000000
   Fiscal Year: '2023-12-31'
 CPSE:DAB:
-  Common Equity: '2834000000.0'
+  Common Equity: 2834000000
   Fiscal Year: '2023-12-31'
 CPSE:DANSKE:
-  Common Equity: '175700000000.0'
+  Common Equity: 175700000000
   Fiscal Year: '2023-12-31'
 CPSE:DJUR:
-  Common Equity: '1611000000.0'
+  Common Equity: 1611000000
   Fiscal Year: '2023-12-31'
 CPSE:FOBANK:
-  Common Equity: '2001999999.9999998'
+  Common Equity: 2001999999
   Fiscal Year: '2023-12-31'
 CPSE:FYNBK:
-  Common Equity: '1359000000.0'
+  Common Equity: 1359000000
   Fiscal Year: '2023-12-31'
 CPSE:HVID:
-  Common Equity: '253400000.0'
+  Common Equity: 253400000
   Fiscal Year: '2023-12-31'
 CPSE:JYSK:
-  Common Equity: '45886000000.0'
+  Common Equity: 45886000000
   Fiscal Year: '2023-12-31'
 CPSE:KRE:
-  Common Equity: '958200000.0'
+  Common Equity: 958200000
   Fiscal Year: '2023-12-31'
 CPSE:LASP:
-  Common Equity: '2857000000.0'
+  Common Equity: 2857000000
   Fiscal Year: '2023-12-31'
 CPSE:LOLB:
-  Common Equity: '831000000.0'
+  Common Equity: 831000000
   Fiscal Year: '2023-12-31'
 CPSE:MNBA:
-  Common Equity: '657800000.0'
+  Common Equity: 657800000
   Fiscal Year: '2023-12-31'
 CPSE:NRDF:
-  Common Equity: '731400000.0'
+  Common Equity: 731400000
   Fiscal Year: '2023-12-31'
 CPSE:RILBA:
-  Common Equity: '10451000000.0'
+  Common Equity: 10451000000
   Fiscal Year: '2023-12-31'
 CPSE:SKJE:
-  Common Equity: '1586000000.0'
+  Common Equity: 1586000000
   Fiscal Year: '2023-12-31'
 CPSE:SPKSJF:
-  Common Equity: '4428000000.0'
+  Common Equity: 4428000000
   Fiscal Year: '2023-12-31'
 CPSE:SPNO:
-  Common Equity: '13979000000.0'
+  Common Equity: 13979000000
   Fiscal Year: '2023-12-31'
 CPSE:SYDB:
-  Common Equity: '15709000000.0'
+  Common Equity: 15709000000
   Fiscal Year: '2023-12-31'
 CPSE:VJBA:
-  Common Equity: '6959000000.0'
+  Common Equity: 6959000000
   Fiscal Year: '2023-12-31'
 CSE:HB:
-  Common Equity: '1506000000.0'
+  Common Equity: 1506000000
   Fiscal Year: '2023-12-31'
 ENXTAM:ABN:
-  Common Equity: '24165000000.0'
+  Common Equity: 24165000000
   Fiscal Year: '2023-12-31'
 ENXTAM:INGA:
-  Common Equity: '54684000000.0'
+  Common Equity: 54684000000
   Fiscal Year: '2023-12-31'
 ENXTBR:KBC:
-  Common Equity: '24260000000.0'
+  Common Equity: 24260000000
   Fiscal Year: '2023-12-31'
 ENXTBR:KBCA:
-  Common Equity: '3483590700000'
+  Common Equity: 3483590700000
   Fiscal Year: '2023-12-31'
 ENXTLS:BCP:
-  Common Equity: '6312000000.0'
+  Common Equity: 6312000000
   Fiscal Year: '2023-12-31'
 ENXTPA:ACA:
-  Common Equity: '71086000000.0'
+  Common Equity: 71086000000
   Fiscal Year: '2023-12-31'
 ENXTPA:BNP:
-  Common Equity: '123700000000.0'
+  Common Equity: 123700000000
   Fiscal Year: '2023-12-31'
 ENXTPA:CAF:
-  Common Equity: '7751000000.0'
+  Common Equity: 7751000000
   Fiscal Year: '2023-12-31'
 ENXTPA:CAT31:
-  Common Equity: '1896000000.0'
+  Common Equity: 1896000000
   Fiscal Year: '2023-12-31'
 ENXTPA:CCN:
-  Common Equity: '2874000000.0'
+  Common Equity: 2874000000
   Fiscal Year: '2023-12-31'
 ENXTPA:CIV:
   Common Equity: NA
   Fiscal Year: '2023-12-31'
 ENXTPA:CMO:
-  Common Equity: '1973000000.0'
+  Common Equity: 1973000000
   Fiscal Year: '2023-12-31'
 ENXTPA:CNDF:
-  Common Equity: '5380000000.0'
+  Common Equity: 5380000000
   Fiscal Year: '2023-12-31'
 ENXTPA:CRAP:
-  Common Equity: '3168000000.0'
+  Common Equity: 3168000000
   Fiscal Year: '2023-12-31'
 ENXTPA:CRAV:
-  Common Equity: '3745000000.0'
+  Common Equity: 3745000000
   Fiscal Year: '2023-12-31'
 ENXTPA:CRBP2:
-  Common Equity: '4975000000.0'
+  Common Equity: 4975000000
   Fiscal Year: '2023-12-31'
 ENXTPA:CRLA:
-  Common Equity: '5065000000.0'
+  Common Equity: 5065000000
   Fiscal Year: '2023-12-31'
 ENXTPA:CRLO:
-  Common Equity: '2647000000.0'
+  Common Equity: 2647000000
   Fiscal Year: '2023-12-31'
 ENXTPA:CRSU:
-  Common Equity: '3117000000.0'
+  Common Equity: 3117000000
   Fiscal Year: '2023-12-31'
 ENXTPA:CRTO:
-  Common Equity: '2650000000.0'
+  Common Equity: 2650000000
   Fiscal Year: '2023-12-31'
 ENXTPA:GLE:
-  Common Equity: '65974999999.99999'
+  Common Equity: 65974999999
   Fiscal Year: '2023-12-31'
 HLSE:AKTIA:
-  Common Equity: '708000000.0'
+  Common Equity: 708000000
   Fiscal Year: '2023-12-31'
 HLSE:ALBAV:
-  Common Equity: '335300000.0'
+  Common Equity: 335300000
   Fiscal Year: '2023-12-31'
 HLSE:ALISA:
-  Common Equity: '26162000.0'
+  Common Equity: 26162000
   Fiscal Year: '2023-12-31'
 HLSE:OMASP:
-  Common Equity: '541100000.0'
+  Common Equity: 541100000
   Fiscal Year: '2023-12-31'
 ISE:A5G:
-  Common Equity: '15075000000.0'
+  Common Equity: 15075000000
   Fiscal Year: '2023-12-31'
 ISE:BIRG:
-  Common Equity: '12558000000.0'
+  Common Equity: 12558000000
   Fiscal Year: '2023-12-31'
 ISE:PTSB:
-  Common Equity: '2419000000.0'
+  Common Equity: 2419000000
   Fiscal Year: '2023-12-31'
 LJSE:DEHG:
-  Common Equity: '128600000.0'
+  Common Equity: 128600000
   Fiscal Year: '2023-12-31'
 LJSE:LONR:
-  Common Equity: '19733000'
+  Common Equity: 19733000
   Fiscal Year: '2023-12-31'
 LJSE:NLBR:
-  Common Equity: '2883000000.0'
+  Common Equity: 2883000000
   Fiscal Year: '2023-12-31'
 LSE:BOCH:
-  Common Equity: '2137000000.0'
+  Common Equity: 2137000000
   Fiscal Year: '2023-12-31'
 MTSE:APS:
-  Common Equity: '273100000.0'
+  Common Equity: 273100000
   Fiscal Year: '2023-12-31'
 MTSE:BOV:
-  Common Equity: '1268000000.0'
+  Common Equity: 1268000000
   Fiscal Year: '2023-12-31'
 MTSE:FIM:
-  Common Equity: '178800000.0'
+  Common Equity: 178800000
   Fiscal Year: '2023-12-31'
 MTSE:HSB:
-  Common Equity: '543000000.0'
+  Common Equity: 543000000
   Fiscal Year: '2023-12-31'
 MTSE:LOM:
-  Common Equity: '190400000.0'
+  Common Equity: 190400000
   Fiscal Year: '2023-12-31'
 OM:NDASE:
-  Common Equity: '347600000000.0'
+  Common Equity: 347600000000
   Fiscal Year: '2023-12-31'
 OM:NORION:
-  Common Equity: '8303000000.000001'
+  Common Equity: 8303000000
   Fiscal Year: '2023-12-31'
 OM:SHB-A:
-  Common Equity: '205100000000.0'
+  Common Equity: 205100000000
   Fiscal Year: '2023-12-31'
 OM:SWED-A:
-  Common Equity: '198800000000.0'
+  Common Equity: 198800000000
   Fiscal Year: '2023-12-31'
 OM:TFBANK:
-  Common Equity: '2161000000.0'
+  Common Equity: 2161000000
   Fiscal Year: '2023-12-31'
 SE:SEB-A:
-  Common Equity: '221800000000.0'
+  Common Equity: 221800000000
   Fiscal Year: '2023-12-31'
 SEP:KOMB:
-  Common Equity: '125100000000.0'
+  Common Equity: 125100000000
   Fiscal Year: '2023-12-31'
 SEP:MONET:
-  Common Equity: '32203000000.000004'
+  Common Equity: 32203000000
   Fiscal Year: '2023-12-31'
 TLSE:CPA1T:
-  Common Equity: '185800000.0'
+  Common Equity: 185800000
   Fiscal Year: '2023-12-31'
 TLSE:LHV1T:
-  Common Equity: '548400000.0'
+  Common Equity: 548400000
   Fiscal Year: '2023-12-31'
 WBAG:ADKO:
-  Common Equity: '801100000.0'
+  Common Equity: 801100000
   Fiscal Year: '2023-12-31'
 WBAG:BG:
-  Common Equity: '4170000000.0'
+  Common Equity: 4170000000
   Fiscal Year: '2023-12-31'
 WBAG:BKS:
-  Common Equity: '1769000000.0'
+  Common Equity: 1769000000
   Fiscal Year: '2023-12-31'
 WBAG:BTS:
-  Common Equity: '2234000000.0'
+  Common Equity: 2234000000
   Fiscal Year: '2023-12-31'
 WBAG:EBS:
-  Common Equity: '21648000000.0'
+  Common Equity: 21648000000
   Fiscal Year: '2023-12-31'
 WBAG:OBS:
-  Common Equity: '3854000000.0'
+  Common Equity: 3854000000
   Fiscal Year: '2023-12-31'
 WBAG:RBI:
-  Common Equity: '18619000000.0'
+  Common Equity: 18619000000
   Fiscal Year: '2023-12-31'
 WSE:ALR:
-  Common Equity: '9250000000.0'
+  Common Equity: 9250000000
   Fiscal Year: '2023-12-31'
 WSE:BHW:
-  Common Equity: '9729000000.0'
+  Common Equity: 9729000000
   Fiscal Year: '2023-12-31'
 WSE:BNP:
-  Common Equity: '12861000000.0'
+  Common Equity: 12861000000
   Fiscal Year: '2023-12-31'
 WSE:BOS:
-  Common Equity: '2130000000.0'
+  Common Equity: 2130000000
   Fiscal Year: '2023-12-31'
 WSE:GTN:
-  Common Equity: '107100000.0'
+  Common Equity: 107100000
   Fiscal Year: '2023-12-31'
 WSE:ING:
-  Common Equity: '16736000000.0'
+  Common Equity: 16736000000
   Fiscal Year: '2023-12-31'
 WSE:MBK:
-  Common Equity: '13735000000.0'
+  Common Equity: 13735000000
   Fiscal Year: '2023-12-31'
 WSE:MIL:
-  Common Equity: '6895000000.0'
+  Common Equity: 6895000000
   Fiscal Year: '2023-12-31'
 WSE:PEO:
-  Common Equity: '30329000000.0'
+  Common Equity: 30329000000
   Fiscal Year: '2023-12-31'
 WSE:PKO:
-  Common Equity: '45238000000.0'
+  Common Equity: 45238000000
   Fiscal Year: '2023-12-31'
 WSE:SPL:
-  Common Equity: '31763000000.0'
+  Common Equity: 31763000000
   Fiscal Year: '2023-12-31'
 XTRA:CBK:
-  Common Equity: '31992000000.0'
+  Common Equity: 31992000000
   Fiscal Year: '2023-12-31'
 XTRA:MBK:
-  Common Equity: '129000000.0'
+  Common Equity: 129000000
   Fiscal Year: '2023-12-31'
 XTRA:PCZ:
-  Common Equity: '983800000.0'
+  Common Equity: 983800000
   Fiscal Year: '2023-12-31'
 XTRA:UBK:
-  Common Equity: '249100000.0'
+  Common Equity: 249100000
   Fiscal Year: '2023-12-31'
 ZGSE:HPB:
-  Common Equity: '533500000.0'
+  Common Equity: 533500000
   Fiscal Year: '2023-12-31'
 ZGSE:IKBA:
-  Common Equity: '64536000.0'
+  Common Equity: 64536000
   Fiscal Year: '2023-12-31'
 ZGSE:KBZ:
-  Common Equity: '64955000.0'
+  Common Equity: 64955000
   Fiscal Year: '2023-12-31'
 ZGSE:PDBA:
-  Common Equity: '72041000.0'
+  Common Equity: 72041000
   Fiscal Year: '2023-12-31'
 ZGSE:SNBA:
-  Common Equity: '25154000.0'
+  Common Equity: 25154000
   Fiscal Year: '2023-12-31'
 ZGSE:ZBB: {}
