@@ -58,7 +58,10 @@ BIT:ISP:
   Date: '2023-12-31'
   Market Cap: '48222000000.0'
   Shares Outstanding: 18,241.7
-BIT:MB: {}
+BIT:MB:
+  Date: '2023-12-31'
+  Market Cap: '9429000000.0'
+  Shares Outstanding: 841500000
 BIT:UCG:
   Date: '2023-12-31'
   Market Cap: '42091000000.0'
@@ -75,7 +78,7 @@ BME:CABK:
   Date: '2023-12-31'
   Market Cap: '27860000000.0'
   Shares Outstanding: 7,477.2
-BME:CAM: {}
+BME:CAM: {} # not found
 BME:SAB:
   Date: '2023-12-31'
   Market Cap: '6046000000.0'
@@ -96,19 +99,34 @@ BUL:BACB:
   Date: '2023-12-31'
   Market Cap: '139500000.0'
   Shares Outstanding: '24.7'
-BUL:CCB: {}
+BUL:CCB:
+  Date: '2023-12-31'
+  Market Cap: '189379000.0'
+  Shares Outstanding: 127.1
 BUL:FIB:
   Date: '2023-12-31'
   Market Cap: '435300000.0'
   Shares Outstanding: '149.1'
-BUL:TXIM: {}
-BUSE:MBHBANK: {}
-BUSE:OTP: {}
+BUL:TXIM:
+  Date: '2023-12-31'
+  Market Cap: '116200000'
+  Shares Outstanding: '33.6'
+BUSE:MBHBANK:
+  Date: '2023-12-31'
+  Market Cap: '2564110519000'
+  Shares Outstanding: '322.5296250'
+BUSE:OTP:
+  Date: '2023-12-31'
+  Market Cap: '4414500000000'
+  Shares Outstanding: '279.4'
 BVB:BRD:
   Date: '2023-12-31'
   Market Cap: '12488000000.0'
   Shares Outstanding: '696.9'
-BVB:PBK: {}
+BVB:PBK:
+  Date: '2023-12-31'
+  Market Cap: '272100000'
+  Shares Outstanding: '3,278.8'
 BVB:TLV:
   Date: '2023-12-31'
   Market Cap: '19329000000.0'
@@ -193,12 +211,18 @@ ENXTAM:ABN:
   Date: '2023-12-31'
   Market Cap: '11763000000.0'
   Shares Outstanding: '865.6'
-ENXTAM:INGA: {}
+ENXTAM:INGA:
+  Date: '2023-12-31'
+  Market Cap: '45542000000'
+  Shares Outstanding: '3,367'
 ENXTBR:KBC:
   Date: '2023-12-31'
   Market Cap: '24163000000.0'
   Shares Outstanding: '411.5'
-ENXTBR:KBCA: {}
+ENXTBR:KBCA:
+  Date: '2023-12-31'
+  Market Cap: '3198000000'
+  Shares Outstanding: '77.0'
 ENXTLS:BCP:
   Date: '2023-12-31'
   Market Cap: '4147000000.0000005'
@@ -299,7 +323,10 @@ LJSE:DEHG:
   Date: '2023-12-31'
   Market Cap: '61054000.0'
   Shares Outstanding: '0.6'
-LJSE:LONR: {}
+LJSE:LONR:
+  Date: '2023-12-31'
+  Market Cap: '7552000'
+  Shares Outstanding: '0.2'
 LJSE:NLBR:
   Date: '2023-12-31'
   Market Cap: '1700000000.0'
@@ -476,4 +503,4 @@ ZGSE:SNBA:
   Date: '2023-12-31'
   Market Cap: '7374000.0'
   Shares Outstanding: '0.8'
-ZGSE:ZBB: {}
+ZGSE:ZBB: {} # removed

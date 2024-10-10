@@ -372,5 +372,7 @@ ZGSE:KBZ:
 ZGSE:PDBA:
   Fiscal Year: '2024-03-27'
   Payout Ratio: 46.05%
-ZGSE:SNBA: {}
+ZGSE:SNBA:
+  Fiscal Year: '2024-03-27'
+  Payout Ratio: 0.0% # check again
 ZGSE:ZBB: {}
