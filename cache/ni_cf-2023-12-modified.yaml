@@ -33,7 +33,7 @@ BIT:BPSO:
   Net Income (CF): 461162000
 BIT:BST:
   Fiscal Year: '2023-12-31'
-  Net Income (CF): '#N/A'
+  Net Income (CF): '16500000'
 BIT:CE:
   Fiscal Year: '2023-12-31'
   Net Income (CF): 562118000
@@ -123,7 +123,7 @@ CPSE:JYSK:
   Net Income (CF): 5904000000
 CPSE:KRE:
   Fiscal Year: '2023-12-31'
-  Net Income (CF): '#N/A'
+  Net Income (CF): 146900000
 CPSE:LASP:
   Fiscal Year: '2023-12-31'
   Net Income (CF): 473018000
@@ -228,7 +228,7 @@ HLSE:ALBAV:
   Net Income (CF): 48672000
 HLSE:ALISA:
   Fiscal Year: '2023-12-31'
-  Net Income (CF): '#N/A'
+  Net Income (CF): 306000
 HLSE:OMASP:
   Fiscal Year: '2023-12-31'
   Net Income (CF): 110051000
@@ -246,7 +246,7 @@ LJSE:DEHG:
   Net Income (CF): 36860000
 LJSE:LONR:
   Fiscal Year: '2023-12-31'
-  Net Income (CF): '#N/A'
+  Net Income (CF): 749000
 LJSE:NLBR:
   Fiscal Year: '2023-12-31'
   Net Income (CF): 550700000
@@ -315,7 +315,7 @@ WBAG:EBS:
   Net Income (CF): 2998000000
 WBAG:OBS:
   Fiscal Year: '2023-12-31'
-  Net Income (CF): ''
+  Net Income (CF): 381300000
 WBAG:RBI:
   Fiscal Year: '2023-12-31'
   Net Income (CF): 2386000000
@@ -357,7 +357,7 @@ XTRA:CBK:
   Net Income (CF): 2224000000
 XTRA:MBK:
   Fiscal Year: '2023-12-31'
-  Net Income (CF): '#N/A'
+  Net Income (CF): 10795000
 XTRA:PCZ:
   Fiscal Year: '2023-12-31'
   Net Income (CF): 113372000
@@ -378,7 +378,7 @@ ZGSE:PDBA:
   Net Income (CF): 4051000
 ZGSE:SNBA:
   Fiscal Year: '2023-12-31'
-  Net Income (CF): '#N/A'
+  Net Income (CF): 900000
 ZGSE:ZBB:
   Fiscal Year: '2023-12-31'
   Net Income (CF): '#N/A'

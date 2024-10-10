@@ -15,11 +15,11 @@ def merge_files(data: list) -> dict:
 
 def main():
     input_files = [
-        "./cache/equity_common-2023-12.yaml",
-        "./cache/equity_common-2022-12.yaml",
-        "./cache/marketcap-2023-12.yaml",
-        "./cache/payout_ratio-2023-12.yaml",
-        "./cache/ni_cf-2023-12-modified.yaml",
+        "./output/equity_common-2023-12.yaml",
+        "./output/equity_common-2022-12.yaml",
+        "./output/marketcap-2023-12.yaml",
+        "./output/payout_ratio-2023-12.yaml",
+        "./output/ni_cf-2023-12.yaml",
     ]
     output_file = "./output/merged.yaml"
     csv_file = "./output/merged.csv"
