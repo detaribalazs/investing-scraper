@@ -1,0 +1,372 @@
+ATSE:ALPHA:
+  Common Equity: '6245000000.0'
+  Fiscal Year: '2022-12-31'
+ATSE:ETE:
+  Common Equity: '6452000000.0'
+  Fiscal Year: '2022-12-31'
+ATSE:EUROB:
+  Common Equity: '6637000000.0'
+  Fiscal Year: '2022-12-31'
+ATSE:OPTIMA:
+  Common Equity: '252900000.0'
+  Fiscal Year: '2022-12-31'
+ATSE:TATT:
+  Common Equity: '-54590000.0'
+  Fiscal Year: '2022-12-31'
+ATSE:TPEIR:
+  Common Equity: '6553000000.0'
+  Fiscal Year: '2022-12-31'
+BIT:BAMI:
+  Common Equity: '13016000000.0'
+  Fiscal Year: '2022-12-31'
+BIT:BDB:
+  Common Equity: '1122000000.0'
+  Fiscal Year: '2022-12-31'
+BIT:BMPS:
+  Common Equity: '7860000000.0'
+  Fiscal Year: '2022-12-31'
+BIT:BPE:
+  Common Equity: '7940000000.0'
+  Fiscal Year: '2022-12-31'
+BIT:BPSO:
+  Common Equity: '3387000000.0'
+  Fiscal Year: '2022-12-31'
+BIT:BST:
+  Common Equity: '245900000.0'
+  Fiscal Year: '2022-12-31'
+BIT:CE:
+  Common Equity: '3360000000.0'
+  Fiscal Year: '2022-12-31'
+BIT:FBK:
+  Common Equity: '1910000000.0'
+  Fiscal Year: '2022-12-31'
+BIT:ISP:
+  Common Equity: '61103000000.0'
+  Fiscal Year: '2022-12-31'
+BIT:MB: {}
+BIT:UCG:
+  Common Equity: '63339000000.0'
+  Fiscal Year: '2022-12-31'
+BME:BBVA:
+  Common Equity: '46895000000.0'
+  Fiscal Year: '2022-12-31'
+BME:BKT:
+  Common Equity: '4905000000.0'
+  Fiscal Year: '2022-12-31'
+BME:CABK:
+  Common Equity: '33674999999.999996'
+  Fiscal Year: '2022-12-31'
+BME:CAM: {}
+BME:SAB:
+  Common Equity: '13052000000.0'
+  Fiscal Year: '2022-12-31'
+BME:SAN:
+  Common Equity: '89104000000.0'
+  Fiscal Year: '2022-12-31'
+BME:UNI:
+  Common Equity: '6459000000.0'
+  Fiscal Year: '2022-12-31'
+BSSE:1TAT01DE:
+  Common Equity: '1484000000.0'
+  Fiscal Year: '2022-12-31'
+BUL:BACB:
+  Common Equity: '270900000.0'
+  Fiscal Year: '2022-12-31'
+BUL:CCB:
+  Common Equity: '641600000.0'
+  Fiscal Year: '2022-12-31'
+BUL:FIB:
+  Common Equity: '1395000000.0'
+  Fiscal Year: '2022-12-31'
+BUL:TXIM: {}
+BUSE:MBHBANK:
+  Common Equity: '768400000000.0'
+  Fiscal Year: '2022-12-31'
+BUSE:OTP: {}
+BVB:BRD:
+  Common Equity: '6901000000.0'
+  Fiscal Year: '2022-12-31'
+BVB:PBK:
+  Common Equity: '330400000.0'
+  Fiscal Year: '2022-12-31'
+BVB:TLV:
+  Common Equity: '8919000000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:DAB:
+  Common Equity: '2286000000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:DANSKE:
+  Common Equity: '160300000000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:DJUR:
+  Common Equity: '1399000000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:FOBANK:
+  Common Equity: '1950000000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:FYNBK:
+  Common Equity: '1216000000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:HVID:
+  Common Equity: '221000000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:JYSK:
+  Common Equity: '40624000000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:KRE:
+  Common Equity: '819700000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:LASP:
+  Common Equity: '2422000000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:LOLB:
+  Common Equity: '726700000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:MNBA:
+  Common Equity: '577100000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:NRDF:
+  Common Equity: '624400000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:RILBA:
+  Common Equity: '9295000000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:SKJE:
+  Common Equity: '1363000000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:SPKSJF:
+  Common Equity: '4128999999.9999995'
+  Fiscal Year: '2022-12-31'
+CPSE:SPNO:
+  Common Equity: '12469000000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:SYDB:
+  Common Equity: '13942000000.0'
+  Fiscal Year: '2022-12-31'
+CPSE:VJBA:
+  Common Equity: '5918000000.0'
+  Fiscal Year: '2022-12-31'
+CSE:HB:
+  Common Equity: '1130000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTAM:ABN:
+  Common Equity: '22812000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTAM:INGA:
+  Common Equity: '56500000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTBR:KBC:
+  Common Equity: '21819000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTBR:KBCA: {}
+ENXTLS:BCP:
+  Common Equity: '5155000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:ACA:
+  Common Equity: '66519000000.00001'
+  Fiscal Year: '2022-12-31'
+ENXTPA:BNP:
+  Common Equity: '121200000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:CAF:
+  Common Equity: '7355000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:CAT31:
+  Common Equity: '1779000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:CCN:
+  Common Equity: '2699000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:CIV:
+  Common Equity: NA
+  Fiscal Year: '2022-12-31'
+ENXTPA:CMO:
+  Common Equity: '1859000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:CNDF:
+  Common Equity: '5136000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:CRAP:
+  Common Equity: '2942000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:CRAV:
+  Common Equity: '3547000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:CRBP2:
+  Common Equity: '4616000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:CRLA:
+  Common Equity: '4738000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:CRLO:
+  Common Equity: '2516000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:CRSU:
+  Common Equity: '2922000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:CRTO:
+  Common Equity: '2463000000.0'
+  Fiscal Year: '2022-12-31'
+ENXTPA:GLE:
+  Common Equity: '66970000000.0'
+  Fiscal Year: '2022-12-31'
+HLSE:AKTIA:
+  Common Equity: '640100000.0'
+  Fiscal Year: '2022-12-31'
+HLSE:ALBAV:
+  Common Equity: '317000000.0'
+  Fiscal Year: '2022-12-31'
+HLSE:ALISA:
+  Common Equity: '25985000.0'
+  Fiscal Year: '2022-12-31'
+HLSE:OMASP:
+  Common Equity: '365000000.0'
+  Fiscal Year: '2022-12-31'
+ISE:A5G:
+  Common Equity: '12264000000.0'
+  Fiscal Year: '2022-12-31'
+ISE:BIRG:
+  Common Equity: '11455000000.0'
+  Fiscal Year: '2022-12-31'
+ISE:PTSB:
+  Common Equity: '2398000000.0'
+  Fiscal Year: '2022-12-31'
+LJSE:DEHG:
+  Common Equity: '93436000.0'
+  Fiscal Year: '2022-12-31'
+LJSE:LONR:
+  Common Equity: '19733000.0'
+  Fiscal Year: '2022-12-31'
+LJSE:NLBR:
+  Common Equity: '2366000000.0'
+  Fiscal Year: '2022-12-31'
+LSE:BOCH:
+  Common Equity: '2025999999.9999998'
+  Fiscal Year: '2022-12-31'
+MTSE:APS:
+  Common Equity: '250500000.0'
+  Fiscal Year: '2022-12-31'
+MTSE:BOV:
+  Common Equity: '1112000000.0'
+  Fiscal Year: '2022-12-31'
+MTSE:FIM:
+  Common Equity: '170000000.0'
+  Fiscal Year: '2022-12-31'
+MTSE:HSB:
+  Common Equity: '473200000.0'
+  Fiscal Year: '2022-12-31'
+MTSE:LOM:
+  Common Equity: '136200000.0'
+  Fiscal Year: '2022-12-31'
+OM:NDASE:
+  Common Equity: '30844000000.0'
+  Fiscal Year: '2022-12-31'
+OM:NORION:
+  Common Equity: '7070000000.0'
+  Fiscal Year: '2022-12-31'
+OM:SHB-A:
+  Common Equity: '194000000000.0'
+  Fiscal Year: '2022-12-31'
+OM:SWED-A:
+  Common Equity: '176100000000.0'
+  Fiscal Year: '2022-12-31'
+OM:TFBANK:
+  Common Equity: '1739000000.0'
+  Fiscal Year: '2022-12-31'
+SE:SEB-A:
+  Common Equity: '204100000000.0'
+  Fiscal Year: '2022-12-31'
+SEP:KOMB:
+  Common Equity: '121400000000.0'
+  Fiscal Year: '2022-12-31'
+SEP:MONET:
+  Common Equity: '31091000000.0'
+  Fiscal Year: '2022-12-31'
+TLSE:CPA1T:
+  Common Equity: '149100000.0'
+  Fiscal Year: '2022-12-31'
+TLSE:LHV1T:
+  Common Equity: '412900000.0'
+  Fiscal Year: '2022-12-31'
+WBAG:ADKO:
+  Common Equity: '746300000.0'
+  Fiscal Year: '2022-12-31'
+WBAG:BG:
+  Common Equity: '3991000000.0'
+  Fiscal Year: '2022-12-31'
+WBAG:BKS:
+  Common Equity: '1544000000.0'
+  Fiscal Year: '2022-12-31'
+WBAG:BTS:
+  Common Equity: '2028000000.0'
+  Fiscal Year: '2022-12-31'
+WBAG:EBS:
+  Common Equity: '19348000000.0'
+  Fiscal Year: '2022-12-31'
+WBAG:OBS:
+  Common Equity: '3538000000.0'
+  Fiscal Year: '2022-12-31'
+WBAG:RBI:
+  Common Equity: '17637000000.0'
+  Fiscal Year: '2022-12-31'
+WSE:ALR:
+  Common Equity: '6170000000.0'
+  Fiscal Year: '2022-12-31'
+WSE:BHW:
+  Common Equity: '7960000000.0'
+  Fiscal Year: '2022-12-31'
+WSE:BNP:
+  Common Equity: '11262000000.0'
+  Fiscal Year: '2022-12-31'
+WSE:BOS:
+  Common Equity: '1962000000.0'
+  Fiscal Year: '2022-12-31'
+WSE:GTN:
+  Common Equity: '215800000.0'
+  Fiscal Year: '2022-12-31'
+WSE:ING:
+  Common Equity: '9344000000.0'
+  Fiscal Year: '2022-12-31'
+WSE:MBK:
+  Common Equity: '12713000000.0'
+  Fiscal Year: '2022-12-31'
+WSE:MIL:
+  Common Equity: '5494000000.0'
+  Fiscal Year: '2022-12-31'
+WSE:PEO:
+  Common Equity: '22763000000.0'
+  Fiscal Year: '2022-12-31'
+WSE:PKO:
+  Common Equity: '35721000000.0'
+  Fiscal Year: '2022-12-31'
+WSE:SPL:
+  Common Equity: '26668000000.0'
+  Fiscal Year: '2022-12-31'
+XTRA:CBK:
+  Common Equity: '30045000000.0'
+  Fiscal Year: '2022-12-31'
+XTRA:MBK:
+  Common Equity: '120600000.0'
+  Fiscal Year: '2022-12-31'
+XTRA:PCZ:
+  Common Equity: '869400000.0'
+  Fiscal Year: '2022-12-31'
+XTRA:UBK:
+  Common Equity: '256500000.0'
+  Fiscal Year: '2022-12-31'
+ZGSE:HPB:
+  Common Equity: '456900000.0'
+  Fiscal Year: '2022-12-31'
+ZGSE:IKBA:
+  Common Equity: '54976000.0'
+  Fiscal Year: '2022-12-31'
+ZGSE:KBZ:
+  Common Equity: '54506000.0'
+  Fiscal Year: '2022-12-31'
+ZGSE:PDBA:
+  Common Equity: '56572000.0'
+  Fiscal Year: '2022-12-31'
+ZGSE:SNBA:
+  Common Equity: '21296000.0'
+  Fiscal Year: '2022-12-31'
+ZGSE:ZBB: {}

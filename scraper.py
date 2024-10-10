@@ -23,20 +23,38 @@ all_tickers = load_tickers("./input/tickers.yaml")
 headers_map = {
     "marketcap": ["Date", "Shares Outstanding", "Market Cap"],
     "payout_ratio": ["Fiscal Year", "Payout Ratio"],
+    "equity_common": ["Fiscal Year", "Common Equity"],
+    "ni_cf": ["Fiscal Year", "Net Income (CF)"],
 }
 
-limit = -1
-chunk_size = 50
+upper_limit = ""
+lower_limit = -36
 retry_count = 1
-output_file = './output/pr.json'
-metric = "payout_ratio"
-cache_file_path = './cache/pr.yaml'
-default_cache_file_path = './cache/default.yaml'
+chunk_size = 10
+metric = "ni_cf"
+doi = "2023-12"  # date of interest
+output_file = f'./output/{metric}-{doi}.yaml'
+cache_file_path = f'./cache/{metric}-{doi}.yaml'
+default_cache_file_path = f'./cache/default_{metric}-{doi}.yaml'
+
+
+def convert_to_number(number_string: str) -> str:
+    if number_string.endswith(" B"):
+        number_string = number_string[:-1]
+        num = float(number_string)
+        num *= 1000000000
+        return str(num)
+    if number_string.endswith(" M"):
+        number_string = number_string[:-1]
+        num = float(number_string)
+        num *= 1000000
+        return str(int(num))
+    return number_string
 
 
 def interceptor(request):
     # add the missing headers
-    cookie = ""  # 'smplog-trace=8ce7c7335aeb5a68; udid=bc7011112c2a9001709c3072aa550f97; user-browser-sessions=1; adBlockerNewUserDomains=1714491665; lifetime_page_view_count=41; cf_clearance=_tJgehy_zKUk1hzsK6kmII7bWG1Y2CunR8SNY7iKKsg-1728395355-1.2.1.1-0L8govuLrRpOJ4BXHQnzAD7pMv40TE92WEiL.wVNjR27M6POcTZ9JI_doZITflC0KyoAAHf70JcDT3SxaZARiGE_juHoTOhHbcNCmlGGv5q0H5wDLUo0l0RPWb1eUhDuU2fuKkUU9ufYFpOdVDxXmqDYUgB8nvBWU21vq1wIEyWPi1.PVuJFtIBtKRmuB.GK7Vo1zGbsf7aftAGfjjddEPh0ydhIze_By3OoysP5e9YkZf4_xLFNmb0HuyWYyfpwFuK3J9w6.DNOAe6s6Y3qELZE1jMTRxLbVwcxjwwibWEPQ3hLjql.2mEWA0UyElOPBgGLWD9RBPtu1_TYxIngrALuQT1GQ_18Gbn4axyQyL8; g_state={"i_p":1728934604650,"i_l":3}; SideBlockUser=a%3A2%3A%7Bs%3A10%3A%22stack_size%22%3Ba%3A1%3A%7Bs%3A11%3A%22last_quotes%22%3Bi%3A8%3B%7Ds%3A6%3A%22stacks%22%3Ba%3A1%3A%7Bs%3A11%3A%22last_quotes%22%3Ba%3A5%3A%7Bi%3A0%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A3%3A%22474%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A25%3A%22%2Fequities%2Fbanco-santander%22%3B%7Di%3A1%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A5%3A%2250498%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A26%3A%22%2Fequities%2Fzagrebacka-banka%22%3B%7Di%3A2%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A4%3A%228736%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A22%3A%22%2Fequities%2Fot-bank-nyrt%22%3B%7Di%3A3%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A5%3A%2250449%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A24%3A%22%2Fequities%2Fbrd-groupe-soc%22%3B%7Di%3A4%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A3%3A%22396%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A21%3A%22%2Fequities%2Fbnp-paribas%22%3B%7D%7D%7D%7D; OptanonConsent=isGpcEnabled=0&datestamp=Sun+Oct+06+2024+21%3A22%3A17+GMT%2B0200+(Central+European+Summer+Time)&version=202405.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=0dd4af3e-d12d-4d54-bd59-2bbe8de5147b&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Fwww.investing.com%2Facademy%2Fstock-picks%2Finvestingpro-subscription-pricing-value%2F&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1; usprivacy=1YNN; __stripe_mid=42388d8d-4141-49a2-8117-db2e0dec9e52b13983; gtmFired=OK; __cflb=02DiuGRugds2TUWHMkkPGro65dgYiP1884dT36e9c69mv; adsFreeSalePopUp=1; _imntz_error=0; browser-session-counted=true; page_view_count=52; r_p_s_n=1; PHPSESSID=ri9s7dvgk6f94179q66odkspcf; proscore_card_opened=1; workstation_watchlist_opened=1; finboxio-production:jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozMDI0ODYzLCJ2aXNpdG9yX2lkIjoidi05NTJiMjc1MWUxNWEiLCJmaXJzdF9zZWVuIjoiMjAyNC0xMC0wNlQxOToyMzo1MC4yODZaIiwiY2FwdGNoYV92ZXJpZmllZCI6ZmFsc2UsIm11c3RfcmV2ZXJpZnkiOmZhbHNlLCJwcmV2aWV3X2FjY2VzcyI6eyJhc3NldHNfdmlld2VkIjpbIkJVU0U6TUJIQkFOSyIsIkJVU0U6T1RQIiwiTkFTREFRR1M6QUFQTCIsIkJVTDpGSUIiLCJFTlhUUEE6Qk5QIl0sImFzc2V0c19tYXgiOjUsInZhbGlkX3VudGlsIjoiMjAyNC0xMC0wN1QwNzoyMzo1MC4wMDBaIn0sInJvbGVzIjpbInVzZXIiLCJpbnZlc3RpbmciXSwiYnVuZGxlIjoicHJvZmVzc2lvbmFsIiwiYm9vc3RzIjpbImRhdGEiLCJlc3NlbnRpYWxzIiwicHJlbWl1bSJdLCJhc3NldHMiOltdLCJyZWdpb25zIjpbImxhYWZtZSIsImV1cm8iLCJ1ayIsImNhbXgiLCJ1cyIsImFwYWMiXSwic2NvcGVzIjpbInJvbGU6dXNlciIsInJvbGU6aW52ZXN0aW5nIiwiYnVuZGxlOnByb2Zlc3Npb25hbCIsInJlZ2lvbjpsYWFmbWUiLCJyZWdpb246ZXVybyIsInJlZ2lvbjp1ayIsInJlZ2lvbjpjYW14IiwicmVnaW9uOnVzIiwicmVnaW9uOmFwYWMiLCJib29zdDpkYXRhIiwiYm9vc3Q6ZXNzZW50aWFscyIsImJvb3N0OnByZW1pdW0iXSwiZm9yIjoiMjAwMTo0YzRjOjIwYTE6Y2MwMDpjYzg3OjgyMTM6YWVmZjo4MDMzIiwiZXhwIjoxNzI4Mzk1NjU3LCJpYXQiOjE3MjgzOTUzNTd9.K2XWFwTGyx66evPxjkYGeoZq3dhwj8K0xD7FnCq35U8; finboxio-production:jwt.sig=d52J17DNF99ll8uWPkoE_JMZ7b8; ses_id=ZylmJ2JtMDg1cWttN2Y2MjZkYTpkYTc1MDhubmFlYnRkcGJsbzgzdT8waSdvbDklNWcwOGM9ZTdgYjM8YGBhZWdqZjZiNTA%2BNWprYzc1NjM2Y2E%2BZGI3YTBibj9hYmJpZGtiZ29rM2M%2FPGk8b2I5NDUnMCxjJ2V0YDIzY2AhYSZnaGYnYjIwazVja2I3ZTZhNmdhM2RiNzAwZG5pYWViemQv; finboxio-production:refresh=8fd07c0e-ce91-470f-9273-a8e2975af493; finboxio-production:refresh.sig=L1Jom6FtzL0xdgdCx0yOh5x_Oio; finbox-visitor-id=v-8LeJ65ogfIIQZ31_7RytT; __cf_bm=4M0nHylXbGdoXvPRnr6e85dBB7.21xqMYfyK7t6a4eM-1728393604-1.0.1.1-ZNUNcmX3Sh5aBZ8luSj0IWnXtoYrHFlYYs92EAHRFxkchlnyTp9JL0uIJh5xTxN5UkSnnca.G_BizcO887gCTtz3Y2ItkRagduiTjccarW0; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjgzOTg5NTcsImp0aSI6IjI2MzAyMDkzMyIsImlhdCI6MTcyODM5NTM1NywiaXNzIjoiaW52ZXN0aW5nLmNvbSIsInVzZXJfaWQiOjI2MzAyMDkzMywicHJpbWFyeV9kb21haW5faWQiOiIxIiwiQXV0aG5TeXN0ZW1Ub2tlbiI6IiIsIkF1dGhuU2Vzc2lvblRva2VuIjoiIiwiRGV2aWNlVG9rZW4iOiIiLCJVYXBpVG9rZW4iOiJaeWxtSjJKdE1EZzFjV3R0TjJZMk1qWmtZVHBrWVRjMU1EaHVibUZsWW5Sa2NHSnNiemd6ZFQ4d2FTZHZiRGtsTldjd09HTTlaVGRnWWpNOFlHQmhaV2RxWmpaaU5UQSUyQk5XcHJZemMxTmpNMlkyRSUyQlpHSTNZVEJpYmo5aFltSnBaR3RpWjI5ck0yTSUyRlBHazhiMkk1TkRVbk1DeGpKMlYwWURJelkyQWhZU1puYUdZbllqSXdhelZqYTJJM1pUWmhObWRoTTJSaU56QXdaRzVwWVdWaWVtUXYiLCJBdXRobklkIjoiIiwiSXNEb3VibGVFbmNyeXB0ZWQiOmZhbHNlLCJEZXZpY2VJZCI6IiIsIlJlZnJlc2hFeHBpcmVkQXQiOjE3MzA5MTUzNTcsInBlcm1pc3Npb25zIjp7ImFkcy5mcmVlIjoxLCJpbnZlc3RpbmcucHJlbWl1bSI6MSwiaW52ZXN0aW5nLnBybyI6MX19.jMHYheWUzs_r-soVKRdsOZxFdEXoTp3P2UG0KX_r9JY; gcc=HU; gsc=BU; smd=bc7011112c2a9001709c3072aa550f97-1728395357'
+    cookie = 'smplog-trace=8ce7c7335aeb5a68; udid=bc7011112c2a9001709c3072aa550f97; user-browser-sessions=1; adBlockerNewUserDomains=1714491665; lifetime_page_view_count=47; cf_clearance=lZERZvOoBm8RpgKtRA0oEfovA1Mgybq1uJpU3sbVSfk-1728501189-1.2.1.1-wBTakafYXeDmnvf2mSklCFTsV7O_c96T4AyOwWESnboKhoN1KyM5qrOFgcR4LlRbdQzyRhsOkP6_kTLfsPRtpjVq2EE3WUfzKUK2TXUV4t.aNrdHMd4kvylC2twW1vjGxWv9lksVmqet7j1UbKqx76of8bnKxtcbVBzBDEU15rGfZGTTpDin1AS5bjjjGSHr.iZsFvnc3dadgWv.2OfM4IUSjd9Cjn0yn_vujBxxCdonPIz3luU7HpI9MTcd.EzOI101RNCH3tcAMjMoJp4pis7Mp2vK_XrBLRmJVfKXd_atJnT74aqHImF1.UEY2Pm_0RdJRCvuSPr6cwbLSQITgqtPJNhxIcZypJ4tEdk1Cjo; g_state={"i_p":1728934604650,"i_l":3}; SideBlockUser=a%3A2%3A%7Bs%3A10%3A%22stack_size%22%3Ba%3A1%3A%7Bs%3A11%3A%22last_quotes%22%3Bi%3A8%3B%7Ds%3A6%3A%22stacks%22%3Ba%3A1%3A%7Bs%3A11%3A%22last_quotes%22%3Ba%3A5%3A%7Bi%3A0%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A3%3A%22474%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A25%3A%22%2Fequities%2Fbanco-santander%22%3B%7Di%3A1%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A5%3A%2250498%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A26%3A%22%2Fequities%2Fzagrebacka-banka%22%3B%7Di%3A2%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A4%3A%228736%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A22%3A%22%2Fequities%2Fot-bank-nyrt%22%3B%7Di%3A3%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A5%3A%2250449%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A24%3A%22%2Fequities%2Fbrd-groupe-soc%22%3B%7Di%3A4%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A3%3A%22396%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A21%3A%22%2Fequities%2Fbnp-paribas%22%3B%7D%7D%7D%7D; OptanonConsent=isGpcEnabled=0&datestamp=Sun+Oct+06+2024+21%3A22%3A17+GMT%2B0200+(Central+European+Summer+Time)&version=202405.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=0dd4af3e-d12d-4d54-bd59-2bbe8de5147b&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Fwww.investing.com%2Facademy%2Fstock-picks%2Finvestingpro-subscription-pricing-value%2F&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1; usprivacy=1YNN; __stripe_mid=42388d8d-4141-49a2-8117-db2e0dec9e52b13983; browser-session-counted=true; page_view_count=61; r_p_s_n=1; proscore_card_opened=1; workstation_watchlist_opened=1; finboxio-production:jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozMDI0ODYzLCJ2aXNpdG9yX2lkIjoidi05NTJiMjc1MWUxNWEiLCJmaXJzdF9zZWVuIjoiMjAyNC0xMC0wNlQxOToyMzo1MC4yODZaIiwiY2FwdGNoYV92ZXJpZmllZCI6ZmFsc2UsIm11c3RfcmV2ZXJpZnkiOmZhbHNlLCJwcmV2aWV3X2FjY2VzcyI6eyJhc3NldHNfdmlld2VkIjpbIkJVU0U6TUJIQkFOSyIsIkJVU0U6T1RQIiwiTkFTREFRR1M6QUFQTCIsIkJVTDpGSUIiLCJFTlhUUEE6Qk5QIl0sImFzc2V0c19tYXgiOjUsInZhbGlkX3VudGlsIjoiMjAyNC0xMC0wN1QwNzoyMzo1MC4wMDBaIn0sInJvbGVzIjpbInVzZXIiLCJpbnZlc3RpbmciXSwiYnVuZGxlIjoicHJvZmVzc2lvbmFsIiwiYm9vc3RzIjpbImRhdGEiLCJlc3NlbnRpYWxzIiwicHJlbWl1bSJdLCJhc3NldHMiOltdLCJyZWdpb25zIjpbImxhYWZtZSIsImV1cm8iLCJ1ayIsImNhbXgiLCJ1cyIsImFwYWMiXSwic2NvcGVzIjpbInJvbGU6dXNlciIsInJvbGU6aW52ZXN0aW5nIiwiYnVuZGxlOnByb2Zlc3Npb25hbCIsInJlZ2lvbjpsYWFmbWUiLCJyZWdpb246ZXVybyIsInJlZ2lvbjp1ayIsInJlZ2lvbjpjYW14IiwicmVnaW9uOnVzIiwicmVnaW9uOmFwYWMiLCJib29zdDpkYXRhIiwiYm9vc3Q6ZXNzZW50aWFscyIsImJvb3N0OnByZW1pdW0iXSwiZm9yIjoiMTg4LjE1Ny4xNjAuMTg3IiwiZXhwIjoxNzI4NTAxNDg5LCJpYXQiOjE3Mjg1MDExODl9.31cVQWLtpYVUQPQRrsCuBl0QkARIGpnmAL6-2MyKcxs; finboxio-production:jwt.sig=p1mdc3KEr07dQrrBW2mBY844L6Q; finboxio-production:refresh=c98e773a-1a17-4026-9c97-85039a4d3b97; finboxio-production:refresh.sig=xX8uvZowdenvXeCWx6px6XI3SaY; comment_notification_263020933=1; gtmFired=OK; PHPSESSID=kgn6oclcdl9rmd16p9aoqchqqg; ses_id=MnwwcWRrY2swdGlvMGE4PDJgNW5kYWJgNT01NTM3NCJnc2FvYjVmIDY5PHJubWJ%2BNzFjNmYyOmBiY2c%2BYDBkNzJlMGtkMWM3MDBpZDA1OD4yajVoZGNiYDVnNWMzNTQ7Z2hhP2JgZmM2ZjwybjFiODclY39mIjorYjBnN2AhZCMyPTBxZDRjODBmaWMwazg5MmU1bGRnYmg1PDUxM2c0LGcs; upa=eyJpbnZfcHJvX2Z1bm5lbCI6IiIsIm1haW5fYWMiOiI0IiwibWFpbl9zZWdtZW50IjoiMiIsImRpc3BsYXlfcmZtIjoiMTIzIiwiYWZmaW5pdHlfc2NvcmVfYWNfZXF1aXRpZXMiOiIxMCIsImFmZmluaXR5X3Njb3JlX2FjX2NyeXB0b2N1cnJlbmNpZXMiOiIyIiwiYWZmaW5pdHlfc2NvcmVfYWNfY3VycmVuY2llcyI6IjMiLCJhY3RpdmVfb25faW9zX2FwcCI6IjAiLCJhY3RpdmVfb25fYW5kcm9pZF9hcHAiOiIxIiwiYWN0aXZlX29uX3dlYiI6IjEiLCJpbnZfcHJvX3VzZXJfc2NvcmUiOiIwIn0%3D; finbox-visitor-id=v-O0t_4XMovOx-VEyJVZh7U; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjg1MDIzOTQsImp0aSI6IjI2MzAyMDkzMyIsImlhdCI6MTcyODQ5ODc5NCwiaXNzIjoiaW52ZXN0aW5nLmNvbSIsInVzZXJfaWQiOjI2MzAyMDkzMywicHJpbWFyeV9kb21haW5faWQiOiIxIiwiQXV0aG5TeXN0ZW1Ub2tlbiI6IiIsIkF1dGhuU2Vzc2lvblRva2VuIjoiIiwiRGV2aWNlVG9rZW4iOiIiLCJVYXBpVG9rZW4iOiJNbnd3Y1dSclkyc3dkR2x2TUdFNFBESmdOVzVrWVdKZ05UMDFOVE0zTkNKbmMyRnZZalZtSURZNVBISnViV0olMkJOekZqTm1ZeU9tQmlZMmMlMkJZREJrTnpKbE1HdGtNV00zTURCcFpEQTFPRDR5YWpWb1pHTmlZRFZuTldNek5UUTdaMmhoUDJKZ1ptTTJaand5YmpGaU9EY2xZMzltSWpvcllqQm5OMkFoWkNNeVBUQnhaRFJqT0RCbWFXTXdhemc1TW1VMWJHUm5ZbWcxUERVeE0yYzBMR2NzIiwiQXV0aG5JZCI6IiIsIklzRG91YmxlRW5jcnlwdGVkIjpmYWxzZSwiRGV2aWNlSWQiOiIiLCJSZWZyZXNoRXhwaXJlZEF0IjoxNzMxMDE4Nzk0LCJwZXJtaXNzaW9ucyI6eyJhZHMuZnJlZSI6MSwiaW52ZXN0aW5nLnByZW1pdW0iOjEsImludmVzdGluZy5wcm8iOjF9fQ._OMfjX7gepn2son_l-it2SbrOZMlYC2wDgALb5O4-ao; __cflb=02DiuGRugds2TUWHMkkPGro65dgYiP188ZyroYad8Q5UG; __cf_bm=IH5ce4_owDxJHba3v0pX_njMLfRklZt_DpnY0KPGmRQ-1728501189-1.0.1.1-K.dvAsPwymTqxQCQugo_W9mf51bVecGV.IGvlDCgBya3O3IQRDpmBzJczDqXjY_3VybBTJw6sNBSZQAL2qZQ5o8Moqfs68XHxm_y18wzMuQ; gcc=HU; gsc=BU; smd=bc7011112c2a9001709c3072aa550f97-1728501190'
     request.headers["Cookie"] = cookie
     request.headers["Referer"] = "https://www.investing.com/"
 
@@ -63,7 +81,7 @@ def find_in_table(table: WebElement, target_date: str, headers: list) -> dict:
         if target_date in row_date.text:
             data = {date_string: row_date.text}
             for h in headers[1:]:
-                data[h] = cells[indices[h]].text
+                data[h] = convert_to_number(cells[indices[h]].text)
             return data
     return {}
 
@@ -114,7 +132,7 @@ async def fetch(ticker: str, metric: str, retry: int = 5) -> FetchedData:
                 logger.error(e)
                 exit(1)
             table = find_table(driver)
-            data = find_in_table(table, "2023-12", headers_map[metric])
+            data = find_in_table(table, doi, headers_map[metric])
             if len(data) != 0:
                 break
             retry_count += 1
@@ -163,12 +181,13 @@ def filter_from_cache(cache: dict) -> list:
 
 class Cache:
     def __init__(self, path: str):
+        self.path = path
         if os.path.exists(path):
             with open(path, "r") as f:
                 self.data = yaml.safe_load(f)
-            self.path = path
         else:
-            self.path = default_cache_file_path
+            if path == "":
+                self.path = default_cache_file_path
             self.data = {}
 
     def write(self):
@@ -179,7 +198,7 @@ class Cache:
 async def main():
     cache = Cache(cache_file_path)
     output = cache.data
-    tickers = filter_from_cache(cache.data)[:limit]
+    tickers = filter_from_cache(cache.data)[lower_limit:]
     logger.info(f"Starting {len(tickers)} tickers")
     chunks = [tickers[i:i + chunk_size] for i in range(0, len(tickers), chunk_size)]
 
