@@ -28,7 +28,7 @@ headers_map = {
 }
 
 upper_limit = ""
-lower_limit = -36
+lower_limit = ""
 retry_count = 1
 chunk_size = 10
 metric = "ni_cf"
@@ -198,7 +198,7 @@ class Cache:
 async def main():
     cache = Cache(cache_file_path)
     output = cache.data
-    tickers = filter_from_cache(cache.data)[lower_limit:]
+    tickers = filter_from_cache(cache.data)[:]
     logger.info(f"Starting {len(tickers)} tickers")
     chunks = [tickers[i:i + chunk_size] for i in range(0, len(tickers), chunk_size)]
 

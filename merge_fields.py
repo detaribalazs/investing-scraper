@@ -19,7 +19,7 @@ def main():
         "./cache/equity_common-2022-12.yaml",
         "./cache/marketcap-2023-12.yaml",
         "./cache/payout_ratio-2023-12.yaml",
-        #"./output/ni_cf-2023-12.yaml",
+        "./cache/ni_cf-2023-12-modified.yaml",
     ]
     output_file = "./output/merged.yaml"
     csv_file = "./output/merged.csv"
@@ -52,11 +52,11 @@ def main():
                         num = float(cell[:-2])
                         num *= 1000000
                         cell = str(num)
-                    if h == "Shares Outstanding" and len(cell) != 0:
-                        cell = cell.replace(",", "")
-                        num = float(cell)
-                        num *= 1000000
-                        cell = str(num)
+                    # if h == "Shares Outstanding" and len(cell) != 0:
+                    #     cell = cell.replace(",", "")
+                    #     num = float(cell)
+                    #     num *= 1000000
+                    #     cell = str(num)
                 row.append(cell)
             writer.writerow(row)  #entry.get(h, "") for h in header)
 
