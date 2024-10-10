@@ -43,7 +43,9 @@ BIT:FBK:
 BIT:ISP:
   Common Equity: '63963000000.0'
   Fiscal Year: '2023-12-31'
-BIT:MB: {}
+BIT:MB:
+  Common Equity: '10958000000'
+  Fiscal Year: '2023-12-31'
 BIT:UCG:
   Common Equity: '64078999999.99999'
   Fiscal Year: '2023-12-31'
@@ -56,7 +58,9 @@ BME:BKT:
 BME:CABK:
   Common Equity: '36307000000.0'
   Fiscal Year: '2023-12-31'
-BME:CAM: {}
+BME:CAM:
+  Common Equity: '' # NOT found
+  Fiscal Year: '2023-12-31'
 BME:SAB:
   Common Equity: '13845000000.0'
   Fiscal Year: '2023-12-31'
@@ -72,15 +76,21 @@ BSSE:1TAT01DE:
 BUL:BACB:
   Common Equity: '326500000.0'
   Fiscal Year: '2023-12-31'
-BUL:CCB: {}
+BUL:CCB:
+  Common Equity: '641600000.0'
+  Fiscal Year: '2023-12-31'
 BUL:FIB:
   Common Equity: '1568000000.0'
   Fiscal Year: '2023-12-31'
-BUL:TXIM: {}
-BUSE:MBHBANK:
-  Common Equity: '980400000000.0'
+BUL:TXIM:
+  Common Equity: '' # Not found
   Fiscal Year: '2023-12-31'
-BUSE:OTP: {}
+BUSE:MBHBANK:
+  Common Equity: '980388000000.0'
+  Fiscal Year: '2023-12-31'
+BUSE:OTP:
+  Common Equity: '4086833000000.0'
+  Fiscal Year: '2023-12-31'
 BVB:BRD:
   Common Equity: '8794000000.0'
   Fiscal Year: '2023-12-31'
@@ -156,8 +166,9 @@ ENXTAM:INGA:
 ENXTBR:KBC:
   Common Equity: '24260000000.0'
   Fiscal Year: '2023-12-31'
-ENXTBR:KBCA: {}
-ENXTBR:LU0097891112: {}
+ENXTBR:KBCA:
+  Common Equity: '3483590700000'
+  Fiscal Year: '2023-12-31'
 ENXTLS:BCP:
   Common Equity: '6312000000.0'
   Fiscal Year: '2023-12-31'
@@ -233,7 +244,9 @@ ISE:PTSB:
 LJSE:DEHG:
   Common Equity: '128600000.0'
   Fiscal Year: '2023-12-31'
-LJSE:LONR: {}
+LJSE:LONR:
+  Common Equity: '19733000'
+  Fiscal Year: '2023-12-31'
 LJSE:NLBR:
   Common Equity: '2883000000.0'
   Fiscal Year: '2023-12-31'
@@ -366,4 +379,3 @@ ZGSE:PDBA:
 ZGSE:SNBA:
   Common Equity: '25154000.0'
   Fiscal Year: '2023-12-31'
-ZGSE:ZBB: {}

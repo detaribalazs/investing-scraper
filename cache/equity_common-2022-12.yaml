@@ -43,7 +43,9 @@ BIT:FBK:
 BIT:ISP:
   Common Equity: '61103000000.0'
   Fiscal Year: '2022-12-31'
-BIT:MB: {}
+BIT:MB:
+  Common Equity: '10647000000'
+  Fiscal Year: '2022-12-31'
 BIT:UCG:
   Common Equity: '63339000000.0'
   Fiscal Year: '2022-12-31'
@@ -56,7 +58,9 @@ BME:BKT:
 BME:CABK:
   Common Equity: '33674999999.999996'
   Fiscal Year: '2022-12-31'
-BME:CAM: {}
+BME:CAM:
+  Common Equity: '' # NOT found
+  Fiscal Year: '2022-12-31'
 BME:SAB:
   Common Equity: '13052000000.0'
   Fiscal Year: '2022-12-31'
@@ -78,11 +82,15 @@ BUL:CCB:
 BUL:FIB:
   Common Equity: '1395000000.0'
   Fiscal Year: '2022-12-31'
-BUL:TXIM: {}
-BUSE:MBHBANK:
-  Common Equity: '768400000000.0'
+BUL:TXIM:
+  Common Equity: '' # Not found
   Fiscal Year: '2022-12-31'
-BUSE:OTP: {}
+BUSE:MBHBANK:
+  Common Equity: '768375000000.0'
+  Fiscal Year: '2022-12-31'
+BUSE:OTP:
+  Common Equity: '3316353000000.0'
+  Fiscal Year: '2022-12-31'
 BVB:BRD:
   Common Equity: '6901000000.0'
   Fiscal Year: '2022-12-31'
@@ -158,7 +166,9 @@ ENXTAM:INGA:
 ENXTBR:KBC:
   Common Equity: '21819000000.0'
   Fiscal Year: '2022-12-31'
-ENXTBR:KBCA: {}
+ENXTBR:KBCA:
+  Common Equity: '3480278800'
+  Fiscal Year: '2022-12-31'
 ENXTLS:BCP:
   Common Equity: '5155000000.0'
   Fiscal Year: '2022-12-31'
@@ -235,7 +245,7 @@ LJSE:DEHG:
   Common Equity: '93436000.0'
   Fiscal Year: '2022-12-31'
 LJSE:LONR:
-  Common Equity: '19733000.0'
+  Common Equity: '17771000.0'
   Fiscal Year: '2022-12-31'
 LJSE:NLBR:
   Common Equity: '2366000000.0'
