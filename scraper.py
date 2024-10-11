@@ -20,36 +20,49 @@ logger.setLevel(level=logging.INFO)
 
 all_tickers = load_tickers("./input/tickers.yaml")
 
-headers_map = {
-    "marketcap": ["Date", "Shares Outstanding", "Market Cap"],
-    "payout_ratio": ["Fiscal Year", "Payout Ratio"],
-    "equity_common": ["Fiscal Year", "Common Equity"],
-    "ni_cf": ["Fiscal Year", "Net Income (CF)"],
+
+class MetricConfig:
+    def __init__(self, name: str, headers: list[str], table_id: str):
+        self.headers = headers
+        self.table_id = table_id
+        self.name = name
+
+
+configs_map = {
+    "marketcap": MetricConfig("marketcap", ["Date", "Shares Outstanding", "Market Cap"], table_id="Definition"),
+    "payout_ratio": MetricConfig("payout_ratio", ["Fiscal Year", "Payout Ratio"], table_id="Definition"),
+    "equity_common": MetricConfig("equity_common", ["Fiscal Year", "Common Equity"], table_id="Definition"),
+    "ni_cf": MetricConfig("ni_cf", ["Fiscal Year", "Net Income (CF)"], table_id="Definition"),
+    "beta": MetricConfig("beta", ["Ticker", "Beta (5 Year)"], table_id="Benchmarks"),
 }
 
 upper_limit = ""
 lower_limit = ""
 retry_count = 1
 chunk_size = 10
-metric = "marketcap"
+metric = "beta"
 doi = "2023-12"  # date of interest
 output_file = f'./output/{metric}-{doi}.yaml'
 cache_file_path = f'./cache/{metric}-{doi}.yaml'
 default_cache_file_path = f'./cache/default_{metric}-{doi}.yaml'
 
 
-def convert_to_number(number_string: str) -> str:
+def convert_to_number(number_string: str):
     if number_string.endswith(" B"):
         number_string = number_string[:-1]
         num = float(number_string)
         num *= 1000000000
-        return str(num)
+        return num
     if number_string.endswith(" M"):
         number_string = number_string[:-1]
         num = float(number_string)
         num *= 1000000
-        return str(int(num))
-    return number_string
+        return int(num)
+    try:
+        num = float(number_string)
+        return num
+    except ValueError:
+        return number_string
 
 
 def interceptor(request):
@@ -59,7 +72,16 @@ def interceptor(request):
     request.headers["Referer"] = "https://www.investing.com/"
 
 
-def find_in_table(table: WebElement, target_date: str, headers: list) -> dict:
+def find_in_table(table: WebElement, target_data: str, ticker: str, headers: list, table_type: str) -> dict:
+    if table_type == "Definition":
+        return find_in_definition_table(table, target_data, headers)
+    if table_type == "Benchmarks":
+        return find_in_benchmark_table(table, ticker, headers)
+    logger.warning(f"Table type not supported: {table_type}")
+    return {}
+
+
+def find_in_definition_table(table: WebElement, target_date: str, headers: list) -> dict:
     date_string = headers[0]
     ths = table.find_elements(By.TAG_NAME, 'th')
     if not ths:
@@ -86,8 +108,35 @@ def find_in_table(table: WebElement, target_date: str, headers: list) -> dict:
     return {}
 
 
-def find_table(page: WebDriver) -> WebElement:
-    div = page.find_element(By.CSS_SELECTOR, '[data-rbd-draggable-id="Definition"]')
+def find_in_benchmark_table(table: WebElement, ticker: str, headers: list) -> dict:
+    ticker_string = headers[0]
+    ths = table.find_elements(By.TAG_NAME, 'th')
+    if not ths:
+        raise Exception("No ths in table found")
+
+    indices = {}
+    for i in range(len(ths)):
+        if ths[i].text in headers:
+            header = ths[i].text
+            indices[header] = i
+    if len(indices) == 0:
+        raise Exception("No matching table headers found")
+
+    body = table.find_elements(By.TAG_NAME, 'tbody')
+    rows = body[0].find_elements(By.TAG_NAME, 'tr')
+    for row in rows:
+        cells = row.find_elements(By.TAG_NAME, 'td')
+        row_ticker = cells[indices[ticker_string]]
+        if ticker in row_ticker.text:
+            data = {}
+            for h in headers[1:]:
+                data[h] = convert_to_number(cells[indices[h]].text)
+            return data
+    return {}
+
+
+def find_table(page: WebDriver, id="Definition") -> WebElement:
+    div = page.find_element(By.CSS_SELECTOR, f'[data-rbd-draggable-id="{id}"]')
     if not div:
         raise Exception("No definition found")
     tables = div.find_elements(By.TAG_NAME, 'table')
@@ -113,13 +162,14 @@ async def fetch(ticker: str, metric: str, retry: int = 5) -> FetchedData:
     driver.implicitly_wait(10)
     # open the specified URL in the browser
     driver.request_interceptor = interceptor
-    if not headers_map.get(metric, False):
+    if not configs_map.get(metric, False):
         logger.error(f"unknown metric: {metric}")
         exit(1)
 
     # URL of the web page to scrape
     url = f'https://www.investing.com/pro/{ticker}/explorer/{metric}'
 
+    cfg = configs_map[metric]
     retry_count = 0
     data = {}
     while retry_count < retry:
@@ -131,8 +181,8 @@ async def fetch(ticker: str, metric: str, retry: int = 5) -> FetchedData:
             except Exception as e:
                 logger.error(e)
                 exit(1)
-            table = find_table(driver)
-            data = find_in_table(table, doi, headers_map[metric])
+            table = find_table(driver, cfg.table_id)
+            data = find_in_table(table, doi, ticker, cfg.headers, cfg.table_id)
             if len(data) != 0:
                 break
             retry_count += 1

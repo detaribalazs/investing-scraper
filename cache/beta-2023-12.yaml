@@ -1,0 +1,247 @@
+ATSE:ALPHA:
+  Beta (5 Year): 1.86
+ATSE:ETE:
+  Beta (5 Year): 1.8
+ATSE:EUROB:
+  Beta (5 Year): 1.69
+ATSE:OPTIMA:
+  Beta (5 Year): '-'
+ATSE:TATT:
+  Beta (5 Year): 1.65
+ATSE:TPEIR:
+  Beta (5 Year): 1.67
+BIT:BAMI:
+  Beta (5 Year): 0.91
+BIT:BDB:
+  Beta (5 Year): 0.68
+BIT:BMPS:
+  Beta (5 Year): 1.1
+BIT:BPE:
+  Beta (5 Year): 1.34
+BIT:BPSO:
+  Beta (5 Year): 1.34
+BIT:BST:
+  Beta (5 Year): 1.46
+BIT:CE:
+  Beta (5 Year): 1.07
+BIT:FBK:
+  Beta (5 Year): 0.9
+BIT:ISP:
+  Beta (5 Year): 1.29
+BIT:MB:
+  Beta (5 Year): 1.1
+BIT:UCG:
+  Beta (5 Year): 1.46
+BME:BBVA:
+  Beta (5 Year): 1.46
+BME:BKT:
+  Beta (5 Year): 0.8
+BME:CABK:
+  Beta (5 Year): 0.79
+BME:CAM:
+  Beta (5 Year): '-'
+BME:SAB:
+  Beta (5 Year): 1.03
+BME:SAN:
+  Beta (5 Year): 1.32
+BME:UNI:
+  Beta (5 Year): 0.96
+BSSE:1TAT01DE:
+  Beta (5 Year): 0.06
+BUL:BACB:
+  Beta (5 Year): -0.17
+BUL:CCB:
+  Beta (5 Year): '-'
+BUL:FIB:
+  Beta (5 Year): 0.68
+BUL:TXIM:
+  Beta (5 Year): '-'
+BUSE:MBHBANK:
+  Beta (5 Year): 3.37
+BUSE:OTP:
+  Beta (5 Year): 0.94
+BVB:BRD:
+  Beta (5 Year): 0.74
+BVB:PBK:
+  Beta (5 Year): 0.65
+BVB:TLV:
+  Beta (5 Year): 0.76
+CPSE:DAB:
+  Beta (5 Year): 0.34
+CPSE:DANSKE:
+  Beta (5 Year): 0.88
+CPSE:DJUR:
+  Beta (5 Year): 0.3
+CPSE:FOBANK:
+  Beta (5 Year): 0.45
+CPSE:FYNBK:
+  Beta (5 Year): 0.44
+CPSE:HVID:
+  Beta (5 Year): 0.12
+CPSE:JYSK:
+  Beta (5 Year): 0.67
+CPSE:KRE:
+  Beta (5 Year): 0.31
+CPSE:LASP:
+  Beta (5 Year): 0.01
+CPSE:LOLB:
+  Beta (5 Year): -0.06
+CPSE:MNBA:
+  Beta (5 Year): 0.35
+CPSE:NRDF:
+  Beta (5 Year): 0.59
+CPSE:RILBA:
+  Beta (5 Year): 0.58
+CPSE:SKJE:
+  Beta (5 Year): 0.41
+CPSE:SPKSJF:
+  Beta (5 Year): 0.4
+CPSE:SPNO:
+  Beta (5 Year): 0.62
+CPSE:SYDB:
+  Beta (5 Year): 0.81
+CPSE:VJBA:
+  Beta (5 Year): 0.32
+ENXTAM:ABN:
+  Beta (5 Year): 1.2
+ENXTAM:INGA:
+  Beta (5 Year): 1.58
+ENXTBR:KBC:
+  Beta (5 Year): 1.17
+ENXTBR:KBCA:
+  Beta (5 Year): 1.34
+ENXTLS:BCP:
+  Beta (5 Year): 1.67
+ENXTPA:ACA:
+  Beta (5 Year): 1.51
+ENXTPA:BNP:
+  Beta (5 Year): 1.6
+ENXTPA:CAF:
+  Beta (5 Year): 0.55
+ENXTPA:CAT31:
+  Beta (5 Year): 0.47
+ENXTPA:CCN:
+  Beta (5 Year): 0.77
+ENXTPA:CIV:
+  Beta (5 Year): 1.0
+ENXTPA:CMO:
+  Beta (5 Year): 0.48
+ENXTPA:CNDF:
+  Beta (5 Year): 0.62
+ENXTPA:CRAP:
+  Beta (5 Year): 0.71
+ENXTPA:CRAV:
+  Beta (5 Year): 0.53
+ENXTPA:CRBP2:
+  Beta (5 Year): 0.61
+ENXTPA:CRLA:
+  Beta (5 Year): 0.97
+ENXTPA:CRLO:
+  Beta (5 Year): 0.59
+ENXTPA:CRSU:
+  Beta (5 Year): 0.62
+ENXTPA:CRTO:
+  Beta (5 Year): 0.67
+ENXTPA:GLE:
+  Beta (5 Year): 1.55
+HLSE:AKTIA:
+  Beta (5 Year): 0.76
+HLSE:ALBAV:
+  Beta (5 Year): 0.2
+HLSE:ALISA:
+  Beta (5 Year): 0.75
+HLSE:OMASP:
+  Beta (5 Year): 0.71
+ISE:A5G:
+  Beta (5 Year): 1.65
+ISE:BIRG:
+  Beta (5 Year): 1.15
+ISE:PTSB:
+  Beta (5 Year): 0.98
+LJSE:DEHG:
+  Beta (5 Year): 0.09
+LJSE:LONR:
+  Beta (5 Year): '-'
+LJSE:NLBR:
+  Beta (5 Year): 0.88
+LSE:BOCH:
+  Beta (5 Year): 0.72
+MTSE:APS:
+  Beta (5 Year): 0.08
+MTSE:BOV:
+  Beta (5 Year): 0.32
+MTSE:HSB:
+  Beta (5 Year): 0.36
+MTSE:LOM:
+  Beta (5 Year): 0.28
+OM:NDASE:
+  Beta (5 Year): 0.63
+OM:NORION:
+  Beta (5 Year): 0.66
+OM:SHB-A: {}
+OM:SWED-A: {}
+OM:TFBANK:
+  Beta (5 Year): 1.06
+SE:SEB-A: {}
+SEP:KOMB:
+  Beta (5 Year): 0.69
+SEP:MONET:
+  Beta (5 Year): 0.52
+TLSE:CPA1T:
+  Beta (5 Year): 0.39
+TLSE:LHV1T:
+  Beta (5 Year): 0.75
+WBAG:ADKO:
+  Beta (5 Year): 0.8
+WBAG:BG:
+  Beta (5 Year): 1.14
+WBAG:BKS:
+  Beta (5 Year): 0.28
+WBAG:BTS:
+  Beta (5 Year): 0.27
+WBAG:EBS:
+  Beta (5 Year): 1.56
+WBAG:OBS:
+  Beta (5 Year): 0.1
+WBAG:RBI:
+  Beta (5 Year): 1.38
+WSE:ALR:
+  Beta (5 Year): 1.4
+WSE:BHW:
+  Beta (5 Year): 0.63
+WSE:BNP:
+  Beta (5 Year): 1.04
+WSE:BOS:
+  Beta (5 Year): 1.01
+WSE:GTN:
+  Beta (5 Year): 0.74
+WSE:ING:
+  Beta (5 Year): 0.7
+WSE:MBK:
+  Beta (5 Year): 1.09
+WSE:MIL:
+  Beta (5 Year): 1.29
+WSE:PEO:
+  Beta (5 Year): 0.92
+WSE:PKO:
+  Beta (5 Year): 0.9
+WSE:SPL:
+  Beta (5 Year): 0.85
+XTRA:CBK:
+  Beta (5 Year): 1.08
+XTRA:MBK:
+  Beta (5 Year): 0.34
+XTRA:PCZ:
+  Beta (5 Year): 1.23
+XTRA:UBK:
+  Beta (5 Year): 0.83
+ZGSE:HPB:
+  Beta (5 Year): 0.43
+ZGSE:IKBA:
+  Beta (5 Year): 0.41
+ZGSE:KBZ:
+  Beta (5 Year): -0.2
+ZGSE:PDBA:
+  Beta (5 Year): -0.03
+ZGSE:SNBA:
+  Beta (5 Year): 0.33
