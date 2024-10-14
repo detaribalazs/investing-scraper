@@ -5,7 +5,7 @@ ATSE:ETE:
 ATSE:EUROB:
   Beta (5 Year): 1.69
 ATSE:OPTIMA:
-  Beta (5 Year): '-'
+  Beta (5 Year): 1.23
 ATSE:TATT:
   Beta (5 Year): 1.65
 ATSE:TPEIR:
@@ -39,7 +39,7 @@ BME:BKT:
 BME:CABK:
   Beta (5 Year): 0.79
 BME:CAM:
-  Beta (5 Year): '-'
+  Beta (5 Year): 0.77
 BME:SAB:
   Beta (5 Year): 1.03
 BME:SAN:
@@ -51,11 +51,11 @@ BSSE:1TAT01DE:
 BUL:BACB:
   Beta (5 Year): -0.17
 BUL:CCB:
-  Beta (5 Year): '-'
+  Beta (5 Year): 0.08
 BUL:FIB:
   Beta (5 Year): 0.68
 BUL:TXIM:
-  Beta (5 Year): '-'
+  Beta (5 Year): 0.08
 BUSE:MBHBANK:
   Beta (5 Year): 3.37
 BUSE:OTP:
@@ -161,7 +161,7 @@ ISE:PTSB:
 LJSE:DEHG:
   Beta (5 Year): 0.09
 LJSE:LONR:
-  Beta (5 Year): '-'
+  Beta (5 Year): 0.65
 LJSE:NLBR:
   Beta (5 Year): 0.88
 LSE:BOCH:
@@ -178,11 +178,14 @@ OM:NDASE:
   Beta (5 Year): 0.63
 OM:NORION:
   Beta (5 Year): 0.66
-OM:SHB-A: {}
-OM:SWED-A: {}
+OM:SHB-A:
+  Beta (5 Year): 0.58
+OM:SWED-A:
+  Beta (5 Year): 0.61
 OM:TFBANK:
   Beta (5 Year): 1.06
-SE:SEB-A: {}
+SE:SEB-A:
+  Beta (5 Year): 0.73
 SEP:KOMB:
   Beta (5 Year): 0.69
 SEP:MONET:

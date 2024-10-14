@@ -5,6 +5,7 @@ import os
 from typing import TextIO
 
 import yaml
+from selenium.common import NoSuchElementException
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
 from seleniumwire import webdriver
@@ -18,7 +19,7 @@ logging.basicConfig()
 logger = logging.getLogger(__name__)
 logger.setLevel(level=logging.INFO)
 
-all_tickers = load_tickers("./input/tickers.yaml")
+all_tickers = ["BUSE:OTP"] #load_tickers("./input/tickers.yaml")
 
 
 class MetricConfig:
@@ -34,54 +35,100 @@ configs_map = {
     "equity_common": MetricConfig("equity_common", ["Fiscal Year", "Common Equity"], table_id="Definition"),
     "ni_cf": MetricConfig("ni_cf", ["Fiscal Year", "Net Income (CF)"], table_id="Definition"),
     "beta": MetricConfig("beta", ["Ticker", "Beta (5 Year)"], table_id="Benchmarks"),
+    "income_statement": MetricConfig("beta", ["Net Income to Stockholders"], table_id="rt-table"),
 }
 
+debug = True
 upper_limit = ""
 lower_limit = ""
 retry_count = 1
 chunk_size = 10
-metric = "beta"
-doi = "2023-12"  # date of interest
-output_file = f'./output/{metric}-{doi}.yaml'
-cache_file_path = f'./cache/{metric}-{doi}.yaml'
-default_cache_file_path = f'./cache/default_{metric}-{doi}.yaml'
+metric = "income_statement"
+doi = ["2023-12", "2022-12", "2021-12", "2020-12", "2019-12"]  # da]te of interest
+output_suffix = doi[0].split("-")[0] if len(doi) == 1 else doi[0].split("-")[0] + "_" + doi[-1].split("-")[0]
+output_file = f'./output/{metric}:{output_suffix}.yaml'
+cache_file_path = f'./cache/{metric}:{output_suffix}.yaml'
+default_cache_file_path = f'./cache/default_{metric}:{output_suffix}.yaml'
+
+
+def try_to_num(num_string: str) -> float:
+    try:
+        return float(num_string.replace(',', ''))
+    except ValueError:
+        return num_string
 
 
 def convert_to_number(number_string: str):
-    if number_string.endswith(" B"):
-        number_string = number_string[:-1]
-        num = float(number_string)
-        num *= 1000000000
-        return num
-    if number_string.endswith(" M"):
-        number_string = number_string[:-1]
-        num = float(number_string)
-        num *= 1000000
-        return int(num)
     try:
-        num = float(number_string)
-        return num
+        number_string = number_string.replace(',', '')
+        if number_string.endswith(" B"):
+            number_string = number_string[:-1]
+            num = float(number_string.replace(',', ''))
+            num *= 1000000000
+            return int(num)
+        if number_string.endswith(" M"):
+            number_string = number_string[:-1]
+            num = float(number_string)
+            num *= 1000000
+            return int(num)
+        return int(float(number_string.replace(',', '')))
     except ValueError:
         return number_string
 
 
 def interceptor(request):
     # add the missing headers
-    cookie = 'smplog-trace=8ce7c7335aeb5a68; udid=bc7011112c2a9001709c3072aa550f97; user-browser-sessions=1; adBlockerNewUserDomains=1714491665; lifetime_page_view_count=47; cf_clearance=lZERZvOoBm8RpgKtRA0oEfovA1Mgybq1uJpU3sbVSfk-1728501189-1.2.1.1-wBTakafYXeDmnvf2mSklCFTsV7O_c96T4AyOwWESnboKhoN1KyM5qrOFgcR4LlRbdQzyRhsOkP6_kTLfsPRtpjVq2EE3WUfzKUK2TXUV4t.aNrdHMd4kvylC2twW1vjGxWv9lksVmqet7j1UbKqx76of8bnKxtcbVBzBDEU15rGfZGTTpDin1AS5bjjjGSHr.iZsFvnc3dadgWv.2OfM4IUSjd9Cjn0yn_vujBxxCdonPIz3luU7HpI9MTcd.EzOI101RNCH3tcAMjMoJp4pis7Mp2vK_XrBLRmJVfKXd_atJnT74aqHImF1.UEY2Pm_0RdJRCvuSPr6cwbLSQITgqtPJNhxIcZypJ4tEdk1Cjo; g_state={"i_p":1728934604650,"i_l":3}; SideBlockUser=a%3A2%3A%7Bs%3A10%3A%22stack_size%22%3Ba%3A1%3A%7Bs%3A11%3A%22last_quotes%22%3Bi%3A8%3B%7Ds%3A6%3A%22stacks%22%3Ba%3A1%3A%7Bs%3A11%3A%22last_quotes%22%3Ba%3A5%3A%7Bi%3A0%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A3%3A%22474%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A25%3A%22%2Fequities%2Fbanco-santander%22%3B%7Di%3A1%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A5%3A%2250498%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A26%3A%22%2Fequities%2Fzagrebacka-banka%22%3B%7Di%3A2%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A4%3A%228736%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A22%3A%22%2Fequities%2Fot-bank-nyrt%22%3B%7Di%3A3%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A5%3A%2250449%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A24%3A%22%2Fequities%2Fbrd-groupe-soc%22%3B%7Di%3A4%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A3%3A%22396%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A21%3A%22%2Fequities%2Fbnp-paribas%22%3B%7D%7D%7D%7D; OptanonConsent=isGpcEnabled=0&datestamp=Sun+Oct+06+2024+21%3A22%3A17+GMT%2B0200+(Central+European+Summer+Time)&version=202405.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=0dd4af3e-d12d-4d54-bd59-2bbe8de5147b&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Fwww.investing.com%2Facademy%2Fstock-picks%2Finvestingpro-subscription-pricing-value%2F&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1; usprivacy=1YNN; __stripe_mid=42388d8d-4141-49a2-8117-db2e0dec9e52b13983; browser-session-counted=true; page_view_count=61; r_p_s_n=1; proscore_card_opened=1; workstation_watchlist_opened=1; finboxio-production:jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozMDI0ODYzLCJ2aXNpdG9yX2lkIjoidi05NTJiMjc1MWUxNWEiLCJmaXJzdF9zZWVuIjoiMjAyNC0xMC0wNlQxOToyMzo1MC4yODZaIiwiY2FwdGNoYV92ZXJpZmllZCI6ZmFsc2UsIm11c3RfcmV2ZXJpZnkiOmZhbHNlLCJwcmV2aWV3X2FjY2VzcyI6eyJhc3NldHNfdmlld2VkIjpbIkJVU0U6TUJIQkFOSyIsIkJVU0U6T1RQIiwiTkFTREFRR1M6QUFQTCIsIkJVTDpGSUIiLCJFTlhUUEE6Qk5QIl0sImFzc2V0c19tYXgiOjUsInZhbGlkX3VudGlsIjoiMjAyNC0xMC0wN1QwNzoyMzo1MC4wMDBaIn0sInJvbGVzIjpbInVzZXIiLCJpbnZlc3RpbmciXSwiYnVuZGxlIjoicHJvZmVzc2lvbmFsIiwiYm9vc3RzIjpbImRhdGEiLCJlc3NlbnRpYWxzIiwicHJlbWl1bSJdLCJhc3NldHMiOltdLCJyZWdpb25zIjpbImxhYWZtZSIsImV1cm8iLCJ1ayIsImNhbXgiLCJ1cyIsImFwYWMiXSwic2NvcGVzIjpbInJvbGU6dXNlciIsInJvbGU6aW52ZXN0aW5nIiwiYnVuZGxlOnByb2Zlc3Npb25hbCIsInJlZ2lvbjpsYWFmbWUiLCJyZWdpb246ZXVybyIsInJlZ2lvbjp1ayIsInJlZ2lvbjpjYW14IiwicmVnaW9uOnVzIiwicmVnaW9uOmFwYWMiLCJib29zdDpkYXRhIiwiYm9vc3Q6ZXNzZW50aWFscyIsImJvb3N0OnByZW1pdW0iXSwiZm9yIjoiMTg4LjE1Ny4xNjAuMTg3IiwiZXhwIjoxNzI4NTAxNDg5LCJpYXQiOjE3Mjg1MDExODl9.31cVQWLtpYVUQPQRrsCuBl0QkARIGpnmAL6-2MyKcxs; finboxio-production:jwt.sig=p1mdc3KEr07dQrrBW2mBY844L6Q; finboxio-production:refresh=c98e773a-1a17-4026-9c97-85039a4d3b97; finboxio-production:refresh.sig=xX8uvZowdenvXeCWx6px6XI3SaY; comment_notification_263020933=1; gtmFired=OK; PHPSESSID=kgn6oclcdl9rmd16p9aoqchqqg; ses_id=MnwwcWRrY2swdGlvMGE4PDJgNW5kYWJgNT01NTM3NCJnc2FvYjVmIDY5PHJubWJ%2BNzFjNmYyOmBiY2c%2BYDBkNzJlMGtkMWM3MDBpZDA1OD4yajVoZGNiYDVnNWMzNTQ7Z2hhP2JgZmM2ZjwybjFiODclY39mIjorYjBnN2AhZCMyPTBxZDRjODBmaWMwazg5MmU1bGRnYmg1PDUxM2c0LGcs; upa=eyJpbnZfcHJvX2Z1bm5lbCI6IiIsIm1haW5fYWMiOiI0IiwibWFpbl9zZWdtZW50IjoiMiIsImRpc3BsYXlfcmZtIjoiMTIzIiwiYWZmaW5pdHlfc2NvcmVfYWNfZXF1aXRpZXMiOiIxMCIsImFmZmluaXR5X3Njb3JlX2FjX2NyeXB0b2N1cnJlbmNpZXMiOiIyIiwiYWZmaW5pdHlfc2NvcmVfYWNfY3VycmVuY2llcyI6IjMiLCJhY3RpdmVfb25faW9zX2FwcCI6IjAiLCJhY3RpdmVfb25fYW5kcm9pZF9hcHAiOiIxIiwiYWN0aXZlX29uX3dlYiI6IjEiLCJpbnZfcHJvX3VzZXJfc2NvcmUiOiIwIn0%3D; finbox-visitor-id=v-O0t_4XMovOx-VEyJVZh7U; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjg1MDIzOTQsImp0aSI6IjI2MzAyMDkzMyIsImlhdCI6MTcyODQ5ODc5NCwiaXNzIjoiaW52ZXN0aW5nLmNvbSIsInVzZXJfaWQiOjI2MzAyMDkzMywicHJpbWFyeV9kb21haW5faWQiOiIxIiwiQXV0aG5TeXN0ZW1Ub2tlbiI6IiIsIkF1dGhuU2Vzc2lvblRva2VuIjoiIiwiRGV2aWNlVG9rZW4iOiIiLCJVYXBpVG9rZW4iOiJNbnd3Y1dSclkyc3dkR2x2TUdFNFBESmdOVzVrWVdKZ05UMDFOVE0zTkNKbmMyRnZZalZtSURZNVBISnViV0olMkJOekZqTm1ZeU9tQmlZMmMlMkJZREJrTnpKbE1HdGtNV00zTURCcFpEQTFPRDR5YWpWb1pHTmlZRFZuTldNek5UUTdaMmhoUDJKZ1ptTTJaand5YmpGaU9EY2xZMzltSWpvcllqQm5OMkFoWkNNeVBUQnhaRFJqT0RCbWFXTXdhemc1TW1VMWJHUm5ZbWcxUERVeE0yYzBMR2NzIiwiQXV0aG5JZCI6IiIsIklzRG91YmxlRW5jcnlwdGVkIjpmYWxzZSwiRGV2aWNlSWQiOiIiLCJSZWZyZXNoRXhwaXJlZEF0IjoxNzMxMDE4Nzk0LCJwZXJtaXNzaW9ucyI6eyJhZHMuZnJlZSI6MSwiaW52ZXN0aW5nLnByZW1pdW0iOjEsImludmVzdGluZy5wcm8iOjF9fQ._OMfjX7gepn2son_l-it2SbrOZMlYC2wDgALb5O4-ao; __cflb=02DiuGRugds2TUWHMkkPGro65dgYiP188ZyroYad8Q5UG; __cf_bm=IH5ce4_owDxJHba3v0pX_njMLfRklZt_DpnY0KPGmRQ-1728501189-1.0.1.1-K.dvAsPwymTqxQCQugo_W9mf51bVecGV.IGvlDCgBya3O3IQRDpmBzJczDqXjY_3VybBTJw6sNBSZQAL2qZQ5o8Moqfs68XHxm_y18wzMuQ; gcc=HU; gsc=BU; smd=bc7011112c2a9001709c3072aa550f97-1728501190'
+    cookie = 'smplog-trace=8ce7c7335aeb5a68; udid=bc7011112c2a9001709c3072aa550f97; user-browser-sessions=1; adBlockerNewUserDomains=1714491665; lifetime_page_view_count=57; cf_clearance=CykMtQYFHbtUZfHG7ApFopN_wkW42p.1KUoZX.wtYQg-1728856882-1.2.1.1-DWlKypFjrUfB8WPaKag7IZUqfL.9PXggeVlMg7Qe8U2u0jnxyCoWjiFa3vKupX6N5e05eoUgpk4YXTh1bMPw2tXg7eRY8MN9zKpB_pLY31.XdBc26pkrq.zm0th2VkmF_NvdR10f3xp3YwV38Rou0Hx00gnHwRASe2gqEXcBu2OQAM3yJWxbhVICYRLoQLOayZmbC8qccJdUbqNx6jwpC8OYQr0bJNlkyJEfmtWieN_GnsJR_kCJZ638jAg5n7BkXG_jWfysNxw3uytcAFMs6SulS8CDVZLjpW8K050so78hmLkHH5zfCPgGYIsv4vzK8nLuaIKv8QJK0a89UV2e9VMHJxeUuRgl9iSIVtErxACaMhOLsvzYf5bwWl1jR3AtP1g3EvwM.gShwZoBmuoxJVemsMzqrQWguoTljriLK.0; g_state={"i_p":1728934604650,"i_l":3}; SideBlockUser=a%3A2%3A%7Bs%3A10%3A%22stack_size%22%3Ba%3A1%3A%7Bs%3A11%3A%22last_quotes%22%3Bi%3A8%3B%7Ds%3A6%3A%22stacks%22%3Ba%3A1%3A%7Bs%3A11%3A%22last_quotes%22%3Ba%3A5%3A%7Bi%3A0%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A3%3A%22474%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A25%3A%22%2Fequities%2Fbanco-santander%22%3B%7Di%3A1%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A5%3A%2250498%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A26%3A%22%2Fequities%2Fzagrebacka-banka%22%3B%7Di%3A2%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A4%3A%228736%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A22%3A%22%2Fequities%2Fot-bank-nyrt%22%3B%7Di%3A3%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A5%3A%2250449%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A24%3A%22%2Fequities%2Fbrd-groupe-soc%22%3B%7Di%3A4%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A3%3A%22396%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A21%3A%22%2Fequities%2Fbnp-paribas%22%3B%7D%7D%7D%7D; OptanonConsent=isGpcEnabled=0&datestamp=Sun+Oct+06+2024+21%3A22%3A17+GMT%2B0200+(Central+European+Summer+Time)&version=202405.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=0dd4af3e-d12d-4d54-bd59-2bbe8de5147b&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Fwww.investing.com%2Facademy%2Fstock-picks%2Finvestingpro-subscription-pricing-value%2F&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1; usprivacy=1YNN; __stripe_mid=42388d8d-4141-49a2-8117-db2e0dec9e52b13983; browser-session-counted=true; page_view_count=71; r_p_s_n=1; proscore_card_opened=1; workstation_watchlist_opened=1; finboxio-production:jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozMDI0ODYzLCJ2aXNpdG9yX2lkIjoidi05NTJiMjc1MWUxNWEiLCJmaXJzdF9zZWVuIjoiMjAyNC0xMC0wNlQxOToyMzo1MC4yODZaIiwiY2FwdGNoYV92ZXJpZmllZCI6ZmFsc2UsIm11c3RfcmV2ZXJpZnkiOmZhbHNlLCJwcmV2aWV3X2FjY2VzcyI6eyJhc3NldHNfdmlld2VkIjpbIkJVU0U6TUJIQkFOSyIsIkJVU0U6T1RQIiwiTkFTREFRR1M6QUFQTCIsIkJVTDpGSUIiLCJFTlhUUEE6Qk5QIl0sImFzc2V0c19tYXgiOjUsInZhbGlkX3VudGlsIjoiMjAyNC0xMC0wN1QwNzoyMzo1MC4wMDBaIn0sInJvbGVzIjpbInVzZXIiLCJpbnZlc3RpbmciXSwiYnVuZGxlIjoicHJvZmVzc2lvbmFsIiwiYm9vc3RzIjpbImRhdGEiLCJlc3NlbnRpYWxzIiwicHJlbWl1bSJdLCJhc3NldHMiOltdLCJyZWdpb25zIjpbImxhYWZtZSIsImV1cm8iLCJ1ayIsImNhbXgiLCJ1cyIsImFwYWMiXSwic2NvcGVzIjpbInJvbGU6dXNlciIsInJvbGU6aW52ZXN0aW5nIiwiYnVuZGxlOnByb2Zlc3Npb25hbCIsInJlZ2lvbjpsYWFmbWUiLCJyZWdpb246ZXVybyIsInJlZ2lvbjp1ayIsInJlZ2lvbjpjYW14IiwicmVnaW9uOnVzIiwicmVnaW9uOmFwYWMiLCJib29zdDpkYXRhIiwiYm9vc3Q6ZXNzZW50aWFscyIsImJvb3N0OnByZW1pdW0iXSwiZm9yIjoiMTg1LjYzLjQ1LjIxMSIsImV4cCI6MTcyODg5NDUyMiwiaWF0IjoxNzI4ODk0MjIyfQ.cn3gdUz0K6j2YqY9hE6BAJLC99L6Tl7VsQW4CITKn6Q; finboxio-production:jwt.sig=v-751okAxwCxT7aeKMtsQ3rbnNQ; finboxio-production:refresh=c98e773a-1a17-4026-9c97-85039a4d3b97; finboxio-production:refresh.sig=xX8uvZowdenvXeCWx6px6XI3SaY; PHPSESSID=kgn6oclcdl9rmd16p9aoqchqqg; __cflb=02DiuGRugds2TUWHMkkPGro65dgYiP1886maYLs64gk3W; finbox-visitor-id=v-ZvAbMU7-j6kv2aeb30247; ses_id=Yy0%2BfzI9Y2s2cmBmN2YzNzZkNm1kYTo4YmplZWZiZ3E5LTQ6bjk0cj8wO3ViYTUpNz9hZ2YyMjY8bmVrZmswNmNkPmgyY2M6NmZgZDcwM2U2ZTY%2FZGs6PWJrZWVmYGdtOTs0NG5qNDc%2FazsyYj01bzclYX1mIjIjPG5lNWYnMHdjbD5%2FMmJjODZgYD83YDMyNmM2b2RjOjxiNmVgZmRnfzly; __cf_bm=newKywTHXt40Yj6siD8E2NO992XVM35QLVuk44.Xhb0-1728894055-1.0.1.1-cqQj5M2wzVfTllECm8FmjE3d9pKDuYgnsgXDwcAefXeCnDpOugVDMrTapADQSmqH_FsStSSJL2e5hdXOG0duYUqCFhg0Osdvd3yHGKZ4His; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjg4OTc4MjIsImp0aSI6IjI2MzAyMDkzMyIsImlhdCI6MTcyODg5NDIyMiwiaXNzIjoiaW52ZXN0aW5nLmNvbSIsInVzZXJfaWQiOjI2MzAyMDkzMywicHJpbWFyeV9kb21haW5faWQiOiIxIiwiQXV0aG5TeXN0ZW1Ub2tlbiI6IiIsIkF1dGhuU2Vzc2lvblRva2VuIjoiIiwiRGV2aWNlVG9rZW4iOiIiLCJVYXBpVG9rZW4iOiJZeTAlMkJmekk5WTJzMmNtQm1OMll6Tnpaa05tMWtZVG80WW1wbFpXWmlaM0U1TFRRNmJqazBjajh3TzNWaVlUVXBOejloWjJZeU1qWThibVZyWm1zd05tTmtQbWd5WTJNNk5tWmdaRGN3TTJVMlpUWSUyRlpHczZQV0pyWldWbVlHZHRPVHMwTkc1cU5EYyUyRmF6c3lZajAxYnpjbFlYMW1JaklqUEc1bE5XWW5NSGRqYkQ1JTJGTW1Kak9EWmdZRDgzWURNeU5tTTJiMlJqT2p4aU5tVmdabVJuZnpseSIsIkF1dGhuSWQiOiIiLCJJc0RvdWJsZUVuY3J5cHRlZCI6ZmFsc2UsIkRldmljZUlkIjoiIiwiUmVmcmVzaEV4cGlyZWRBdCI6MTczMTQxNDIyMiwicGVybWlzc2lvbnMiOnsiYWRzLmZyZWUiOjEsImludmVzdGluZy5wcmVtaXVtIjoxLCJpbnZlc3RpbmcucHJvIjoxfX0.OnGG9QsvogFN2mmaxLsDqycFGcLeCD5y-OSxLFWwmKQ; gcc=HU; gsc=VE; smd=bc7011112c2a9001709c3072aa550f97-1728894222'
     request.headers["Cookie"] = cookie
     request.headers["Referer"] = "https://www.investing.com/"
 
 
-def find_in_table(table: WebElement, target_data: str, ticker: str, headers: list, table_type: str) -> dict:
+def find_in_table(table: WebElement, target_data: list[str], ticker: str, headers: list, table_type: str) -> dict:
     if table_type == "Definition":
         return find_in_definition_table(table, target_data, headers)
     if table_type == "Benchmarks":
         return find_in_benchmark_table(table, ticker, headers)
+    if table_type == "rt-table":
+        return find_in_financials_table(table, target_data, headers)
     logger.warning(f"Table type not supported: {table_type}")
     return {}
 
 
-def find_in_definition_table(table: WebElement, target_date: str, headers: list) -> dict:
+def find_in_financials_table(table: WebElement, target_dates: list[str], headers: list) -> dict:
+    date_indices = {}
+    # header_row = table.find_element(By.CLASS_NAME, "rt-thead -header")
+    # if not header_row:
+    #     raise NoSuchElementException("Header row not found with class rt-thead -header")
+    dates = table.find_elements(By.CSS_SELECTOR, f'[role="columnheader"]')
+    if not dates:
+        raise NoSuchElementException("Date row not found with role 'columnheader'")
+    for date, i in zip(dates, range(len(dates))):
+        date_text = target_date_matches(target_dates, date.text)
+        if date_text:
+            date_indices[date_text] = i
+
+    rows = table.find_elements(By.CSS_SELECTOR, f'[role="rowgroup"]')
+    data = {}
+    for row in rows:
+        cells = row.find_elements(By.CSS_SELECTOR, f'[role="gridcell"]')
+        if len(cells) == 0:
+            continue
+        if cells[0].text in headers:
+            financial_measure = cells[0].text
+            for date, index in date_indices.items():
+                data[f'{financial_measure}-{date}'] = convert_to_number(cells[index].text)
+    return data
+
+
+
+def target_date_matches(target_dates: list[str], row_date: str) -> str:
+    for target_date in target_dates:
+        if target_date in row_date:
+            return target_date
+    return ""
+
+
+def find_in_definition_table(table: WebElement, target_dates: list[str], headers: list) -> dict:
     date_string = headers[0]
     ths = table.find_elements(By.TAG_NAME, 'th')
     if not ths:
@@ -97,15 +144,20 @@ def find_in_definition_table(table: WebElement, target_date: str, headers: list)
 
     body = table.find_elements(By.TAG_NAME, 'tbody')
     rows = body[0].find_elements(By.TAG_NAME, 'tr')
+
+    data = {}
     for row in rows:
         cells = row.find_elements(By.TAG_NAME, 'td')
         row_date = cells[indices[date_string]]
-        if target_date in row_date.text:
-            data = {date_string: row_date.text}
+        date_postfix = target_date_matches(target_dates, row_date.text)
+        if date_string != "":
+            #data = {date_string: row_date.text}
             for h in headers[1:]:
-                data[h] = convert_to_number(cells[indices[h]].text)
-            return data
-    return {}
+                try:
+                    data[f"{h}-{date_postfix}"] = convert_to_number(cells[indices[h]].text)
+                except Exception as e:
+                    logger.error(f"Could not convert {cells[indices[h]].text} to number")
+    return data
 
 
 def find_in_benchmark_table(table: WebElement, ticker: str, headers: list) -> dict:
@@ -135,7 +187,19 @@ def find_in_benchmark_table(table: WebElement, ticker: str, headers: list) -> di
     return {}
 
 
-def find_table(page: WebDriver, id="Definition") -> WebElement:
+def find_table(page: WebDriver, id: str, metric: str) -> WebElement:
+    if metric in {"balance_sheet", "income_statement"}:
+        return find_table_in_financials(page, id)
+    return find_table_in_explorer(page, id)
+
+
+def find_table_in_financials(page: WebDriver, cls: str) -> WebElement:
+    div = page.find_element(By.CLASS_NAME, cls)
+    if not div:
+        raise Exception(f"No table found by class ID {cls}")
+    return div
+
+def find_table_in_explorer(page: WebDriver, id="Definition") -> WebElement:
     div = page.find_element(By.CSS_SELECTOR, f'[data-rbd-draggable-id="{id}"]')
     if not div:
         raise Exception("No definition found")
@@ -156,6 +220,12 @@ class FetchedData:
         self.error = error
 
 
+def build_url(ticker: str, metric: str) -> str:
+    if metric in {"income_statement", "balance_sheet"}:
+        return f"https://www.investing.com/pro/{ticker}/financials/{metric}"
+    return f'https://www.investing.com/pro/{ticker}/explorer/{metric}'
+
+
 async def fetch(ticker: str, metric: str, retry: int = 5) -> FetchedData:
     # build the web driver
     driver = build_driver()
@@ -167,37 +237,39 @@ async def fetch(ticker: str, metric: str, retry: int = 5) -> FetchedData:
         exit(1)
 
     # URL of the web page to scrape
-    url = f'https://www.investing.com/pro/{ticker}/explorer/{metric}'
+    url = build_url(ticker, metric)
 
     cfg = configs_map[metric]
-    retry_count = 0
+    try_count = 0
     data = {}
-    while retry_count < retry:
+    while try_count < retry:
+        try_count += 1
         try:
-            logger.info(f"Fetching data for {ticker} for the #{retry_count + 1} time")
+            logger.info(f"Fetching data for {ticker} for the #{try_count} time")
             logger.info(f"URL: {url}")
             try:
                 await asyncio.to_thread(driver.get, url)
             except Exception as e:
                 logger.error(e)
                 exit(1)
-            table = find_table(driver, cfg.table_id)
+            table = find_table(driver, cfg.table_id, metric)
             data = find_in_table(table, doi, ticker, cfg.headers, cfg.table_id)
             if len(data) != 0:
                 break
-            retry_count += 1
+            try_count += 1
         except Exception as e:
-            if retry_count < retry:
-                retry_count += 1
+            if try_count < retry:
+                try_count += 1
                 await asyncio.sleep(5)
             else:
+                logger.error(f"fetching from {url}: {str(e)}")
                 driver.quit()
                 return FetchedData(ticker, None, e)
 
-    if len(data) == 0:
+    if len(data) == 0 and debug:
         with open(f"error/{ticker}.html", "w") as f:
             f.write(driver.execute_script("return document.documentElement.innerHTML;"))
-        logger.warning(f"No data found for {ticker} after {retry_count} retries")
+        logger.warning(f"No data found for {ticker} after {try_count} retries")
     else:
         logger.info(f"{ticker} succeeded: {data}")
     driver.quit()
