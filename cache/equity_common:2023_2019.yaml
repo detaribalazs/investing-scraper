@@ -1,0 +1,737 @@
+ATSE:ALPHA:
+  Common Equity-2019-12: 8446999999
+  Common Equity-2020-12: 8340000000
+  Common Equity-2021-12: 6050000000
+  Common Equity-2022-12: 6245000000
+  Common Equity-2023-12: 7305000000
+ATSE:ETE:
+  Common Equity-2019-12: 5259000000
+  Common Equity-2020-12: 5065000000
+  Common Equity-2021-12: 5750000000
+  Common Equity-2022-12: 6452000000
+  Common Equity-2023-12: 7626000000
+ATSE:EUROB:
+  Common Equity-2019-12: 6665000000
+  Common Equity-2020-12: 5262000000
+  Common Equity-2021-12: 5539000000
+  Common Equity-2022-12: 6637000000
+  Common Equity-2023-12: 7899000000
+ATSE:OPTIMA:
+  Common Equity-2019-12: 72794000
+  Common Equity-2020-12: 139300000
+  Common Equity-2021-12: 156300000
+  Common Equity-2022-12: 252900000
+  Common Equity-2023-12: 510100000
+ATSE:TATT:
+  Common Equity-2019-12: 494100000
+  Common Equity-2020-12: 209300000
+  Common Equity-2021-12: 331500000
+  Common Equity-2022-12: -54590000
+  Common Equity-2023-12: 446400000
+ATSE:TPEIR:
+  Common Equity-2019-12: 7659000000
+  Common Equity-2020-12: 7091000000
+  Common Equity-2021-12: 5788000000
+  Common Equity-2022-12: 6553000000
+  Common Equity-2023-12: 7298000000
+BIT:BAMI:
+  Common Equity-2019-12: 11861000000
+  Common Equity-2020-12: 12225000000
+  Common Equity-2021-12: 13095000000
+  Common Equity-2022-12: 13016000000
+  Common Equity-2023-12: 14038000000
+BIT:BDB:
+  Common Equity-2019-12: 965100000
+  Common Equity-2020-12: 995100000
+  Common Equity-2021-12: 1089000000
+  Common Equity-2022-12: 1122000000
+  Common Equity-2023-12: 1354000000
+BIT:BMPS:
+  Common Equity-2019-12: 8279000000
+  Common Equity-2020-12: 5772000000
+  Common Equity-2021-12: 6173000000
+  Common Equity-2022-12: 7860000000
+  Common Equity-2023-12: 9978000000
+BIT:BPE:
+  Common Equity-2019-12: 5160000000
+  Common Equity-2020-12: 6200000000
+  Common Equity-2021-12: 6696000000
+  Common Equity-2022-12: 7940000000
+  Common Equity-2023-12: 9366000000
+BIT:BPSO:
+  Common Equity-2019-12: 2842000000
+  Common Equity-2020-12: 2998000000
+  Common Equity-2021-12: 3270000000
+  Common Equity-2022-12: 3387000000
+  Common Equity-2023-12: 3809000000
+BIT:BST:
+  Common Equity-2019-12: 177100000
+  Common Equity-2020-12: 206200000
+  Common Equity-2021-12: 256000000
+  Common Equity-2022-12: 245900000
+  Common Equity-2023-12: 277000000
+BIT:CE:
+  Common Equity-2019-12: 2884000000
+  Common Equity-2020-12: 3134000000
+  Common Equity-2021-12: 3459000000
+  Common Equity-2022-12: 3360000000
+  Common Equity-2023-12: 3871000000
+BIT:FBK:
+  Common Equity-2019-12: 1382000000
+  Common Equity-2020-12: 1687000000
+  Common Equity-2021-12: 1727000000
+  Common Equity-2022-12: 1910000000
+  Common Equity-2023-12: 2195000000
+BIT:ISP:
+  Common Equity-2019-12: 55968000000
+  Common Equity-2020-12: 65870999999
+  Common Equity-2021-12: 63775000000
+  Common Equity-2022-12: 61103000000
+  Common Equity-2023-12: 63963000000
+BIT:MB:
+  Common Equity-: 11157000000
+BIT:UCG:
+  Common Equity-2019-12: 61416000000
+  Common Equity-2020-12: 59507000000
+  Common Equity-2021-12: 62185000000
+  Common Equity-2022-12: 63339000000
+  Common Equity-2023-12: 64078999999
+BME:BBVA:
+  Common Equity-2019-12: 48725000000
+  Common Equity-2020-12: 44547000000
+  Common Equity-2021-12: 43907000000
+  Common Equity-2022-12: 46895000000
+  Common Equity-2023-12: 51701000000
+BME:BKT:
+  Common Equity-2019-12: 4800000000
+  Common Equity-2020-12: 4964000000
+  Common Equity-2021-12: 4852000000
+  Common Equity-2022-12: 4905000000
+  Common Equity-2023-12: 5323000000
+BME:CABK:
+  Common Equity-2019-12: 25122000000
+  Common Equity-2020-12: 25253000000
+  Common Equity-2021-12: 35394000000
+  Common Equity-2022-12: 33674999999
+  Common Equity-2023-12: 36307000000
+BME:CAM:
+  Common Equity-: NA
+BME:SAB:
+  Common Equity-2019-12: 12905000000
+  Common Equity-2020-12: 12420000000
+  Common Equity-2021-12: 12971000000
+  Common Equity-2022-12: 13052000000
+  Common Equity-2023-12: 13845000000
+BME:SAN:
+  Common Equity-2019-12: 100100000000
+  Common Equity-2020-12: 81476000000
+  Common Equity-2021-12: 86930000000
+  Common Equity-2022-12: 89104000000
+  Common Equity-2023-12: 95423000000
+BME:UNI:
+  Common Equity-2019-12: 3970000000
+  Common Equity-2020-12: 4005000000
+  Common Equity-2021-12: 6326000000
+  Common Equity-2022-12: 6459000000
+  Common Equity-2023-12: 6644000000
+BSSE:1TAT01DE:
+  Common Equity-2019-12: 1241000000
+  Common Equity-2020-12: 1345000000
+  Common Equity-2021-12: 1433000000
+  Common Equity-2022-12: 1484000000
+  Common Equity-2023-12: 1622000000
+BUL:BACB:
+  Common Equity-2019-12: 197700000
+  Common Equity-2020-12: 213300000
+  Common Equity-2021-12: 231300000
+  Common Equity-2022-12: 270900000
+  Common Equity-2023-12: 326500000
+BUL:CCB:
+  Common Equity-: NA
+  Common Equity-2019-12: 564500000
+  Common Equity-2020-12: 581300000
+  Common Equity-2021-12: 602500000
+  Common Equity-2022-12: 641600000
+BUL:FIB:
+  Common Equity-2019-12: 975900000
+  Common Equity-2020-12: 1213000000
+  Common Equity-2021-12: 1316000000
+  Common Equity-2022-12: 1395000000
+  Common Equity-2023-12: 1568000000
+BUL:TXIM:
+  Common Equity-: NA
+  Common Equity-2019-12: 38730000
+  Common Equity-2020-12: 39413000
+  Common Equity-2021-12: 38963000
+BUSE:MBHBANK:
+  Common Equity-2019-12: 198400000000
+  Common Equity-2020-12: 209800000000
+  Common Equity-2021-12: 249800000000
+  Common Equity-2022-12: 768400000000
+  Common Equity-2023-12: 980400000000
+BUSE:OTP:
+  Common Equity-2019-12: 2286300000000
+  Common Equity-2020-12: 2533000000000
+  Common Equity-2021-12: 3030600000000
+  Common Equity-2022-12: 3316400000000
+  Common Equity-2023-12: 4086800000000
+BVB:BRD:
+  Common Equity-2019-12: 8135999999
+  Common Equity-2020-12: 9724000000
+  Common Equity-2021-12: 9821000000
+  Common Equity-2022-12: 6901000000
+  Common Equity-2023-12: 8794000000
+BVB:PBK:
+  Common Equity-2019-12: 319600000
+  Common Equity-2020-12: 329600000
+  Common Equity-2021-12: 322800000
+  Common Equity-2022-12: 330400000
+  Common Equity-2023-12: 386600000
+BVB:TLV:
+  Common Equity-2019-12: 8831000000
+  Common Equity-2020-12: 10021000000
+  Common Equity-2021-12: 10092000000
+  Common Equity-2022-12: 8919000000
+  Common Equity-2023-12: 13224000000
+CPSE:DAB:
+  Common Equity-2019-12: 1982000000
+  Common Equity-2020-12: 2043000000
+  Common Equity-2021-12: 2206000000
+  Common Equity-2022-12: 2286000000
+  Common Equity-2023-12: 2834000000
+CPSE:DANSKE:
+  Common Equity-2019-12: 156300000000
+  Common Equity-2020-12: 160200000000
+  Common Equity-2021-12: 171200000000
+  Common Equity-2022-12: 160300000000
+  Common Equity-2023-12: 175700000000
+CPSE:DJUR:
+  Common Equity-2019-12: 1142000000
+  Common Equity-2020-12: 1173000000
+  Common Equity-2021-12: 1291000000
+  Common Equity-2022-12: 1399000000
+  Common Equity-2023-12: 1611000000
+CPSE:FOBANK:
+  Common Equity-2019-12: 2263000000
+  Common Equity-2020-12: 2422000000
+  Common Equity-2021-12: 2187000000
+  Common Equity-2022-12: 1950000000
+  Common Equity-2023-12: 2001999999
+CPSE:FYNBK:
+  Common Equity-2019-12: 1109000000
+  Common Equity-2020-12: 1148000000
+  Common Equity-2021-12: 1202000000
+  Common Equity-2022-12: 1216000000
+  Common Equity-2023-12: 1359000000
+CPSE:HVID:
+  Common Equity-2019-12: 160200000
+  Common Equity-2020-12: 174000000
+  Common Equity-2021-12: 196800000
+  Common Equity-2022-12: 221000000
+  Common Equity-2023-12: 253400000
+CPSE:JYSK:
+  Common Equity-2019-12: 35710000000
+  Common Equity-2020-12: 36632000000
+  Common Equity-2021-12: 38266000000
+  Common Equity-2022-12: 40624000000
+  Common Equity-2023-12: 45886000000
+CPSE:KRE:
+  Common Equity-2019-12: 650000000
+  Common Equity-2020-12: 701200000
+  Common Equity-2021-12: 785300000
+  Common Equity-2022-12: 819700000
+  Common Equity-2023-12: 958200000
+CPSE:LASP:
+  Common Equity-2019-12: 1918000000
+  Common Equity-2020-12: 2067000000
+  Common Equity-2021-12: 2242000000
+  Common Equity-2022-12: 2422000000
+  Common Equity-2023-12: 2857000000
+CPSE:LOLB:
+  Common Equity-2019-12: 556900000
+  Common Equity-2020-12: 614200000
+  Common Equity-2021-12: 687100000
+  Common Equity-2022-12: 726700000
+  Common Equity-2023-12: 831000000
+CPSE:MNBA:
+  Common Equity-2019-12: 468700000
+  Common Equity-2020-12: 490300000
+  Common Equity-2021-12: 536000000
+  Common Equity-2022-12: 577100000
+  Common Equity-2023-12: 657800000
+CPSE:NRDF:
+  Common Equity-2019-12: 448800000
+  Common Equity-2020-12: 527200000
+  Common Equity-2021-12: 599600000
+  Common Equity-2022-12: 624400000
+  Common Equity-2023-12: 731400000
+CPSE:RILBA:
+  Common Equity-2019-12: 7610000000
+  Common Equity-2020-12: 8146000000
+  Common Equity-2021-12: 8723000000
+  Common Equity-2022-12: 9295000000
+  Common Equity-2023-12: 10451000000
+CPSE:SKJE:
+  Common Equity-2019-12: 1026999999
+  Common Equity-2020-12: 1108000000
+  Common Equity-2021-12: 1247000000
+  Common Equity-2022-12: 1363000000
+  Common Equity-2023-12: 1586000000
+CPSE:SPKSJF:
+  Common Equity-2019-12: 3237000000
+  Common Equity-2020-12: 3382000000
+  Common Equity-2021-12: 3796000000
+  Common Equity-2022-12: 4128999999
+  Common Equity-2023-12: 4428000000
+CPSE:SPNO:
+  Common Equity-2019-12: 9761000000
+  Common Equity-2020-12: 10390000000
+  Common Equity-2021-12: 11924000000
+  Common Equity-2022-12: 12469000000
+  Common Equity-2023-12: 13979000000
+CPSE:SYDB:
+  Common Equity-2019-12: 11726000000
+  Common Equity-2020-12: 12469000000
+  Common Equity-2021-12: 13170000000
+  Common Equity-2022-12: 13942000000
+  Common Equity-2023-12: 15709000000
+CPSE:VJBA:
+  Common Equity-2019-12: 2956000000
+  Common Equity-2020-12: 3245000000
+  Common Equity-2021-12: 5396000000
+  Common Equity-2022-12: 5918000000
+  Common Equity-2023-12: 6959000000
+ENXTAM:ABN:
+  Common Equity-2019-12: 21471000000
+  Common Equity-2020-12: 20989000000
+  Common Equity-2021-12: 21994000000
+  Common Equity-2022-12: 22812000000
+  Common Equity-2023-12: 24165000000
+ENXTAM:INGA:
+  Common Equity-2019-12: 53769000000
+  Common Equity-2020-12: 54637000000
+  Common Equity-2021-12: 52066000000
+  Common Equity-2022-12: 56500000000
+  Common Equity-2023-12: 54684000000
+ENXTBR:KBC:
+  Common Equity-2019-12: 20222000000
+  Common Equity-2020-12: 21530000000
+  Common Equity-2021-12: 23077000000
+  Common Equity-2022-12: 21819000000
+  Common Equity-2023-12: 24260000000
+ENXTBR:KBCA:
+  Common Equity-: 3484000000
+ENXTLS:BCP:
+  Common Equity-2019-12: 6120000000
+  Common Equity-2020-12: 6221000000
+  Common Equity-2021-12: 6119000000
+  Common Equity-2022-12: 5155000000
+  Common Equity-2023-12: 6312000000
+ENXTPA:ACA:
+  Common Equity-2019-12: 62920000000
+  Common Equity-2020-12: 65217000000
+  Common Equity-2021-12: 68217000000
+  Common Equity-2022-12: 66519000000
+  Common Equity-2023-12: 71086000000
+ENXTPA:BNP:
+  Common Equity-2019-12: 107500000000
+  Common Equity-2020-12: 112800000000
+  Common Equity-2021-12: 117900000000
+  Common Equity-2022-12: 121200000000
+  Common Equity-2023-12: 123700000000
+ENXTPA:CAF:
+  Common Equity-2019-12: 6545000000
+  Common Equity-2020-12: 6467000000
+  Common Equity-2021-12: 7235000000
+  Common Equity-2022-12: 7355000000
+  Common Equity-2023-12: 7751000000
+ENXTPA:CAT31:
+  Common Equity-2019-12: 1610000000
+  Common Equity-2020-12: 1592000000
+  Common Equity-2021-12: 1808000000
+  Common Equity-2022-12: 1779000000
+  Common Equity-2023-12: 1896000000
+ENXTPA:CCN:
+  Common Equity-2019-12: 2432000000
+  Common Equity-2020-12: 2416000000
+  Common Equity-2021-12: 2740000000
+  Common Equity-2022-12: 2699000000
+  Common Equity-2023-12: 2874000000
+ENXTPA:CIV:
+  Common Equity-2019-12: 1897000000
+  Common Equity-2020-12: 1864000000
+  Common Equity-2021-12: 2111000000
+  Common Equity-2022-12: NA
+  Common Equity-2023-12: NA
+ENXTPA:CMO:
+  Common Equity-2019-12: 1625000000
+  Common Equity-2020-12: 1653000000
+  Common Equity-2021-12: 1883000000
+  Common Equity-2022-12: 1859000000
+  Common Equity-2023-12: 1973000000
+ENXTPA:CNDF:
+  Common Equity-2019-12: 4509000000
+  Common Equity-2020-12: 4548000000
+  Common Equity-2021-12: 5161000000
+  Common Equity-2022-12: 5136000000
+  Common Equity-2023-12: 5380000000
+ENXTPA:CRAP:
+  Common Equity-2019-12: 2587000000
+  Common Equity-2020-12: 2522000000
+  Common Equity-2021-12: 2939000000
+  Common Equity-2022-12: 2942000000
+  Common Equity-2023-12: 3168000000
+ENXTPA:CRAV:
+  Common Equity-2019-12: 3156000000
+  Common Equity-2020-12: 3141000000
+  Common Equity-2021-12: 3566000000
+  Common Equity-2022-12: 3547000000
+  Common Equity-2023-12: 3745000000
+ENXTPA:CRBP2:
+  Common Equity-2019-12: 4074000000
+  Common Equity-2020-12: 4066000000
+  Common Equity-2021-12: 4657000000
+  Common Equity-2022-12: 4616000000
+  Common Equity-2023-12: 4975000000
+ENXTPA:CRLA:
+  Common Equity-2019-12: 4086999999
+  Common Equity-2020-12: 4123000000
+  Common Equity-2021-12: 4727000000
+  Common Equity-2022-12: 4738000000
+  Common Equity-2023-12: 5065000000
+ENXTPA:CRLO:
+  Common Equity-2019-12: 2213000000
+  Common Equity-2020-12: 2232000000
+  Common Equity-2021-12: 2515000000
+  Common Equity-2022-12: 2516000000
+  Common Equity-2023-12: 2647000000
+ENXTPA:CRSU:
+  Common Equity-2019-12: 2633000000
+  Common Equity-2020-12: 2607000000
+  Common Equity-2021-12: 2965000000
+  Common Equity-2022-12: 2922000000
+  Common Equity-2023-12: 3117000000
+ENXTPA:CRTO:
+  Common Equity-2019-12: 2210000000
+  Common Equity-2020-12: 2220000000
+  Common Equity-2021-12: 2498000000
+  Common Equity-2022-12: 2463000000
+  Common Equity-2023-12: 2650000000
+ENXTPA:GLE:
+  Common Equity-2019-12: 63527000000
+  Common Equity-2020-12: 61710000000
+  Common Equity-2021-12: 65066999999
+  Common Equity-2022-12: 66970000000
+  Common Equity-2023-12: 65974999999
+HLSE:AKTIA:
+  Common Equity-2019-12: 610000000
+  Common Equity-2020-12: 666800000
+  Common Equity-2021-12: 738400000
+  Common Equity-2022-12: 640100000
+  Common Equity-2023-12: 708000000
+HLSE:ALBAV:
+  Common Equity-2019-12: 258300000
+  Common Equity-2020-12: 292400000
+  Common Equity-2021-12: 331900000
+  Common Equity-2022-12: 317000000
+  Common Equity-2023-12: 335300000
+HLSE:ALISA:
+  Common Equity-2019-12: 14494000
+  Common Equity-2020-12: 13182000
+  Common Equity-2021-12: 11790000
+  Common Equity-2022-12: 25985000
+  Common Equity-2023-12: 26162000
+HLSE:OMASP:
+  Common Equity-2019-12: 319300000
+  Common Equity-2020-12: 353100000
+  Common Equity-2021-12: 400800000
+  Common Equity-2022-12: 365000000
+  Common Equity-2023-12: 541100000
+ISE:A5G:
+  Common Equity-2019-12: 13735000000
+  Common Equity-2020-12: 13420000000
+  Common Equity-2021-12: 13661000000
+  Common Equity-2022-12: 12264000000
+  Common Equity-2023-12: 15075000000
+ISE:BIRG:
+  Common Equity-2019-12: 9744000000
+  Common Equity-2020-12: 9553000000
+  Common Equity-2021-12: 11270000000
+  Common Equity-2022-12: 11455000000
+  Common Equity-2023-12: 12558000000
+ISE:PTSB:
+  Common Equity-2019-12: 1997000000
+  Common Equity-2020-12: 1951000000
+  Common Equity-2021-12: 1789000000
+  Common Equity-2022-12: 2398000000
+  Common Equity-2023-12: 2419000000
+LJSE:DEHG:
+  Common Equity-2019-12: 70786000
+  Common Equity-2020-12: 80318000
+  Common Equity-2021-12: 82244000
+  Common Equity-2022-12: 93436000
+  Common Equity-2023-12: 128600000
+LJSE:LONR:
+  Common Equity-: NA
+  Common Equity-2019-12: 16579999
+  Common Equity-2020-12: 18301000
+  Common Equity-2021-12: 17771000
+  Common Equity-2022-12: 19733000
+LJSE:NLBR:
+  Common Equity-2019-12: 1686000000
+  Common Equity-2020-12: 1953000000
+  Common Equity-2021-12: 2079000000
+  Common Equity-2022-12: 2366000000
+  Common Equity-2023-12: 2883000000
+LSE:BOCH:
+  Common Equity-2019-12: 2260000000
+  Common Equity-2020-12: 2051000000
+  Common Equity-2021-12: 2059000000
+  Common Equity-2022-12: 2025999999
+  Common Equity-2023-12: 2467000000
+MTSE:APS:
+  Common Equity-2019-12: 185900000
+  Common Equity-2020-12: 196400000
+  Common Equity-2021-12: 202200000
+  Common Equity-2022-12: 250500000
+  Common Equity-2023-12: 273100000
+MTSE:BOV:
+  Common Equity-2019-12: 1062000000
+  Common Equity-2020-12: 1077000000
+  Common Equity-2021-12: 1126000000
+  Common Equity-2022-12: 1112000000
+  Common Equity-2023-12: 1268000000
+MTSE:HSB:
+  Common Equity-2019-12: 470000000
+  Common Equity-2020-12: 478400000
+  Common Equity-2021-12: 489700000
+  Common Equity-2022-12: 473200000
+  Common Equity-2023-12: 543000000
+MTSE:LOM:
+  Common Equity-2019-12: 119100000
+  Common Equity-2020-12: 126000000
+  Common Equity-2021-12: 137300000
+  Common Equity-2022-12: 136200000
+  Common Equity-2023-12: 190400000
+OM:NDASE:
+  Common Equity-2019-12: 31488000000
+  Common Equity-2020-12: 33731000000
+  Common Equity-2021-12: 33494000000
+  Common Equity-2022-12: 30844000000
+  Common Equity-2023-12: 31225000000
+OM:NORION:
+  Common Equity-2019-12: 3149000000
+  Common Equity-2020-12: 5266000000
+  Common Equity-2021-12: 5916000000
+  Common Equity-2022-12: 7070000000
+  Common Equity-2023-12: 8303000000
+OM:SHB-A:
+  Common Equity-2019-12: 159800000000
+  Common Equity-2020-12: 171500000000
+  Common Equity-2021-12: 181700000000
+  Common Equity-2022-12: 194000000000
+  Common Equity-2023-12: 205100000000
+OM:SWED-A:
+  Common Equity-2019-12: 138600000000
+  Common Equity-2020-12: 155200000000
+  Common Equity-2021-12: 161700000000
+  Common Equity-2022-12: 176100000000
+  Common Equity-2023-12: 198800000000
+OM:TFBANK:
+  Common Equity-2019-12: 895100000
+  Common Equity-2020-12: 1084000000
+  Common Equity-2021-12: 1431000000
+  Common Equity-2022-12: 1739000000
+  Common Equity-2023-12: 2161000000
+SE:SEB-A:
+  Common Equity-2019-12: 155700000000
+  Common Equity-2020-12: 171900000000
+  Common Equity-2021-12: 193200000000
+  Common Equity-2022-12: 204100000000
+  Common Equity-2023-12: 221800000000
+SEP:KOMB:
+  Common Equity-2019-12: 105500000000
+  Common Equity-2020-12: 113800000000
+  Common Equity-2021-12: 123500000000
+  Common Equity-2022-12: 121400000000
+  Common Equity-2023-12: 125100000000
+SEP:MONET:
+  Common Equity-2019-12: 24411000000
+  Common Equity-2020-12: 27050000000
+  Common Equity-2021-12: 29481000000
+  Common Equity-2022-12: 31091000000
+  Common Equity-2023-12: 32203000000
+TLSE:CPA1T:
+  Common Equity-2019-12: 89351000
+  Common Equity-2020-12: 97567000
+  Common Equity-2021-12: 111700000
+  Common Equity-2022-12: 149100000
+  Common Equity-2023-12: 185800000
+TLSE:LHV1T:
+  Common Equity-2019-12: 200800000
+  Common Equity-2020-12: 236800000
+  Common Equity-2021-12: 316400000
+  Common Equity-2022-12: 412900000
+  Common Equity-2023-12: 548400000
+WBAG:ADKO:
+  Common Equity-2019-12: 861300000
+  Common Equity-2020-12: 851800000
+  Common Equity-2021-12: 805100000
+  Common Equity-2022-12: 746300000
+  Common Equity-2023-12: 801100000
+WBAG:BG:
+  Common Equity-2019-12: 3824000000
+  Common Equity-2020-12: 4350000000
+  Common Equity-2021-12: 4373000000
+  Common Equity-2022-12: 3991000000
+  Common Equity-2023-12: 4170000000
+WBAG:BKS:
+  Common Equity-2019-12: 1301000000
+  Common Equity-2020-12: 1363000000
+  Common Equity-2021-12: 1480000000
+  Common Equity-2022-12: 1544000000
+  Common Equity-2023-12: 1769000000
+WBAG:BTS:
+  Common Equity-2019-12: 1706000000
+  Common Equity-2020-12: 1743000000
+  Common Equity-2021-12: 1837000000
+  Common Equity-2022-12: 2028000000
+  Common Equity-2023-12: 2234000000
+WBAG:EBS:
+  Common Equity-2019-12: 15620000000
+  Common Equity-2020-12: 17337000000
+  Common Equity-2021-12: 17997000000
+  Common Equity-2022-12: 19348000000
+  Common Equity-2023-12: 21648000000
+WBAG:OBS:
+  Common Equity-2019-12: 2952000000
+  Common Equity-2020-12: 3031000000
+  Common Equity-2021-12: 3310000000
+  Common Equity-2022-12: 3538000000
+  Common Equity-2023-12: 3854000000
+WBAG:RBI:
+  Common Equity-2019-12: 12954000000
+  Common Equity-2020-12: 13468000000
+  Common Equity-2021-12: 14465000000
+  Common Equity-2022-12: 17637000000
+  Common Equity-2023-12: 18619000000
+WSE:ALR:
+  Common Equity-2019-12: 6737000000
+  Common Equity-2020-12: 6560000000
+  Common Equity-2021-12: 5919000000
+  Common Equity-2022-12: 6170000000
+  Common Equity-2023-12: 9250000000
+WSE:BHW:
+  Common Equity-2019-12: 7075000000
+  Common Equity-2020-12: 7581000000
+  Common Equity-2021-12: 7383000000
+  Common Equity-2022-12: 7960000000
+  Common Equity-2023-12: 9729000000
+WSE:BNP:
+  Common Equity-2019-12: 11159000000
+  Common Equity-2020-12: 12031000000
+  Common Equity-2021-12: 11362000000
+  Common Equity-2022-12: 11262000000
+  Common Equity-2023-12: 12861000000
+WSE:BOS:
+  Common Equity-2019-12: 2200000000
+  Common Equity-2020-12: 1910000000
+  Common Equity-2021-12: 1864000000
+  Common Equity-2022-12: 1962000000
+  Common Equity-2023-12: 2130000000
+WSE:GTN:
+  Common Equity-2019-12: 886400000
+  Common Equity-2020-12: 625100000
+  Common Equity-2021-12: 662300000
+  Common Equity-2022-12: 215800000
+  Common Equity-2023-12: 107100000
+WSE:ING:
+  Common Equity-2019-12: 15223000000
+  Common Equity-2020-12: 18618000000
+  Common Equity-2021-12: 13531000000
+  Common Equity-2022-12: 9344000000
+  Common Equity-2023-12: 16736000000
+WSE:MBK:
+  Common Equity-2019-12: 16151000000
+  Common Equity-2020-12: 16672999999
+  Common Equity-2021-12: 13716000000
+  Common Equity-2022-12: 12713000000
+  Common Equity-2023-12: 13735000000
+WSE:MIL:
+  Common Equity-2019-12: 8942000000
+  Common Equity-2020-12: 9091000000
+  Common Equity-2021-12: 6632000000
+  Common Equity-2022-12: 5494000000
+  Common Equity-2023-12: 6895000000
+WSE:PEO:
+  Common Equity-: 23851000000
+  Common Equity-2019-12: 23386000000
+  Common Equity-2020-12: 25484000000
+  Common Equity-2022-12: 22763000000
+  Common Equity-2023-12: 30329000000
+WSE:PKO:
+  Common Equity-2019-12: 41587000000
+  Common Equity-2020-12: 39924000000
+  Common Equity-2021-12: 37707000000
+  Common Equity-2022-12: 35721000000
+  Common Equity-2023-12: 45238000000
+WSE:SPL:
+  Common Equity-2019-12: 25432000000
+  Common Equity-2020-12: 26995000000
+  Common Equity-2021-12: 25532000000
+  Common Equity-2022-12: 26668000000
+  Common Equity-2023-12: 31763000000
+XTRA:CBK:
+  Common Equity-2019-12: 29205000000
+  Common Equity-2020-12: 27455000000
+  Common Equity-2021-12: 28851000000
+  Common Equity-2022-12: 30045000000
+  Common Equity-2023-12: 31992000000
+XTRA:MBK:
+  Common Equity-2019-12: 97033000
+  Common Equity-2020-12: 106200000
+  Common Equity-2021-12: 113200000
+  Common Equity-2022-12: 120600000
+  Common Equity-2023-12: 129000000
+XTRA:PCZ:
+  Common Equity-2019-12: 792600000
+  Common Equity-2020-12: 779700000
+  Common Equity-2021-12: 856300000
+  Common Equity-2022-12: 869400000
+  Common Equity-2023-12: 983800000
+XTRA:UBK:
+  Common Equity-2019-12: 150600000
+  Common Equity-2020-12: 162900000
+  Common Equity-2021-12: 245100000
+  Common Equity-2022-12: 256500000
+  Common Equity-2023-12: 249100000
+ZGSE:HPB:
+  Common Equity-2019-12: 319400000
+  Common Equity-2020-12: 328500000
+  Common Equity-2021-12: 353300000
+  Common Equity-2022-12: 456900000
+  Common Equity-2023-12: 533500000
+ZGSE:IKBA:
+  Common Equity-2019-12: 44935000
+  Common Equity-2020-12: 47740000
+  Common Equity-2021-12: 51266000
+  Common Equity-2022-12: 54976000
+  Common Equity-2023-12: 64536000
+ZGSE:KBZ:
+  Common Equity-2019-12: 54952000
+  Common Equity-2020-12: 56837000
+  Common Equity-2021-12: 61353000
+  Common Equity-2022-12: 54506000
+  Common Equity-2023-12: 64955000
+ZGSE:PDBA:
+  Common Equity-2019-12: 63930000
+  Common Equity-2020-12: 63803000
+  Common Equity-2021-12: 66042000
+  Common Equity-2022-12: 56572000
+  Common Equity-2023-12: 72041000
+ZGSE:SNBA:
+  Common Equity-2019-12: 22257000
+  Common Equity-2020-12: 22153000
+  Common Equity-2021-12: 22916000
+  Common Equity-2022-12: 21296000
+  Common Equity-2023-12: 25154000

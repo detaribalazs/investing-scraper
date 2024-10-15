@@ -19,7 +19,7 @@ logging.basicConfig()
 logger = logging.getLogger(__name__)
 logger.setLevel(level=logging.INFO)
 
-all_tickers = ["BUSE:OTP"] #load_tickers("./input/tickers.yaml")
+all_tickers = load_tickers("./input/tickers.yaml")
 
 
 class MetricConfig:
@@ -35,7 +35,8 @@ configs_map = {
     "equity_common": MetricConfig("equity_common", ["Fiscal Year", "Common Equity"], table_id="Definition"),
     "ni_cf": MetricConfig("ni_cf", ["Fiscal Year", "Net Income (CF)"], table_id="Definition"),
     "beta": MetricConfig("beta", ["Ticker", "Beta (5 Year)"], table_id="Benchmarks"),
-    "income_statement": MetricConfig("beta", ["Net Income to Stockholders"], table_id="rt-table"),
+    "income_statement": MetricConfig("income_statement", ["Net Income to Stockholders", "EBT, Incl. Unusual Items"], table_id="rt-table"),
+    "balance_sheet": MetricConfig("balance_sheet", ["Common Equity"], table_id="rt-table"),
 }
 
 debug = True
@@ -43,8 +44,8 @@ upper_limit = ""
 lower_limit = ""
 retry_count = 1
 chunk_size = 10
-metric = "income_statement"
-doi = ["2023-12", "2022-12", "2021-12", "2020-12", "2019-12"]  # da]te of interest
+metric = "marketcap"
+doi = ["2019-12", "2020-12", "2021-12", "2022-12", "2023-12"]  # da]te of interest
 output_suffix = doi[0].split("-")[0] if len(doi) == 1 else doi[0].split("-")[0] + "_" + doi[-1].split("-")[0]
 output_file = f'./output/{metric}:{output_suffix}.yaml'
 cache_file_path = f'./cache/{metric}:{output_suffix}.yaml'
@@ -78,9 +79,16 @@ def convert_to_number(number_string: str):
 
 def interceptor(request):
     # add the missing headers
-    cookie = 'smplog-trace=8ce7c7335aeb5a68; udid=bc7011112c2a9001709c3072aa550f97; user-browser-sessions=1; adBlockerNewUserDomains=1714491665; lifetime_page_view_count=57; cf_clearance=CykMtQYFHbtUZfHG7ApFopN_wkW42p.1KUoZX.wtYQg-1728856882-1.2.1.1-DWlKypFjrUfB8WPaKag7IZUqfL.9PXggeVlMg7Qe8U2u0jnxyCoWjiFa3vKupX6N5e05eoUgpk4YXTh1bMPw2tXg7eRY8MN9zKpB_pLY31.XdBc26pkrq.zm0th2VkmF_NvdR10f3xp3YwV38Rou0Hx00gnHwRASe2gqEXcBu2OQAM3yJWxbhVICYRLoQLOayZmbC8qccJdUbqNx6jwpC8OYQr0bJNlkyJEfmtWieN_GnsJR_kCJZ638jAg5n7BkXG_jWfysNxw3uytcAFMs6SulS8CDVZLjpW8K050so78hmLkHH5zfCPgGYIsv4vzK8nLuaIKv8QJK0a89UV2e9VMHJxeUuRgl9iSIVtErxACaMhOLsvzYf5bwWl1jR3AtP1g3EvwM.gShwZoBmuoxJVemsMzqrQWguoTljriLK.0; g_state={"i_p":1728934604650,"i_l":3}; SideBlockUser=a%3A2%3A%7Bs%3A10%3A%22stack_size%22%3Ba%3A1%3A%7Bs%3A11%3A%22last_quotes%22%3Bi%3A8%3B%7Ds%3A6%3A%22stacks%22%3Ba%3A1%3A%7Bs%3A11%3A%22last_quotes%22%3Ba%3A5%3A%7Bi%3A0%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A3%3A%22474%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A25%3A%22%2Fequities%2Fbanco-santander%22%3B%7Di%3A1%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A5%3A%2250498%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A26%3A%22%2Fequities%2Fzagrebacka-banka%22%3B%7Di%3A2%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A4%3A%228736%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A22%3A%22%2Fequities%2Fot-bank-nyrt%22%3B%7Di%3A3%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A5%3A%2250449%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A24%3A%22%2Fequities%2Fbrd-groupe-soc%22%3B%7Di%3A4%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A3%3A%22396%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A21%3A%22%2Fequities%2Fbnp-paribas%22%3B%7D%7D%7D%7D; OptanonConsent=isGpcEnabled=0&datestamp=Sun+Oct+06+2024+21%3A22%3A17+GMT%2B0200+(Central+European+Summer+Time)&version=202405.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=0dd4af3e-d12d-4d54-bd59-2bbe8de5147b&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Fwww.investing.com%2Facademy%2Fstock-picks%2Finvestingpro-subscription-pricing-value%2F&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1; usprivacy=1YNN; __stripe_mid=42388d8d-4141-49a2-8117-db2e0dec9e52b13983; browser-session-counted=true; page_view_count=71; r_p_s_n=1; proscore_card_opened=1; workstation_watchlist_opened=1; finboxio-production:jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozMDI0ODYzLCJ2aXNpdG9yX2lkIjoidi05NTJiMjc1MWUxNWEiLCJmaXJzdF9zZWVuIjoiMjAyNC0xMC0wNlQxOToyMzo1MC4yODZaIiwiY2FwdGNoYV92ZXJpZmllZCI6ZmFsc2UsIm11c3RfcmV2ZXJpZnkiOmZhbHNlLCJwcmV2aWV3X2FjY2VzcyI6eyJhc3NldHNfdmlld2VkIjpbIkJVU0U6TUJIQkFOSyIsIkJVU0U6T1RQIiwiTkFTREFRR1M6QUFQTCIsIkJVTDpGSUIiLCJFTlhUUEE6Qk5QIl0sImFzc2V0c19tYXgiOjUsInZhbGlkX3VudGlsIjoiMjAyNC0xMC0wN1QwNzoyMzo1MC4wMDBaIn0sInJvbGVzIjpbInVzZXIiLCJpbnZlc3RpbmciXSwiYnVuZGxlIjoicHJvZmVzc2lvbmFsIiwiYm9vc3RzIjpbImRhdGEiLCJlc3NlbnRpYWxzIiwicHJlbWl1bSJdLCJhc3NldHMiOltdLCJyZWdpb25zIjpbImxhYWZtZSIsImV1cm8iLCJ1ayIsImNhbXgiLCJ1cyIsImFwYWMiXSwic2NvcGVzIjpbInJvbGU6dXNlciIsInJvbGU6aW52ZXN0aW5nIiwiYnVuZGxlOnByb2Zlc3Npb25hbCIsInJlZ2lvbjpsYWFmbWUiLCJyZWdpb246ZXVybyIsInJlZ2lvbjp1ayIsInJlZ2lvbjpjYW14IiwicmVnaW9uOnVzIiwicmVnaW9uOmFwYWMiLCJib29zdDpkYXRhIiwiYm9vc3Q6ZXNzZW50aWFscyIsImJvb3N0OnByZW1pdW0iXSwiZm9yIjoiMTg1LjYzLjQ1LjIxMSIsImV4cCI6MTcyODg5NDUyMiwiaWF0IjoxNzI4ODk0MjIyfQ.cn3gdUz0K6j2YqY9hE6BAJLC99L6Tl7VsQW4CITKn6Q; finboxio-production:jwt.sig=v-751okAxwCxT7aeKMtsQ3rbnNQ; finboxio-production:refresh=c98e773a-1a17-4026-9c97-85039a4d3b97; finboxio-production:refresh.sig=xX8uvZowdenvXeCWx6px6XI3SaY; PHPSESSID=kgn6oclcdl9rmd16p9aoqchqqg; __cflb=02DiuGRugds2TUWHMkkPGro65dgYiP1886maYLs64gk3W; finbox-visitor-id=v-ZvAbMU7-j6kv2aeb30247; ses_id=Yy0%2BfzI9Y2s2cmBmN2YzNzZkNm1kYTo4YmplZWZiZ3E5LTQ6bjk0cj8wO3ViYTUpNz9hZ2YyMjY8bmVrZmswNmNkPmgyY2M6NmZgZDcwM2U2ZTY%2FZGs6PWJrZWVmYGdtOTs0NG5qNDc%2FazsyYj01bzclYX1mIjIjPG5lNWYnMHdjbD5%2FMmJjODZgYD83YDMyNmM2b2RjOjxiNmVgZmRnfzly; __cf_bm=newKywTHXt40Yj6siD8E2NO992XVM35QLVuk44.Xhb0-1728894055-1.0.1.1-cqQj5M2wzVfTllECm8FmjE3d9pKDuYgnsgXDwcAefXeCnDpOugVDMrTapADQSmqH_FsStSSJL2e5hdXOG0duYUqCFhg0Osdvd3yHGKZ4His; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjg4OTc4MjIsImp0aSI6IjI2MzAyMDkzMyIsImlhdCI6MTcyODg5NDIyMiwiaXNzIjoiaW52ZXN0aW5nLmNvbSIsInVzZXJfaWQiOjI2MzAyMDkzMywicHJpbWFyeV9kb21haW5faWQiOiIxIiwiQXV0aG5TeXN0ZW1Ub2tlbiI6IiIsIkF1dGhuU2Vzc2lvblRva2VuIjoiIiwiRGV2aWNlVG9rZW4iOiIiLCJVYXBpVG9rZW4iOiJZeTAlMkJmekk5WTJzMmNtQm1OMll6Tnpaa05tMWtZVG80WW1wbFpXWmlaM0U1TFRRNmJqazBjajh3TzNWaVlUVXBOejloWjJZeU1qWThibVZyWm1zd05tTmtQbWd5WTJNNk5tWmdaRGN3TTJVMlpUWSUyRlpHczZQV0pyWldWbVlHZHRPVHMwTkc1cU5EYyUyRmF6c3lZajAxYnpjbFlYMW1JaklqUEc1bE5XWW5NSGRqYkQ1JTJGTW1Kak9EWmdZRDgzWURNeU5tTTJiMlJqT2p4aU5tVmdabVJuZnpseSIsIkF1dGhuSWQiOiIiLCJJc0RvdWJsZUVuY3J5cHRlZCI6ZmFsc2UsIkRldmljZUlkIjoiIiwiUmVmcmVzaEV4cGlyZWRBdCI6MTczMTQxNDIyMiwicGVybWlzc2lvbnMiOnsiYWRzLmZyZWUiOjEsImludmVzdGluZy5wcmVtaXVtIjoxLCJpbnZlc3RpbmcucHJvIjoxfX0.OnGG9QsvogFN2mmaxLsDqycFGcLeCD5y-OSxLFWwmKQ; gcc=HU; gsc=VE; smd=bc7011112c2a9001709c3072aa550f97-1728894222'
+    cookie = 'smplog-trace=8ce7c7335aeb5a68; udid=bc7011112c2a9001709c3072aa550f97; user-browser-sessions=1; adBlockerNewUserDomains=1714491665; lifetime_page_view_count=58; cf_clearance=cBisi2vbwgTugA0iwHok3U19kITcEfKHzTQnW2HSLc4-1728916570-1.2.1.1-GXGZ4xdhcwnGupzcY0bXrvWQxtCoj8je2IGtJ.9Oqcn1dcy2iXwU5XUekZ8I5BjZ2AW6Py6H6tUJIKnGm9DPjcMLQrPuXiiG079hXV_Il_tugbhUSPcSJYh3g1T7m0O7QypXPgsUe7V_wXtcJO.dSvcSG_VEcnt9zwPAzFk5DMSBfD9PX7Xuhaq.vL9KygpKHwvgoBg7bE8N.AoAdXkBZ_gRkgRPjXHg8EZbzLePK9F_6K7CpgG0va_BcUzC4ioLq7C4AjfWQLdWqc2D.4dQPg2DtrT9Lr5Wm_eS_BKzv5TLh2UDBCxazR2HXAsfvCYuovxXT9tGJYe_2bZEL2sJcGgQzF6G05qwBqAu1h_bRg0; g_state={"i_p":1728934604650,"i_l":3}; SideBlockUser=a%3A2%3A%7Bs%3A10%3A%22stack_size%22%3Ba%3A1%3A%7Bs%3A11%3A%22last_quotes%22%3Bi%3A8%3B%7Ds%3A6%3A%22stacks%22%3Ba%3A1%3A%7Bs%3A11%3A%22last_quotes%22%3Ba%3A5%3A%7Bi%3A0%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A3%3A%22474%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A25%3A%22%2Fequities%2Fbanco-santander%22%3B%7Di%3A1%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A5%3A%2250498%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A26%3A%22%2Fequities%2Fzagrebacka-banka%22%3B%7Di%3A2%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A4%3A%228736%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A22%3A%22%2Fequities%2Fot-bank-nyrt%22%3B%7Di%3A3%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A5%3A%2250449%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A24%3A%22%2Fequities%2Fbrd-groupe-soc%22%3B%7Di%3A4%3Ba%3A3%3A%7Bs%3A7%3A%22pair_ID%22%3Bs%3A3%3A%22396%22%3Bs%3A10%3A%22pair_title%22%3Bs%3A0%3A%22%22%3Bs%3A9%3A%22pair_link%22%3Bs%3A21%3A%22%2Fequities%2Fbnp-paribas%22%3B%7D%7D%7D%7D; OptanonConsent=isGpcEnabled=0&datestamp=Sun+Oct+06+2024+21%3A22%3A17+GMT%2B0200+(Central+European+Summer+Time)&version=202405.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=0dd4af3e-d12d-4d54-bd59-2bbe8de5147b&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Fwww.investing.com%2Facademy%2Fstock-picks%2Finvestingpro-subscription-pricing-value%2F&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1; usprivacy=1YNN; __stripe_mid=42388d8d-4141-49a2-8117-db2e0dec9e52b13983; finboxio-production:jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozMDI0ODYzLCJ2aXNpdG9yX2lkIjoidi05NTJiMjc1MWUxNWEiLCJmaXJzdF9zZWVuIjoiMjAyNC0xMC0wNlQxOToyMzo1MC4yODZaIiwiY2FwdGNoYV92ZXJpZmllZCI6ZmFsc2UsIm11c3RfcmV2ZXJpZnkiOmZhbHNlLCJwcmV2aWV3X2FjY2VzcyI6eyJhc3NldHNfdmlld2VkIjpbIkJVU0U6TUJIQkFOSyIsIkJVU0U6T1RQIiwiTkFTREFRR1M6QUFQTCIsIkJVTDpGSUIiLCJFTlhUUEE6Qk5QIl0sImFzc2V0c19tYXgiOjUsInZhbGlkX3VudGlsIjoiMjAyNC0xMC0wN1QwNzoyMzo1MC4wMDBaIn0sInJvbGVzIjpbInVzZXIiLCJpbnZlc3RpbmciXSwiYnVuZGxlIjoicHJvZmVzc2lvbmFsIiwiYm9vc3RzIjpbImRhdGEiLCJlc3NlbnRpYWxzIiwicHJlbWl1bSJdLCJhc3NldHMiOltdLCJyZWdpb25zIjpbImxhYWZtZSIsImV1cm8iLCJ1ayIsImNhbXgiLCJ1cyIsImFwYWMiXSwic2NvcGVzIjpbInJvbGU6dXNlciIsInJvbGU6aW52ZXN0aW5nIiwiYnVuZGxlOnByb2Zlc3Npb25hbCIsInJlZ2lvbjpsYWFmbWUiLCJyZWdpb246ZXVybyIsInJlZ2lvbjp1ayIsInJlZ2lvbjpjYW14IiwicmVnaW9uOnVzIiwicmVnaW9uOmFwYWMiLCJib29zdDpkYXRhIiwiYm9vc3Q6ZXNzZW50aWFscyIsImJvb3N0OnByZW1pdW0iXSwiZm9yIjoiMjAwMTo0YzRjOjIwYTE6Y2MwMDpiMTc5Ojg3ODc6NGUxYjphYjIwIiwiZXhwIjoxNzI4OTE2NjYzLCJpYXQiOjE3Mjg5MTYzNjN9.nQjOK801FpY54bP1w_N0JDpVJGI8xRv_SNdFl4OejwM; finboxio-production:jwt.sig=tpFQaRGIGeulXjHi3-gq0FCgJtE; finboxio-production:refresh=c98e773a-1a17-4026-9c97-85039a4d3b97; finboxio-production:refresh.sig=xX8uvZowdenvXeCWx6px6XI3SaY; finbox-visitor-id=v-ZvAbMU7-j6kv2aeb30247; ses_id=Yy0%2BfzI9Y2s2cmBmN2YzNzZkNm1kYTo4YmplZWZiZ3E5LTQ6bjk0cj8wO3ViYTUpNz9hZ2YyMjY8bmVrZmswNmNkPmgyY2M6NmZgZDcwM2U2ZTY%2FZGs6PWJrZWVmYGdtOTs0NG5qNDc%2FazsyYj01bzclYX1mIjIjPG5lNWYnMHdjbD5%2FMmJjODZgYD83YDMyNmM2b2RjOjxiNmVgZmRnfzly; browser-session-counted=true; page_view_count=72; r_p_s_n=1; proscore_card_opened=1; workstation_watchlist_opened=1; PHPSESSID=kgn6oclcdl9rmd16p9aoqchqqg; invab=popup_2; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjg5MTY5MTUsImp0aSI6IjI2MzAyMDkzMyIsImlhdCI6MTcyODkxMzMxNSwiaXNzIjoiaW52ZXN0aW5nLmNvbSIsInVzZXJfaWQiOjI2MzAyMDkzMywicHJpbWFyeV9kb21haW5faWQiOiIxIiwiQXV0aG5TeXN0ZW1Ub2tlbiI6IiIsIkF1dGhuU2Vzc2lvblRva2VuIjoiIiwiRGV2aWNlVG9rZW4iOiIiLCJVYXBpVG9rZW4iOiJZeTAlMkJmekk5WTJzMmNtQm1OMll6Tnpaa05tMWtZVG80WW1wbFpXWmlaM0U1TFRRNmJqazBjajh3TzNWaVlUVXBOejloWjJZeU1qWThibVZyWm1zd05tTmtQbWd5WTJNNk5tWmdaRGN3TTJVMlpUWSUyRlpHczZQV0pyWldWbVlHZHRPVHMwTkc1cU5EYyUyRmF6c3lZajAxYnpjbFlYMW1JaklqUEc1bE5XWW5NSGRqYkQ1JTJGTW1Kak9EWmdZRDgzWURNeU5tTTJiMlJqT2p4aU5tVmdabVJuZnpseSIsIkF1dGhuSWQiOiIiLCJJc0RvdWJsZUVuY3J5cHRlZCI6ZmFsc2UsIkRldmljZUlkIjoiIiwiUmVmcmVzaEV4cGlyZWRBdCI6MTczMTQzMzMxNSwicGVybWlzc2lvbnMiOnsiYWRzLmZyZWUiOjEsImludmVzdGluZy5wcmVtaXVtIjoxLCJpbnZlc3RpbmcucHJvIjoxfX0.7w2yaSH7YwfCpJx19pbdfJwVYHtv03pzyzEU1AP-uFE; upa=eyJpbnZfcHJvX2Z1bm5lbCI6IjkiLCJtYWluX2FjIjoiNCIsIm1haW5fc2VnbWVudCI6IjIiLCJkaXNwbGF5X3JmbSI6IjEyMyIsImFmZmluaXR5X3Njb3JlX2FjX2VxdWl0aWVzIjoiOSIsImFmZmluaXR5X3Njb3JlX2FjX2NyeXB0b2N1cnJlbmNpZXMiOiIxIiwiYWZmaW5pdHlfc2NvcmVfYWNfY3VycmVuY2llcyI6IjIiLCJhY3RpdmVfb25faW9zX2FwcCI6IjAiLCJhY3RpdmVfb25fYW5kcm9pZF9hcHAiOiIxIiwiYWN0aXZlX29uX3dlYiI6IjEiLCJpbnZfcHJvX3VzZXJfc2NvcmUiOiIxMDAifQ%3D%3D; __cf_bm=1QMddpCxRiSA_Q5szkgSkMN7Q6A2m7NIfWOXgjLFhj8-1728916363-1.0.1.1-RqyoY7zC9g659cCSU6VdRqvU...YFNC_931VgaJiMmjhL.Kob5Utp2dBsbJIWJeJVXZ2HtCMKrg92hxxWNJJeOcmJf3vxZnXFI88XpLD3SE; gcc=HU; gsc=BU; smd=bc7011112c2a9001709c3072aa550f97-1728916363; __cflb=02DiuGRugds2TUWHMkkPGro65dgYiP188zXHQn2qXYb4Q'
     request.headers["Cookie"] = cookie
     request.headers["Referer"] = "https://www.investing.com/"
+
+
+def target_date_matches(target_dates: list[str], row_date: str) -> str:
+    for target_date in target_dates:
+        if target_date in row_date:
+            return target_date
+    return ""
 
 
 def find_in_table(table: WebElement, target_data: list[str], ticker: str, headers: list, table_type: str) -> dict:
@@ -116,16 +124,10 @@ def find_in_financials_table(table: WebElement, target_dates: list[str], headers
         if cells[0].text in headers:
             financial_measure = cells[0].text
             for date, index in date_indices.items():
-                data[f'{financial_measure}-{date}'] = convert_to_number(cells[index].text)
+                if not data.get(financial_measure, False):
+                    data[financial_measure] = {}
+                data[financial_measure][date[:4]] = convert_to_number(cells[index].text)
     return data
-
-
-
-def target_date_matches(target_dates: list[str], row_date: str) -> str:
-    for target_date in target_dates:
-        if target_date in row_date:
-            return target_date
-    return ""
 
 
 def find_in_definition_table(table: WebElement, target_dates: list[str], headers: list) -> dict:
@@ -150,11 +152,13 @@ def find_in_definition_table(table: WebElement, target_dates: list[str], headers
         cells = row.find_elements(By.TAG_NAME, 'td')
         row_date = cells[indices[date_string]]
         date_postfix = target_date_matches(target_dates, row_date.text)
-        if date_string != "":
+        if date_postfix != "":
             #data = {date_string: row_date.text}
             for h in headers[1:]:
+                if not data.get(h, False):
+                    data[h] = {}
                 try:
-                    data[f"{h}-{date_postfix}"] = convert_to_number(cells[indices[h]].text)
+                    data[h][date_postfix[:4]] = convert_to_number(cells[indices[h]].text)
                 except Exception as e:
                     logger.error(f"Could not convert {cells[indices[h]].text} to number")
     return data
@@ -182,7 +186,7 @@ def find_in_benchmark_table(table: WebElement, ticker: str, headers: list) -> di
         if ticker in row_ticker.text:
             data = {}
             for h in headers[1:]:
-                data[h] = convert_to_number(cells[indices[h]].text)
+                data[h] = {"2023": convert_to_number(cells[indices[h]].text)}
             return data
     return {}
 
