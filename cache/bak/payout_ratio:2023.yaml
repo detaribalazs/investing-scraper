@@ -1,0 +1,297 @@
+ATSE:ALPHA:
+  Payout Ratio:
+    '2023': 0.1%
+ATSE:ETE: {}
+ATSE:EUROB: {}
+ATSE:OPTIMA: {}
+ATSE:TATT: {}
+ATSE:TPEIR: {}
+BIT:BAMI:
+  Payout Ratio:
+    '2023': 27.6%
+BIT:BDB:
+  Payout Ratio:
+    '2023': 11.0%
+BIT:BMPS:
+  Payout Ratio:
+    '2023': NA
+BIT:BPE:
+  Payout Ratio:
+    '2023': 11.2%
+BIT:BPSO:
+  Payout Ratio:
+    '2023': 27.5%
+BIT:BST: {}
+BIT:CE:
+  Payout Ratio:
+    '2023': 20.0%
+BIT:FBK:
+  Payout Ratio:
+    '2023': 52.9%
+BIT:ISP:
+  Payout Ratio:
+    '2023': 55.6%
+BIT:MB: {}
+BIT:UCG:
+  Payout Ratio:
+    '2023': 25.7%
+BME:BBVA:
+  Payout Ratio:
+    '2023': 35.0%
+BME:BKT: {}
+BME:CABK:
+  Payout Ratio:
+    '2023': 35.9%
+BME:CAM: {}
+BME:SAB:
+  Payout Ratio:
+    '2023': 20.5%
+BME:SAN:
+  Payout Ratio:
+    '2023': 20.4%
+BME:UNI:
+  Payout Ratio:
+    '2023': 48.2%
+BSSE:1TAT01DE:
+  Payout Ratio:
+    '2023': 44.8%
+BUL:BACB:
+  Payout Ratio:
+    '2023': 4.4%
+BUL:CCB: {}
+BUL:FIB: {}
+BUL:TXIM: {}
+BUSE:MBHBANK: {}
+BUSE:OTP:
+  Payout Ratio:
+    '2023': 8.1%
+BVB:BRD:
+  Payout Ratio:
+    '2023': NA
+BVB:PBK: {}
+BVB:TLV:
+  Payout Ratio:
+    '2023': 31.1%
+CPSE:DAB:
+  Payout Ratio:
+    '2023': 19.4%
+CPSE:DANSKE:
+  Payout Ratio:
+    '2023': 28.3%
+CPSE:DJUR: {}
+CPSE:FOBANK:
+  Payout Ratio:
+    '2023': 83.5%
+CPSE:FYNBK:
+  Payout Ratio:
+    '2023': 6.4%
+CPSE:HVID: {}
+CPSE:JYSK:
+  Payout Ratio:
+    '2023': 2.8%
+CPSE:KRE: {}
+CPSE:LASP:
+  Payout Ratio:
+    '2023': 7.3%
+CPSE:LOLB: {}
+CPSE:MNBA: {}
+CPSE:NRDF:
+  Payout Ratio:
+    '2023': NA
+CPSE:RILBA: {}
+CPSE:SKJE: {}
+CPSE:SPKSJF:
+  Payout Ratio:
+    '2023': 27.4%
+CPSE:SPNO:
+  Payout Ratio:
+    '2023': 22.3%
+CPSE:SYDB:
+  Payout Ratio:
+    '2023': 28.7%
+CPSE:VJBA: {}
+ENXTAM:ABN:
+  Payout Ratio:
+    '2023': 44.8%
+ENXTAM:INGA:
+  Payout Ratio:
+    '2023': 71.7%
+ENXTBR:KBC:
+  Payout Ratio:
+    '2023': 50.4%
+ENXTBR:KBCA: {}
+ENXTLS:BCP:
+  Payout Ratio:
+    '2023': 4.3%
+ENXTPA:ACA:
+  Payout Ratio:
+    '2023': 59.4%
+ENXTPA:BNP:
+  Payout Ratio:
+    '2023': 49.2%
+ENXTPA:CAF:
+  Payout Ratio:
+    '2023': 12.7%
+ENXTPA:CAT31:
+  Payout Ratio:
+    '2023': 19.4%
+ENXTPA:CCN:
+  Payout Ratio:
+    '2023': 17.9%
+ENXTPA:CIV: {}
+ENXTPA:CMO:
+  Payout Ratio:
+    '2023': 28.5%
+ENXTPA:CNDF:
+  Payout Ratio:
+    '2023': 22.3%
+ENXTPA:CRAP:
+  Payout Ratio:
+    '2023': 19.1%
+ENXTPA:CRAV:
+  Payout Ratio:
+    '2023': 23.4%
+ENXTPA:CRBP2:
+  Payout Ratio:
+    '2023': 17.6%
+ENXTPA:CRLA:
+  Payout Ratio:
+    '2023': 14.5%
+ENXTPA:CRLO:
+  Payout Ratio:
+    '2023': 22.7%
+ENXTPA:CRSU:
+  Payout Ratio:
+    '2023': 19.6%
+ENXTPA:CRTO:
+  Payout Ratio:
+    '2023': 16.4%
+ENXTPA:GLE: {}
+HLSE:AKTIA:
+  Payout Ratio:
+    '2023': 39.7%
+HLSE:ALBAV:
+  Payout Ratio:
+    '2023': 61.6%
+HLSE:ALISA: {}
+HLSE:OMASP:
+  Payout Ratio:
+    '2023': 8.1%
+ISE:A5G:
+  Payout Ratio:
+    '2023': 11.2%
+ISE:BIRG:
+  Payout Ratio:
+    '2023': 18.4%
+ISE:PTSB:
+  Payout Ratio:
+    '2023': 63.2%
+LJSE:DEHG:
+  Payout Ratio:
+    '2023': 8.6%
+LJSE:LONR: {}
+LJSE:NLBR:
+  Payout Ratio:
+    '2023': 20.8%
+LSE:BOCH:
+  Payout Ratio:
+    '2023': 9.8%
+MTSE:APS:
+  Payout Ratio:
+    '2023': 13.7%
+MTSE:BOV:
+  Payout Ratio:
+    '2023': 10.4%
+MTSE:HSB:
+  Payout Ratio:
+    '2023': 31.3%
+MTSE:LOM: {}
+OM:NDASE:
+  Payout Ratio:
+    '2023': 58.8%
+OM:NORION: {}
+OM:SHBA:
+  Payout Ratio:
+    '2023': 54.4%
+OM:SWEDA:
+  Payout Ratio:
+    '2023': 32.1%
+OM:TFBANK:
+  Payout Ratio:
+    '2023': 5.0%
+SE:SEBA:
+  Payout Ratio:
+    '2023': 37.2%
+SEP:KOMB:
+  Payout Ratio:
+    '2023': 72.3%
+SEP:MONET:
+  Payout Ratio:
+    '2023': 78.6%
+TLSE:CPA1T:
+  Payout Ratio:
+    '2023': 11.6%
+TLSE:LHV1T:
+  Payout Ratio:
+    '2023': 9.0%
+WBAG:ADKO:
+  Payout Ratio:
+    '2023': 57.4%
+WBAG:BG:
+  Payout Ratio:
+    '2023': 48.2%
+WBAG:BKS:
+  Payout Ratio:
+    '2023': 8.1%
+WBAG:BTS:
+  Payout Ratio:
+    '2023': 6.4%
+WBAG:EBS:
+  Payout Ratio:
+    '2023': 29.0%
+WBAG:OBS:
+  Payout Ratio:
+    '2023': 14.2%
+WBAG:RBI:
+  Payout Ratio:
+    '2023': 15.6%
+WSE:ALR: {}
+WSE:BHW:
+  Payout Ratio:
+    '2023': 52.1%
+WSE:BNP:
+  Payout Ratio:
+    '2023': NA
+WSE:BOS: {}
+WSE:GTN:
+  Payout Ratio:
+    '2023': 403.1%
+WSE:ING:
+  Payout Ratio:
+    '2023': NA
+WSE:MBK: {}
+WSE:MIL: {}
+WSE:PEO:
+  Payout Ratio:
+    '2023': 21.6%
+WSE:PKO:
+  Payout Ratio:
+    '2023': NA
+WSE:SPL:
+  Payout Ratio:
+    '2023': 49.2%
+XTRA:CBK:
+  Payout Ratio:
+    '2023': 11.2%
+XTRA:MBK: {}
+XTRA:PCZ: {}
+XTRA:UBK: {}
+ZGSE:HPB: {}
+ZGSE:IKBA:
+  Payout Ratio:
+    '2023': 15.7%
+ZGSE:KBZ:
+  Payout Ratio:
+    '2023': 36.7%
+ZGSE:PDBA: {}
+ZGSE:SNBA: {}

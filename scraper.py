@@ -44,12 +44,14 @@ upper_limit = ""
 lower_limit = ""
 retry_count = 1
 chunk_size = 10
-metric = "marketcap"
-doi = ["2019-12", "2020-12", "2021-12", "2022-12", "2023-12"]  # da]te of interest
+metric = "payout_ratio"
+doi = ["2023-12"] #["2019-12", "2020-12", "2021-12", "2022-12", "2023-12"]  # da]te of interest
 output_suffix = doi[0].split("-")[0] if len(doi) == 1 else doi[0].split("-")[0] + "_" + doi[-1].split("-")[0]
 output_file = f'./output/{metric}:{output_suffix}.yaml'
 cache_file_path = f'./cache/{metric}:{output_suffix}.yaml'
 default_cache_file_path = f'./cache/default_{metric}:{output_suffix}.yaml'
+
+NA = "=NA()"
 
 
 def try_to_num(num_string: str) -> float:
@@ -72,9 +74,21 @@ def convert_to_number(number_string: str):
             num = float(number_string)
             num *= 1000000
             return int(num)
-        return int(float(number_string.replace(',', '')))
+        if number_string.endswith("%"):
+            number_string = number_string[:-1]
+            num = float(number_string.replace(',', ''))
+            return num / 100
+        return float(number_string.replace(',', ''))
     except ValueError:
         return number_string
+
+
+def convert_to_float(number_string: str):
+    try:
+        number_string = number_string.replace(',', '')
+        return float(number_string)
+    except ValueError:
+        return NA
 
 
 def interceptor(request):
@@ -186,7 +200,7 @@ def find_in_benchmark_table(table: WebElement, ticker: str, headers: list) -> di
         if ticker in row_ticker.text:
             data = {}
             for h in headers[1:]:
-                data[h] = {"2023": convert_to_number(cells[indices[h]].text)}
+                data[h] = {"2023": convert_to_float(cells[indices[h]].text)}
             return data
     return {}
 

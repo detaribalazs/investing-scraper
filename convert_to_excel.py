@@ -1,6 +1,8 @@
 import array
 import csv
 import logging
+import math
+import sys
 
 import numpy as np
 import yaml
@@ -13,12 +15,29 @@ logger = logging.getLogger(__name__)
 logger.setLevel(level=logging.INFO)
 
 all_tickers = load_tickers("./input/tickers.yaml")
-only_complete = True
+only_complete = False
+input_files = [
+    "./output/income_statement:2018_2023.yaml",
+    "./output/balance_sheet:2018_2023.yaml",
+    "./output/marketcap:2019_2023.yaml",
+    "./output/beta:2023.yaml",
+    "./output/payout_ratio:2023.yaml"
+]
+excel_file = "./output/cross_sectional_2023-complete.xlsx"
+#excel_file = "/tmp/test.xlsx"
+input_header = [
+    "Year", "Ticker",
+    "Beta (5 Year)", "Payout Ratio",
+    "EBT, Incl. Unusual Items", "Net Income to Stockholders", 'Common Equity', "Market Cap",
+    'ROE', "g", "gEBIT", "gNI", "P/B", "lnROE", "lnP/B"]
+dates = ["2022", "2023"]
 
 def merge_files(data: list) -> dict:
     merged_data = data[0]
     for d in data[1:]:
         for k, v in d.items():
+            if not merged_data.get(k, False):
+                merged_data[k] = {}
             merged_data[k].update(v)
     return merged_data
 
@@ -28,7 +47,7 @@ class FinancialData:
     data = {}
     tickers = []
 
-    def __init__(self, data: dict, tickers: list[str]):
+    def __init__(self, data: dict, tickers: list[str], requested_years: list[str]):
         self.data = {}
         for ticker in tickers:
             if ticker in data:
@@ -36,7 +55,12 @@ class FinancialData:
             else:
                 self.data[ticker] = {}
         self.tickers = tickers
-        self.dates = self.__get_dates()
+        known_dates = self.__get_dates()
+        for year in requested_years:
+            if year not in known_dates:
+                logger.error(f"Requested year {year} is not known")
+                sys.exit(1)
+        self.dates = requested_years
         self.header = self.__get_headers()
 
     def append(self, data: dict):
@@ -64,9 +88,7 @@ class FinancialData:
     def query(self, ticker: str, financial: str, date: str):
         try:
             entry = self.data[ticker][financial][date]
-            if entry == "-":
-                return NA
-            if entry == "NA":
+            if entry in {"-", "NA", NA, ""}:
                 return NA
             return entry
         except KeyError:
@@ -77,14 +99,33 @@ class FinancialData:
 
         clean_header = []
         column_indices = {}
-        calculated_columns = ["ROE", "g"]
+        calculated_columns = ["ROE", "g", "gEBIT", "gNI", "P/B", "lnROE", "lngEBIT", "lnP/B"]
+        dependencies = {
+            "ROE": ["Net Income to Stockholders", "Common Equity"],
+            "g": ["ROE", "PR"],
+            "gNI": ["Net Income to Stockholders"],
+            "gEBIT": ["EBT, Incl. Unusual Items"],
+            "P/B": ["Common Equity", "Market Cap"],
+
+        }
         for fin_data in header:
             if fin_data in self.header:
-                clean_header.append(fin_data)
-                column_indices[fin_data] = len(clean_header) - 1
+                if fin_data not in clean_header:
+                    column_indices[fin_data] = len(clean_header)
+                    clean_header.append(fin_data)
             if fin_data in calculated_columns:
+                # for dep in dependencies.get(fin_data, []):
+                #     if dep not in clean_header:
+                #         column_indices[dep] = len(clean_header)
+                #         clean_header.append(dep)
+                column_indices[fin_data] = len(clean_header)
                 clean_header.append(fin_data)
-                column_indices[fin_data] = len(clean_header) - 1
+
+        # for fin_data, idx in zip(clean_header, range(len(clean_header))):
+        #     if fin_data not in calculated_columns:
+        #         for dep in dependencies.get(fin_data, []):
+        #             if dep not in clean_header:
+        #                 clean_header.insert(idx, dep)
 
         for ticker in self.tickers:
             #rows = [([0] * len(self.header)) * len(self.dates)]
@@ -124,9 +165,14 @@ class FinancialData:
                         #     roe = 0.001
                         rows[date_idx - 1][column_indices[fin_data]] = roe
 
-                    elif fin_data == "g":
+                    elif fin_data in {"gEBIT", "gNI"}:
+                        metric_map = {
+                            "gNI": "Net Income to Stockholders",
+                            "gEBIT": "EBT, Incl. Unusual Items",
+                        }
+                        metric = metric_map[fin_data]
                         prev_date = self.dates[date_idx - 1]
-                        ebt_prev_str = self.query(ticker, "EBT, Incl. Unusual Items", prev_date)
+                        ebt_prev_str = self.query(ticker, metric, prev_date)
                         if ebt_prev_str == NA:
                             rows[date_idx - 1][column_indices[fin_data]] = NA
                             continue
@@ -135,7 +181,7 @@ class FinancialData:
                         except ValueError:
                             rows[date_idx - 1][column_indices[fin_data]] = NA
                             continue
-                        ebt_str = self.query(ticker, "EBT, Incl. Unusual Items", date)
+                        ebt_str = self.query(ticker, metric, date)
                         if ebt_str == NA:
                             rows[date_idx - 1][column_indices[fin_data]] = NA
                             continue
@@ -149,6 +195,30 @@ class FinancialData:
                         # if g < 0:
                         #     g = 0.0001
                         rows[date_idx - 1][column_indices[fin_data]] = g
+
+                    elif fin_data == "g":
+                        rows[date_idx - 1][column_indices["g"]] = self.calculate_g(rows, column_indices, date_idx)
+
+                    elif fin_data == "P/B":
+                        P = rows[date_idx - 1][column_indices["Market Cap"]]
+                        B = rows[date_idx - 1][column_indices["Common Equity"]]
+                        if P == NA or B == NA:
+                            rows[date_idx - 1][column_indices[fin_data]] = NA
+                        try:
+                            rows[date_idx - 1][column_indices[fin_data]] = float(P)/float(B)
+                        except ValueError:
+                            rows[date_idx - 1][column_indices[fin_data]] = NA
+
+                    elif fin_data in {"lnROE", "lngEBIT", "lnP/B"}:
+                        original_metric = fin_data[2:]
+                        try:
+                            original_value = rows[date_idx - 1][column_indices[original_metric]]
+                            if original_value == NA:
+                                rows[date_idx - 1][column_indices[fin_data]] = NA
+                            rows[date_idx - 1][column_indices[fin_data]] = math.log(float(original_value))
+                        except ValueError:
+                            rows[date_idx - 1][column_indices[fin_data]] = NA
+
                     else:
                         if self.data[ticker].get(fin_data, False):
                             if self.data[ticker][fin_data].get(date, False):
@@ -159,7 +229,8 @@ class FinancialData:
                             else:
                                 rows[date_idx - 1][column_indices[fin_data]] = NA
                         else:
-                            rows[date_idx - 1] = [NA for _ in range(len(clean_header))]
+                            rows[date_idx - 1][column_indices[fin_data]] = NA
+                            #rows[date_idx - 1] = [].extend([NA for _ in range(len(clean_header))])
 
             if only_complete:
                 b = False
@@ -179,24 +250,27 @@ class FinancialData:
         df = DataFrame(table, columns=clean_header)
         df.to_excel(filename)
 
+    def calculate_g(self,  rows: list[list], column_indices: dict[str, int], date_idx: int) -> float:
+        roe = rows[date_idx - 1][column_indices["ROE"]]
+        pr = rows[date_idx - 1][column_indices["Payout Ratio"]]
+        if roe == NA or pr == NA:
+            return NA
+        try:
+            return float(roe) * (1 - float(pr))
+        except ValueError:
+            return NA
+
+
 
 def main():
-    input_files = [
-        "./output/income_statement:2018_2023.yaml",
-        "./output/balance_sheet:2018_2023.yaml",
-        "./output/marketcap:2019_2023.yaml"
-    ]
-    #output_file = "./output/merged-beta.yaml"
-    excel_file = "./output/panel_data-2.xlsx"
     data = []
     for input_file in input_files:
         with open(input_file, "r") as f:
             content = yaml.safe_load(f)
             data.append(content)
     merged_data = merge_files(data)
-    fd = FinancialData(merged_data, tickers=all_tickers)
-    fd.write_to_excel(excel_file,
-                      ["Year", "Ticker", "EBT, Incl. Unusual Items", "Net Income to Stockholders", 'Common Equity', "Market Cap", 'ROE', "g"])
+    fd = FinancialData(merged_data, tickers=all_tickers, requested_years=dates)
+    fd.write_to_excel(excel_file,input_header)
 
 
 if __name__ == "__main__":
