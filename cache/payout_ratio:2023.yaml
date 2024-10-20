@@ -117,7 +117,7 @@ CPSE:FYNBK:
     '2023': 0.064
 CPSE:HVID:
   Payout Ratio:
-    '2023': NA
+    '2023': 0.0
 CPSE:JYSK:
   Payout Ratio:
     '2023': 0.027999999999999997
@@ -132,19 +132,19 @@ CPSE:LOLB:
     '2023': 0.049
 CPSE:MNBA:
   Payout Ratio:
-    '2023': NA
+    '2023': 0.0
 CPSE:NRDF:
   Payout Ratio:
-    '2023': NA
+    '2023': 0.0
 CPSE:RILBA:
   Payout Ratio:
-    '2023': NA
+    '2023': 0.0
 CPSE:SKJE:
   Payout Ratio:
-    '2023': NA
+    '2023': 0.0
 CPSE:SPKSJF:
   Payout Ratio:
-    '2023': 0.27399999999999997
+    '2023': 0.274
 CPSE:SPNO:
   Payout Ratio:
     '2023': 0.223
@@ -228,7 +228,7 @@ HLSE:ALBAV:
     '2023': 0.616
 HLSE:ALISA:
   Payout Ratio:
-    '2023': NA
+    '2023': 0.0
 HLSE:OMASP:
   Payout Ratio:
     '2023': 0.081
@@ -273,7 +273,7 @@ OM:NDASE:
     '2023': 0.588
 OM:NORION:
   Payout Ratio:
-    '2023': NA
+    '2023': 0.0
 OM:SHBA:
   Payout Ratio:
     '2023': 0.544
@@ -339,10 +339,10 @@ WSE:ING:
     '2023': 0.997
 WSE:MBK:
   Payout Ratio:
-    '2023': NA
+    '2023': 0.0
 WSE:MIL:
   Payout Ratio:
-    '2023': NA
+    '2023': 0.0
 WSE:PEO:
   Payout Ratio:
     '2023': 0.21600000000000003

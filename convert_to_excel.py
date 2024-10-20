@@ -19,18 +19,18 @@ only_complete = False
 input_files = [
     "./output/income_statement:2018_2023.yaml",
     "./output/balance_sheet:2018_2023.yaml",
-    "./output/marketcap:2019_2023.yaml",
-    "./output/beta:2023.yaml",
-    "./output/payout_ratio:2023.yaml"
+    "./output/marketcap:2019_2023.yaml"
+    #"./output/beta:2023.yaml",
+    #"./output/payout_ratio:2023.yaml"
 ]
-excel_file = "./output/cross_sectional_2023-complete.xlsx"
+excel_file = "./output/panel_full_2019-2023.xlsx"
 #excel_file = "/tmp/test.xlsx"
 input_header = [
     "Year", "Ticker",
-    "Beta (5 Year)", "Payout Ratio",
+    #"Beta (5 Year)", "Payout Ratio",
     "EBT, Incl. Unusual Items", "Net Income to Stockholders", 'Common Equity', "Market Cap",
     'ROE', "g", "gEBIT", "gNI", "P/B", "lnROE", "lnP/B"]
-dates = ["2022", "2023"]
+dates = ["2018", "2019", "2020", "2021", "2022", "2023"]
 
 def merge_files(data: list) -> dict:
     merged_data = data[0]
@@ -90,7 +90,10 @@ class FinancialData:
             entry = self.data[ticker][financial][date]
             if entry in {"-", "NA", NA, ""}:
                 return NA
-            return entry
+            try:
+                return float(entry)
+            except ValueError:
+                return NA
         except KeyError:
             return NA
 
@@ -99,7 +102,9 @@ class FinancialData:
 
         clean_header = []
         column_indices = {}
-        calculated_columns = ["ROE", "g", "gEBIT", "gNI", "P/B", "lnROE", "lngEBIT", "lnP/B"]
+        calculated_columns = ["ROE",
+                              #"g",
+        "gEBIT", "gNI", "P/B", "lnROE", "lngEBIT", "lnP/B"]
         dependencies = {
             "ROE": ["Net Income to Stockholders", "Common Equity"],
             "g": ["ROE", "PR"],
@@ -220,17 +225,7 @@ class FinancialData:
                             rows[date_idx - 1][column_indices[fin_data]] = NA
 
                     else:
-                        if self.data[ticker].get(fin_data, False):
-                            if self.data[ticker][fin_data].get(date, False):
-                                try:
-                                    rows[date_idx - 1][column_indices[fin_data]] = float(self.query(ticker, fin_data, date))
-                                except ValueError:
-                                    rows[date_idx - 1][column_indices[fin_data]] = NA
-                            else:
-                                rows[date_idx - 1][column_indices[fin_data]] = NA
-                        else:
-                            rows[date_idx - 1][column_indices[fin_data]] = NA
-                            #rows[date_idx - 1] = [].extend([NA for _ in range(len(clean_header))])
+                        rows[date_idx - 1][column_indices[fin_data]] = self.query(ticker, fin_data, date)
 
             if only_complete:
                 b = False

@@ -44,8 +44,8 @@ upper_limit = ""
 lower_limit = ""
 retry_count = 1
 chunk_size = 10
-metric = "payout_ratio"
-doi = ["2023-12"] #["2019-12", "2020-12", "2021-12", "2022-12", "2023-12"]  # da]te of interest
+metric = "marketcap"
+doi = ["2018-12", "2019-12", "2020-12", "2021-12", "2022-12", "2023-12"]  # da]te of interest
 output_suffix = doi[0].split("-")[0] if len(doi) == 1 else doi[0].split("-")[0] + "_" + doi[-1].split("-")[0]
 output_file = f'./output/{metric}:{output_suffix}.yaml'
 cache_file_path = f'./cache/{metric}:{output_suffix}.yaml'
