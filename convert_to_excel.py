@@ -2,6 +2,7 @@ import array
 import csv
 import logging
 import math
+import shutil
 import sys
 
 import numpy as np
@@ -19,18 +20,27 @@ only_complete = False
 input_files = [
     "./output/income_statement:2018_2023.yaml",
     "./output/balance_sheet:2018_2023.yaml",
-    "./output/marketcap:2019_2023.yaml"
-    #"./output/beta:2023.yaml",
-    #"./output/payout_ratio:2023.yaml"
+    "./output/marketcap:2019_2023.yaml",
+    "./output/beta:2023.yaml",
+    "./output/payout_ratio:2023.yaml"
 ]
-excel_file = "./output/panel_full_2019-2023.xlsx"
-#excel_file = "/tmp/test.xlsx"
+#excel_file = "./output/panel_full_2019-2023.xlsx"
+#excel_file = "./output/panel_with_RE_2019-2023.xlsx"
+excel_file = "./output/cross_sectional_with_RE_2023.xlsx"
+#excel_file = "/tmp/foo.xlsx"
 input_header = [
     "Year", "Ticker",
-    #"Beta (5 Year)", "Payout Ratio",
-    "EBT, Incl. Unusual Items", "Net Income to Stockholders", 'Common Equity', "Market Cap",
-    'ROE', "g", "gEBIT", "gNI", "P/B", "lnROE", "lnP/B"]
-dates = ["2018", "2019", "2020", "2021", "2022", "2023"]
+    "Beta (5 Year)", "Payout Ratio",
+    "EBT, Incl. Unusual Items", "Net Income to Stockholders", 'Retained Earnings', 'Common Equity', "Market Cap",
+    "gEBIT", "gNI", "gRE", "dRE", "RR",
+    'ROE',
+    "g",
+    "P/B", "lnROE", "lnP/B"]
+dates = [#"2018", "2019", "2020", "2021",
+ "2022", "2023"]
+
+
+#dates = ["2022", "2023"]
 
 def merge_files(data: list) -> dict:
     merged_data = data[0]
@@ -41,7 +51,9 @@ def merge_files(data: list) -> dict:
             merged_data[k].update(v)
     return merged_data
 
+
 NA = "=NA()"
+
 
 class FinancialData:
     data = {}
@@ -103,8 +115,13 @@ class FinancialData:
         clean_header = []
         column_indices = {}
         calculated_columns = ["ROE",
-                              #"g",
-        "gEBIT", "gNI", "P/B", "lnROE", "lngEBIT", "lnP/B"]
+                              "g",
+                              "gEBIT",
+                              "gNI",
+                              "gRE",
+                              "dRE",
+                              "RR",
+                              "P/B", "lnROE", "lngEBIT", "lnP/B"]
         dependencies = {
             "ROE": ["Net Income to Stockholders", "Common Equity"],
             "g": ["ROE", "PR"],
@@ -134,7 +151,7 @@ class FinancialData:
 
         for ticker in self.tickers:
             #rows = [([0] * len(self.header)) * len(self.dates)]
-            rows = [[0 for _ in range(len(clean_header))] for _ in range(len(self.dates)-1)]
+            rows = [[0 for _ in range(len(clean_header))] for _ in range(len(self.dates) - 1)]
             for fin_data in clean_header:
                 for date, date_idx in zip(self.dates[1:], range(1, len(self.dates))):
                     if fin_data == "Ticker":
@@ -151,7 +168,7 @@ class FinancialData:
                         except ValueError:
                             rows[date_idx - 1][column_indices[fin_data]] = NA
                             continue
-                        prev_date = self.dates[date_idx-1]
+                        prev_date = self.dates[date_idx - 1]
                         ce_prev = self.query(ticker, "Common Equity", prev_date)
                         if ce_prev == NA:
                             rows[date_idx - 1][column_indices[fin_data]] = NA
@@ -170,10 +187,11 @@ class FinancialData:
                         #     roe = 0.001
                         rows[date_idx - 1][column_indices[fin_data]] = roe
 
-                    elif fin_data in {"gEBIT", "gNI"}:
+                    elif fin_data in {"gEBIT", "gNI", "gRE"}:
                         metric_map = {
                             "gNI": "Net Income to Stockholders",
                             "gEBIT": "EBT, Incl. Unusual Items",
+                            "gRE": "Retained Earnings",
                         }
                         metric = metric_map[fin_data]
                         prev_date = self.dates[date_idx - 1]
@@ -196,13 +214,19 @@ class FinancialData:
                             rows[date_idx - 1][column_indices[fin_data]] = NA
                             continue
 
-                        g = (ebt - ebt_prev)/ebt_prev
+                        g = (ebt - ebt_prev) / ebt_prev
                         # if g < 0:
                         #     g = 0.0001
                         rows[date_idx - 1][column_indices[fin_data]] = g
+                    elif fin_data in {"dRE"}:
+                        rows[date_idx - 1][column_indices[fin_data]] = \
+                            self.calculate_d(ticker, fin_data, date, date_idx)
 
                     elif fin_data == "g":
                         rows[date_idx - 1][column_indices["g"]] = self.calculate_g(rows, column_indices, date_idx)
+
+                    elif fin_data == "RR":
+                        rows[date_idx - 1][column_indices["RR"]] = self.calculate_rr(rows, column_indices, date_idx)
 
                     elif fin_data == "P/B":
                         P = rows[date_idx - 1][column_indices["Market Cap"]]
@@ -210,7 +234,7 @@ class FinancialData:
                         if P == NA or B == NA:
                             rows[date_idx - 1][column_indices[fin_data]] = NA
                         try:
-                            rows[date_idx - 1][column_indices[fin_data]] = float(P)/float(B)
+                            rows[date_idx - 1][column_indices[fin_data]] = float(P) / float(B)
                         except ValueError:
                             rows[date_idx - 1][column_indices[fin_data]] = NA
 
@@ -245,7 +269,7 @@ class FinancialData:
         df = DataFrame(table, columns=clean_header)
         df.to_excel(filename)
 
-    def calculate_g(self,  rows: list[list], column_indices: dict[str, int], date_idx: int) -> float:
+    def calculate_g(self, rows: list[list], column_indices: dict[str, int], date_idx: int) -> float:
         roe = rows[date_idx - 1][column_indices["ROE"]]
         pr = rows[date_idx - 1][column_indices["Payout Ratio"]]
         if roe == NA or pr == NA:
@@ -255,6 +279,33 @@ class FinancialData:
         except ValueError:
             return NA
 
+    def calculate_d(self, ticker: str, fin_data: str, date: str, date_idx: int) -> float:
+        metric_map = {
+            "dRE": "Retained Earnings",
+        }
+        metric = metric_map[fin_data]
+        prev_date = self.dates[date_idx - 1]
+        prev = self.query(ticker, metric, prev_date)
+        if prev == NA:
+            return NA
+        cur = self.query(ticker, metric, date)
+        if cur == NA:
+            return NA
+
+        try:
+            return float(cur) - float(prev)
+        except ValueError:
+            return NA
+
+    def calculate_rr(self, rows: list[list], column_indices: dict[str, int], date_idx: int) -> float:
+        dRE = rows[date_idx - 1][column_indices["dRE"]]
+        ni = rows[date_idx - 1][column_indices["Net Income to Stockholders"]]
+        if dRE == NA or ni == NA:
+            return NA
+        try:
+            return float(dRE) / float(ni)
+        except ValueError:
+            return NA
 
 
 def main():
@@ -265,7 +316,11 @@ def main():
             data.append(content)
     merged_data = merge_files(data)
     fd = FinancialData(merged_data, tickers=all_tickers, requested_years=dates)
-    fd.write_to_excel(excel_file,input_header)
+    fd.write_to_excel(excel_file, input_header)
+    if "panel" in excel_file:
+        shutil.copy(excel_file, "/Users/detaribalazs/Documents/Elte/4.felev/Diploma/panel_data_2019-2023.xlsx")
+    if "cross_section" in excel_file:
+        shutil.copy(excel_file, "/Users/detaribalazs/Documents/Elte/4.felev/Diploma/cross_sectional_2023.xlsx")
 
 
 if __name__ == "__main__":

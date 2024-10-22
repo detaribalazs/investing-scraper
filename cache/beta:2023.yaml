@@ -277,7 +277,9 @@ OM:SWEDA:
 OM:TFBANK:
   Beta (5 Year):
     '2023': 1.06
-SE:SEBA: {}
+SE:SEBA:
+  Beta (5 Year):
+    '2023': 0.73
 SEP:KOMB:
   Beta (5 Year):
     '2023': 0.69

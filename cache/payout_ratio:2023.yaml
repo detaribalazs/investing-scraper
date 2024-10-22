@@ -81,7 +81,7 @@ BUL:CCB:
     '2023': NA
 BUL:FIB:
   Payout Ratio:
-    '2023': NA
+    '2023': 0.0
 BUL:TXIM:
   Payout Ratio:
     '2023': NA
@@ -96,7 +96,7 @@ BVB:BRD:
     '2023': 0.9264
 BVB:PBK:
   Payout Ratio:
-    '2023': NA
+    '2023': 0.0
 BVB:TLV:
   Payout Ratio:
     '2023': 0.311
@@ -330,7 +330,7 @@ WSE:BNP:
     '2023': 0.3942
 WSE:BOS:
   Payout Ratio:
-    '2023': NA
+    '2023': 0.0
 WSE:GTN:
   Payout Ratio:
     '2023': 4.031000000000001
@@ -378,7 +378,7 @@ ZGSE:PDBA:
     '2023': 0.46049999999999996
 ZGSE:SNBA:
   Payout Ratio:
-    '2023': NA
+    '2023': 0.0
 ZGSE:ZBB:
   Payout Ratio:
     '2023': NA
